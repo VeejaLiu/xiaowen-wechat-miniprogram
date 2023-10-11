@@ -1,22 +1,28 @@
 <template>
     <view class="index">
+        <nut-avatar size="large">
+            <img
+                src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"
+                alt=""
+            />
+        </nut-avatar>
+
         <nut-cell>
             <nut-textarea v-model="prompt" :disabled="textAreaDisabled" placeholder="请输入提示词" />
         </nut-cell>
         <nut-button block :loading="isLoading" color="black" @click="handleClick">生成 </nut-button>
-        <div class="img-box">
-            <div class="image-grid">
-                <div class="image-container" v-for="(image, index) in imgData" :key="index">
-                    <image :src="image" />
-                </div>
-            </div>
-        </div>
+        <nut-grid :border="false" :column-num="2" square>
+            <nut-grid-item v-for="(image, index) in imgData" :key="index">
+                <img mode="heightFix" :src="image" alt="" />
+            </nut-grid-item>
+        </nut-grid>
     </view>
 </template>
 
 <script>
 import { ref } from 'vue';
 import Taro from '@tarojs/taro';
+import { Avatar } from '@nutui/nutui-taro';
 import './index.scss';
 
 export default {
