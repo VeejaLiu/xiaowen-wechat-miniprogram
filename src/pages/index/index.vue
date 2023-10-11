@@ -5,8 +5,10 @@
         </nut-cell>
         <nut-button block :loading="isLoading" color="black" @click="handleClick">生成 </nut-button>
         <div class="img-box">
-            <div v-for="(image, index) in imgData" :key="index" class="image-container">
-                <image :src="image" />
+            <div class="image-grid">
+                <div class="image-container" v-for="(image, index) in imgData" :key="index">
+                    <image :src="image" />
+                </div>
             </div>
         </div>
     </view>
