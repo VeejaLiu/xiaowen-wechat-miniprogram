@@ -7,11 +7,9 @@
             />
         </nut-avatar>
         <nut-button block color="" @click="goToQuota">剩余钻石: 110000 </nut-button>
-
         <nut-cell>
             <nut-textarea v-model="prompt" :disabled="textAreaDisabled" placeholder="请输入提示词" />
         </nut-cell>
-
         <nut-button block :loading="isLoading" color="black" @click="goToGenerateResultDetail">生成 </nut-button>
         <nut-grid :border="false" :column-num="2" square>
             <nut-grid-item v-for="(image, index) in imgData" :key="index">
@@ -24,6 +22,7 @@
 <script>
 import { ref } from 'vue';
 import Taro from '@tarojs/taro';
+import './index.scss';
 
 export default {
     name: 'Index',
