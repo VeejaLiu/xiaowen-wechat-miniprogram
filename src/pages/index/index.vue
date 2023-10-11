@@ -7,6 +7,8 @@
             />
         </nut-avatar>
 
+        <nut-button block color="" @click="">剩余钻石 </nut-button>
+
         <nut-cell>
             <nut-textarea v-model="prompt" :disabled="textAreaDisabled" placeholder="请输入提示词" />
         </nut-cell>
