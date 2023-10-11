@@ -10,5 +10,6 @@ declare module '@vue/runtime-core' {
     NutButton: typeof import('@nutui/nutui-taro')['Button']
     NutCell: typeof import('@nutui/nutui-taro')['Cell']
     NutTextarea: typeof import('@nutui/nutui-taro')['Textarea']
+    NutToast: typeof import('@nutui/nutui-taro')['Toast']
   }
 }
