@@ -3,7 +3,7 @@
     "prettier"
   ],
   "extends": [
-    "plugin:prettier/recommended"
+    // "plugin:prettier/recommended"
   ],
   "rules": {
     "prettier/prettier": [
