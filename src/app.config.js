@@ -3,7 +3,7 @@ export default defineAppConfig({
         'pages/homepage/index',
         'pages/get_quota/index',
         'pages/my/index',
-        'pages/index/index',
+        'pages/generate/index',
         'pages/generate_result_detail/index',
     ],
     window: {
