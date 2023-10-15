@@ -1,28 +1,29 @@
 <template>
     <view class="index">
-        <nut-avatar size="large" @click="goToMy"> </nut-avatar>
-        <nut-button block color="" @click="goToQuota">剩余钻石: 110000 </nut-button>
+        <!--        <nut-avatar size="large" @click="goToMy"> </nut-avatar>-->
+        <!--        <nut-button block color="" @click="goToQuota">剩余钻石: 110000 </nut-button>-->
         风格：
         <nut-cell>
             <nut-radio-group v-model="radioVal" text-position="left" direction="horizontal">
                 <nut-radio label="1">点刺</nut-radio>
                 <nut-radio label="2">选项2</nut-radio>
                 <nut-radio label="3">选项3</nut-radio>
+                <nut-radio label="4">选项4</nut-radio>
+                <nut-radio label="5">选项5</nut-radio>
+                <nut-radio label="6">选项6</nut-radio>
+                <nut-radio label="7">选项7</nut-radio>
+                <nut-radio label="8">选项8</nut-radio>
+                <nut-radio label="9">选项9</nut-radio>
             </nut-radio-group>
         </nut-cell>
 
-        <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">登录</button> -->
+        <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">登录</button>
 
         <nut-cell>
             <nut-textarea v-model="prompt" :disabled="textAreaDisabled" placeholder="请输入提示词" />
         </nut-cell>
         <nut-button block :loading="isLoading" color="black" @click="goToGenerateResultDetail">生成 </nut-button>
         <nut-button block :loading="isLoading" color="black" @click="getPhoneNumber">登录 </nut-button>
-        <nut-grid :border="false" :column-num="2" square>
-            <nut-grid-item v-for="(image, index) in imgData" :key="generate">
-                <img mode="heightFix" :src="image" alt="" />
-            </nut-grid-item>
-        </nut-grid>
     </view>
 </template>
 
@@ -32,7 +33,7 @@ import Taro from '@tarojs/taro';
 import './index.scss';
 
 export default {
-    name: 'Index',
+    name: 'Draw',
     components: {},
     state: {},
 
