@@ -2,6 +2,7 @@ export default defineAppConfig({
     pages: [
         'pages/index/index',
         'pages/draw/index',
+        'pages/test/index',
         'pages/homepage/index',
         'pages/get_quota/index',
         'pages/my/index',
