@@ -1,5 +1,11 @@
 export default defineAppConfig({
-    pages: ['pages/index/index'],
+    pages: [
+        'pages/homepage/index',
+        'pages/get_quota/index',
+        'pages/my/index',
+        'pages/generate/index',
+        'pages/generate_result_detail/index',
+    ],
     window: {
         backgroundTextStyle: 'light',
         navigationBarBackgroundColor: '#fff',
