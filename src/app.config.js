@@ -1,5 +1,6 @@
 export default defineAppConfig({
     pages: [
+        'pages/test/index',
         'pages/homepage/index',
         'pages/get_quota/index',
         'pages/my/index',
