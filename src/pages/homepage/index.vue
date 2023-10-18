@@ -16,7 +16,7 @@
             v-model:visible="showPopup"
         >
             <img id="homepage_popup_logo" :src="logoImage" width="70px" height="70px" />
-            <nut-button id="homepage_popup_login_btn" block @click="goToGenerate">
+            <nut-button id="homepage_popup_login_btn" block @click="goToIndex">
                 <p id="homepage_login_btn_text">手机号快捷登录</p>
             </nut-button>
             <nut-button id="homepage_popup_cancel_login_btn" block @click="showPopup = false">
@@ -57,12 +57,12 @@ export default {
             showPopup.value = true;
         };
 
-        const goToGenerate = () => {
-            console.log('goToGenerate');
+        const goToIndex = () => {
+            console.log('goToIndex');
             console.log('Checkbox.value: ', checkbox.value);
             if (checkbox.value) {
                 Taro.navigateTo({
-                    url: '/pages/generate/index',
+                    url: '/pages/index/index',
                 });
             } else {
                 Taro.showToast({
@@ -76,7 +76,7 @@ export default {
         return {
             doPopup,
             doAgree,
-            goToGenerate,
+            goToIndex,
             showPopup,
             logoImage,
             checkedIcon,
