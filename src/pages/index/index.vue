@@ -1,7 +1,8 @@
 <template>
-    <view class="index">
+    <view>
         <DrawPage v-if="activeTab === 0" />
         <MyPage v-if="activeTab === 1" />
+
         <nut-tabbar id="tab_bar" @tab-switch="tabSwitch" :bottom="true">
             <nut-tabbar-item tab-title="生成">
                 <template #icon="props">
