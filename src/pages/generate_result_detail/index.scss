@@ -1,0 +1,55 @@
+.generate-result-detail {
+  width: 100vw;
+  height: 100vh;
+  font-family: 'PingFang SC', 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  //background-color: gray;
+}
+
+#top {
+  width: 100%;
+  height: 100%;
+  margin-left: 24px;
+  justify-content: space-between;
+  //background-color: aquamarine;
+}
+
+.img-area {
+  margin-left: 1.5rem;
+  margin-top: 1.5rem;
+  margin-right: 1.5rem;
+  width: auto;
+  //aspect-ratio: 1 / 1;
+  //background-color: aquamarine;
+}
+
+.image-show {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 5%; /* 添加圆角,参数是百分比形式 */
+}
+
+.image-chose {
+  margin-left: 1.5rem;
+  margin-top: 1.5rem;
+  margin-right: 1.5rem;
+  width: auto;
+}
+
+.btn-area {
+  margin-left: 1.5rem;
+  margin-top: 1.5rem;
+  margin-right: 1.5rem;
+  width: auto;
+  //background-color: #71fcb7;
+  justify-content: space-between;
+}
+
+.btn-area .btn {
+  margin-left: 20%;
+  margin-right: 20%;
+  width: 60%;
+  justify-content: space-between;
+}
