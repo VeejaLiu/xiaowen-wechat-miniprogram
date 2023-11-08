@@ -1,5 +1,6 @@
 import { createApp } from 'vue';
 import './app.scss';
+import '@nutui/nutui-taro/dist/style.css';
 
 const App = createApp({
     onShow(options) {},
