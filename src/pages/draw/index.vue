@@ -10,9 +10,9 @@
                 'justify-content': 'space-between',
             }"
         >
-            纹身风格
+            风格
             <div :style="{ marginTop: '0.5rem' }">
-                <text :style="{ color: 'rgba(0, 0, 0, 0.6)' }">已选中风格:</text>
+                <text :style="{ color: 'rgba(0, 0, 0, 0.6)' }">已选:</text>
                 {{ gridItems[selectedStyle].name }}
             </div>
         </div>
@@ -38,19 +38,19 @@
                 height: '100%',
                 'margin-left': '1.5rem',
                 'margin-right': '1.5rem',
-                'margin-top': '0.5rem',
+                'margin-top': '2.5rem',
                 'font-weight': 500,
                 'justify-content': 'space-between',
             }"
         >
-            <div style="">纹身描述</div>
+            <div style="">描述</div>
             <div
                 :style="{
                     marginTop: '0.25rem',
                     width: '100%',
                     height: '7.5rem',
                     'border-radius': '0.75rem',
-                    border: '2px solid var(--brand-1, #71FCB7)',
+                    border: '2px solid rgba(0, 0, 0, 0.8)',
                 }"
             >
                 <!-- 显示字数 -->
