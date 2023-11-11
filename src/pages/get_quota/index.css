@@ -1,0 +1,148 @@
+.font_1 {
+    font-size: 0.75rem;
+    font-family: PingFang SC;
+    line-height: 0.66rem;
+    color: #1a1d21cc;
+}
+
+
+.section_quota {
+    margin-top: 1rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    padding: 1.13rem 1.38rem;
+    background-image: url("../../../assets/images/CreditCardBg.png");
+    background-size: cover;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: solid 0.063rem #1a1d211a;
+}
+
+.gary-text {
+    color: rgba(0, 0, 0, 0.70);
+}
+
+
+.get-quota-title {
+    margin-top: 1.5rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+.space-x-4 > *:not(:first-child) {
+    margin-left: 0.25rem;
+}
+
+.section_5 {
+    background-color: #1a1d21;
+    border-radius: 0.13rem;
+    width: 0.63rem;
+    height: 0.063rem;
+}
+
+.font_1 {
+    font-size: 0.75rem;
+    font-family: PingFang SC;
+    line-height: 0.66rem;
+    color: #1a1d21cc;
+}
+
+.text_3 {
+    line-height: 0.69rem;
+}
+
+
+.section_6 {
+    margin-top: 1rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    padding: 1.13rem 1.38rem;
+    background-image: linear-gradient(194.5deg, #04040433 0%, #8d8f8c33 49.5%, #00000033 97.9%);
+    border-radius: 1rem;
+    overflow: hidden;
+    border: solid 0.063rem #1a1d211a;
+}
+
+.space-x-6 > *:not(:first-child) {
+    margin-left: 0.38rem;
+}
+
+.image_8 {
+    border-radius: 1.44rem;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.font_2 {
+    font-size: 0.88rem;
+    font-family: PingFang SC;
+    line-height: 0.81rem;
+    color: #000000;
+}
+
+.font_3 {
+    font-size: 1.5rem;
+    font-family: PingFang SC;
+    line-height: 1.13rem;
+    color: #000000;
+}
+
+.text-wrapper_2 {
+    position: absolute;
+    right: 0.88rem;
+    top: 2.88rem;
+}
+
+.button {
+    padding: 0.5rem 0 0.38rem;
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    width: 4.63rem;
+    border: solid 0.063rem #000000;
+}
+
+.text_5 {
+    font-size: 0.81rem;
+    line-height: 0.75rem;
+}
+
+.group_7 {
+    margin-top: 0.63rem;
+    padding: 0 2.38rem;
+}
+
+.text_6 {
+    color: #000000b3;
+    line-height: 0.69rem;
+}
+
+.section_7 {
+    margin-top: 1rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    padding: 1.13rem 0 1.75rem 0.63rem;
+    background-color: #ffffff;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    border: solid 0.063rem #00000014;
+}
+.group_9 {
+    padding: 0.5rem 0;
+    border-bottom: solid 0.063rem #00000005;
+}
+.view_2 {
+    margin-left: 0.94rem;
+    margin-right: 1.25rem;
+}
+.font_4 {
+    font-size: 0.88rem;
+    font-family: PingFang SC;
+    line-height: 0.81rem;
+    color: #000000b3;
+}
+.font_5 {
+    font-size: 0.88rem;
+    font-family: PingFang SC;
+    line-height: 0.66rem;
+    color: #000000;
+}
