@@ -75,8 +75,8 @@
                 marginLeft: '1.5rem',
             }"
         >
-            <nut-button id="homepage_login_btn" block>
-                <p id="homepage_login_btn_text">开始制作</p>
+            <nut-button id="homepage_login_btn" block @click="goToGeneResPage">
+                <p id="homepage_login_btn_text">制作纹身</p>
             </nut-button>
             <div
                 style="
@@ -101,6 +101,7 @@
 import { reactive, ref, toRefs } from 'vue';
 import './index.scss';
 import CoinImage from '../../../assets/images/coin.png';
+import Taro from '@tarojs/taro';
 
 // 点刺（dotwork）：这种风格的纹身通常是由特别多的点来设计和构成，通过点的密集程度来表现深浅和过度，基本上所有的题材都能用这种方式来表达。
 // 纯黑/黑灰（blackwork/black and grey）：和用黑灰来处理过度的风格不一样，这种风格只有一种颜色：纯粹的黑。通常是大面积的黑色或者纯黑色线条的图案。
@@ -201,7 +202,15 @@ export default {
             selectedStyle: 0,
         });
 
+        const goToGeneResPage = () => {
+            console.log('go to generate_result_detail');
+            Taro.navigateTo({
+                url: '/pages/generate_result_detail/index',
+            });
+        };
+
         return {
+            goToGeneResPage,
             CoinImage,
             ...toRefs(state),
             gridItems: tattooStyles,
