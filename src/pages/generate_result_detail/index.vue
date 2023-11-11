@@ -26,7 +26,7 @@
         <div class="img-area">
             <img class="image-show" :src="imageData[chooseImage]" />
         </div>
-        <nut-grid class="image-chose" :border="false">
+        <nut-grid class="image-chose" :border="false" square>
             <!-- 利用imageData进行循环 -->
             <nut-grid-item
                 v-for="(image, index) in imageData"
