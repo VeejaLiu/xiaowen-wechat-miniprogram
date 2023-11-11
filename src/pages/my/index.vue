@@ -9,7 +9,7 @@
                 src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/654c561c5a7e3f03102666c0/654f17d1f9a7df001222bfcc/16996823100036226984.png"
             />
         </div>
-        <div class="flex-row items-center shrink-0 section_5 space-x-4">
+        <div class="flex-row items-center shrink-0 section_5 space-x-4" @click="goToGetQuota()">
             <img
                 class="shrink-0 image_5"
                 src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/654c561c5a7e3f03102666c0/654f17d1f9a7df001222bfcc/16996823099847673226.png"
@@ -131,6 +131,13 @@ export default {
 
         const handleClick = () => {};
 
+        const goToGetQuota = () => {
+            console.log('go to get_quota');
+            Taro.navigateTo({
+                url: '/pages/get_quota/index',
+            });
+        };
+
         const goToGeneResPage = () => {
             console.log('go to generate_result_detail');
             Taro.navigateTo({
@@ -139,6 +146,7 @@ export default {
         };
 
         return {
+            goToGetQuota,
             goToGeneResPage,
             historyData,
             handleClick,
