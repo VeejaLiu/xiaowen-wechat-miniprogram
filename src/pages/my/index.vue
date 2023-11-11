@@ -31,7 +31,7 @@
         <div class="flex-col list-item space-y-16" v-for="(history, index) in historyData" :key="index">
             <div class="flex-row justify-between items-center group_8">
                 <span class="font_3 text_5">{{ history.style }} </span>
-                <div class="flex-row items-center space-x-2">
+                <div class="flex-row items-center space-x-2" @click="goToGeneResPage()">
                     <span class="font_2">查看 ></span>
                 </div>
             </div>
@@ -130,15 +130,17 @@ export default {
         ];
 
         const handleClick = () => {};
-        const goToGenerate = () => {
+
+        const goToGeneResPage = () => {
+            console.log('go to generate_result_detail');
             Taro.navigateTo({
-                url: '/pages/index/index',
+                url: '/pages/generate_result_detail/index',
             });
         };
 
         return {
+            goToGeneResPage,
             historyData,
-            goToGenerate,
             handleClick,
         };
     },
