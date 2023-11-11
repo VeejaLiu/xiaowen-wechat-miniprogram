@@ -1,0 +1,72 @@
+ .my-page {
+  width: 100vw;
+  //height: 80vh;
+  font-family: 'PingFang SC', 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  //background-color: gray;
+  //text-align: center;
+}
+
+.my-info {
+  height: 10vh;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  background-color: #f1f1f2;
+  border: 1px solid rgba(17, 17, 17, 0.05);
+  border-radius: 20px;
+}
+
+.my-info-avatar {
+  margin-top: auto;
+  margin-left: 1.5rem;
+}
+
+.history-title {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  margin-top: 0.5rem;
+  //background-color: #9ff432;
+}
+
+.all-history {
+  height: 75vh;
+  overflow: auto;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  //background-color: brown;
+}
+
+.history-item {
+  border: 1px solid rgba(235, 235, 235, 1);
+  border-radius: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  //background-color: burlywood;
+}
+
+.history-item-style {
+  margin-top: 0.5rem;
+  margin-left: 1.5rem;
+  font-weight: bold;
+}
+
+.history-item-desc {
+  margin-top: 0.5rem;
+  margin-left: 1.5rem;
+  font-size: 0.8rem;
+}
+
+.history-item-images {
+  width: auto;
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.history-item-images-image {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 10%; /* 添加圆角,参数是百分比形式 */
+}

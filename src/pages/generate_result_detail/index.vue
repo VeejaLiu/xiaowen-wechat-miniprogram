@@ -1,37 +1,72 @@
 <template>
-    <view class="index">
-        <nut-avatar size="large" @click="goToMy">
-            <img
-                src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"
-                alt=""
-            />
-        </nut-avatar>
-        <nut-button block color="" @click="">剩余钻石: 110000 </nut-button>
+    <view class="generate-result-detail">
+        <!-- Top -->
+        <div
+            :style="{
+                width: 'auto',
+                height: 'auto',
+                marginLeft: '1.5rem',
+                marginRight: '1.5rem',
+                'font-weight': 500,
+                'justify-content': 'space-between',
+            }"
+        >
+            <p>
+                风格:
+                <text :style="{ color: 'rgba(0, 0, 0, 0.6)' }">点刺</text>
+            </p>
+            <br />
+            <p>
+                描述:
+                <text :style="{ color: 'rgba(0, 0, 0, 0.6)' }">带刺的玫瑰</text>
+            </p>
+        </div>
+        <!-- Top End -->
 
-        <view class="text"> 风格: 点刺 </view>
-        <view class="text"> 描述：xxxxxxxxxxxxx </view>
-
-        <nut-grid :border="false" :column-num="2" square>
-            <nut-grid-item v-for="(image, index) in imageData" :key="index">
-                <img mode="heightFix" :src="image" alt="" />
+        <div class="img-area">
+            <img class="image-show" :src="imageData[chooseImage]" />
+        </div>
+        <nut-grid class="image-chose" :border="false">
+            <!-- 利用imageData进行循环 -->
+            <nut-grid-item
+                v-for="(image, index) in imageData"
+                :key="index"
+                @click="chooseImage = index"
+                :style="{
+                    '--nut-grid-item-content-padding': '5px',
+                }"
+            >
+                <img class="image-show" :src="image" />
             </nut-grid-item>
         </nut-grid>
-        <view class="text"> 预计等待时间 xx 秒 </view>
-        <view class="btn">
-            <nut-button color="black" @click="">生成好了通知我</nut-button>
-        </view>
-        <view class="btn">
-            <nut-button color="black" @click="goToGenerate">新的制作</nut-button>
-        </view>
+
+        <div class="btn-area" v-if="isProcessing">
+            <nut-button class="btn" color="black">生成中</nut-button>
+            <nut-button
+                class="btn"
+                :style="{
+                    '--nut-button-border-width': '0px',
+                }"
+                type="default"
+                @click=""
+                >生成好了通知我</nut-button
+            >
+        </div>
+        <div class="btn-area" v-if="!isProcessing">
+            <nut-button class="btn" color="black">新的制作</nut-button>
+            <p>内容由AI生成</p>
+        </div>
     </view>
 </template>
 
 <script>
 import { ref } from 'vue';
-import Taro from '@tarojs/taro';
+import Taro, { chooseImage } from '@tarojs/taro';
+import './index.scss';
 
 export default {
     name: 'Index',
+    methods: { chooseImage },
     components: {},
     setup() {
         const goToMy = () => {
@@ -40,18 +75,23 @@ export default {
             });
         };
         const handleClick = () => {};
+
+        const chooseImage = ref(0);
         const imageData = ref([
-            'https://pss.bdstatic.com/static/superman/img/logo/logo_white-d0c9fe2af5.png',
-            'https://pss.bdstatic.com/static/superman/img/logo/logo_white-d0c9fe2af5.png',
-            'https://pss.bdstatic.com/static/superman/img/logo/logo_white-d0c9fe2af5.png',
-            'https://pss.bdstatic.com/static/superman/img/logo/logo_white-d0c9fe2af5.png',
+            'http://123.60.97.192:9001/pic/2023-11-08T22:40:13.929681_1.png',
+            'http://123.60.97.192:9001/pic/2023-11-08T22:40:13.929681_2.png',
+            'http://123.60.97.192:9001/pic/2023-11-08T22:32:21.972631_1.png',
+            'http://123.60.97.192:9001/pic/2023-11-08T22:32:21.972631_2.png',
         ]);
+        const isProcessing = ref(true);
         const goToGenerate = () => {
             Taro.navigateTo({
                 url: '/pages/index/index',
             });
         };
         return {
+            isProcessing,
+            chooseImage,
             imageData,
             handleClick,
             goToGenerate,

@@ -1,10 +1,10 @@
 export default defineAppConfig({
     pages: [
         'pages/homepage/index',
+        'pages/index/index',
         'pages/get_quota/index',
-        'pages/my/index',
-        'pages/generate/index',
         'pages/generate_result_detail/index',
+        'pages/testLogin/index',
     ],
     window: {
         backgroundTextStyle: 'light',
