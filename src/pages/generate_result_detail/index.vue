@@ -42,7 +42,7 @@
         </nut-grid>
 
         <div class="btn-area" v-if="isProcessing">
-            <nut-button class="btn" color="black">生成中</nut-button>
+            <nut-button class="btn" color="black" disabled>生成中...</nut-button>
             <nut-button
                 class="btn"
                 :style="{
@@ -53,6 +53,7 @@
                 >生成好了通知我</nut-button
             >
         </div>
+
         <div class="btn-area" v-if="!isProcessing">
             <nut-button class="btn" color="black">新的制作</nut-button>
             <p>内容由AI生成</p>
