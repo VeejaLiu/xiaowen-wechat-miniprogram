@@ -7,24 +7,64 @@
   //background-color: gray;
 }
 
-#top {
-  width: 100%;
-  height: 100%;
-  margin-left: 24px;
-  justify-content: space-between;
-  //background-color: aquamarine;
+// TOP Start =========================
+.group_4 {
+  margin-top: 2.5vh;
+  margin-left: 2.5vh;
 }
+
+.font_2 {
+  font-size: 1.746vh;
+  font-family: PingFang SC;
+  line-height: 1.621vh;
+  color: #000000;
+}
+
+.text_3 {
+  opacity: 0.8;
+}
+
+.text_4 {
+  opacity: 0.6;
+}
+
+.group_5 {
+  margin-top: 2.5vh;
+  margin-left: 2.5vh;
+}
+
+// TOP End =========================
 
 .img-area {
   margin-left: 1.5rem;
   margin-top: 1.5rem;
   margin-right: 1.5rem;
   width: auto;
+  position: relative;
   //border: 4px solid #ccc;
   //border-radius: 5%;
   //aspect-ratio: 1 / 1;
   //background-color: aquamarine;
 }
+
+.img-area-op {
+  position: absolute;
+  top: 2vh;
+  left: 2vh;
+  width: 6vh;
+  height: 14vh;
+}
+
+.img-area-share {
+  width: 6vh;
+  height: 6vh;
+}
+
+.img-area-download {
+  width: 6vh;
+  height: 6vh;
+}
+
 
 .image-chose {
   margin-left: 1.5rem;

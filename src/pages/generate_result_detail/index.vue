@@ -1,30 +1,23 @@
 <template>
     <view class="generate-result-detail">
         <!-- Top -->
-        <div
-            :style="{
-                width: 'auto',
-                height: 'auto',
-                marginLeft: '1.5rem',
-                marginRight: '1.5rem',
-                'font-weight': 500,
-                'justify-content': 'space-between',
-            }"
-        >
-            <p>
-                风格:
-                <text :style="{ color: 'rgba(0, 0, 0, 0.6)' }">点刺</text>
-            </p>
-            <br />
-            <p>
-                描述:
-                <text :style="{ color: 'rgba(0, 0, 0, 0.6)' }">带刺的玫瑰</text>
-            </p>
+        <div class="flex-row group_4">
+            <span class="font_2 text_3">风格：</span>
+            <span class="font_2 text_4">点刺（dotwork）</span>
+        </div>
+
+        <div class="flex-row group_5">
+            <span class="font_2 text_3">描述：</span>
+            <span class="font_2 text_4">带刺的玫瑰</span>
         </div>
         <!-- Top End -->
 
         <div class="img-area">
             <img class="image-show" :src="imageData[chooseImage]" />
+            <div class="img-area-op">
+                <img class="img-area-share" :src="ShareIcon" />
+                <img class="img-area-download" :src="DownloadIcon" />
+            </div>
         </div>
         <nut-grid class="image-chose" :border="false" square>
             <!-- 利用imageData进行循环 -->
@@ -65,6 +58,8 @@
 import { ref } from 'vue';
 import Taro, { chooseImage } from '@tarojs/taro';
 import './index.scss';
+import ShareIcon from '../../../assets/images/share.png';
+import DownloadIcon from '../../../assets/images/download.png';
 
 export default {
     name: 'Index',
@@ -98,6 +93,8 @@ export default {
             handleClick,
             goToGenerate,
             goToMy,
+            ShareIcon,
+            DownloadIcon,
         };
     },
 };
