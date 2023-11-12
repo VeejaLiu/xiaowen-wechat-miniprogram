@@ -40,6 +40,7 @@
 
 #homepage_popup {
   background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
 }
 
 #homepage_popup_logo {
@@ -47,8 +48,8 @@
   left: 0;
   right: 0;
   margin: 10vh auto;
-  //height: auto; /* 高度设置为自动，以保持宽高比 */
-  //width: 70rem;
+  width: 8.294vh;
+  height: 8.294vh;
 }
 #homepage_popup_login_btn {
   position: absolute;
