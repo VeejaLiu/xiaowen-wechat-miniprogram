@@ -36,7 +36,8 @@
                     '--nut-grid-item-content-padding': '5px',
                 }"
             >
-                <img class="image-show" :src="image" />
+                <!-- :class="{ 'grid-item': true, selected: selectedStyle === index }"-->
+                <img :class="{ 'image-show': true, 'image-item-active': chooseImage === index }" :src="image" />
             </nut-grid-item>
         </nut-grid>
 
