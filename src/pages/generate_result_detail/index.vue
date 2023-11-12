@@ -58,8 +58,8 @@
 import { ref } from 'vue';
 import Taro, { chooseImage } from '@tarojs/taro';
 import './index.scss';
-import ShareIcon from '../../../assets/images/share.png';
-import DownloadIcon from '../../../assets/images/download.png';
+import ShareIcon from '../../../assets/images/gen_res_icon/share.png';
+import DownloadIcon from '../../../assets/images/gen_res_icon/download.png';
 
 export default {
     name: 'Index',
