@@ -149,27 +149,27 @@ const tattooStyles = [
         description:
             '这种风格是“最像纹身的纹身”，是相对比较流行的一种风格。这种风格有很实在的轮廓线，很少的颜色变化和过度以及很少的细节。这种纹身都很简单，但是普遍会被认为：相对其他风格的纹身，这种纹身会更经久不衰。',
     },
-    {
-        index: 6,
-        name: '新传统美式 (new school)',
-        icon: require('../../../assets/images/styles/style_6.png'),
-        description:
-            '相对于老传统，新传统颜色稍微多一点，颜色变化也稍微多一点，不过也具有老传统的“卡通”风格。这算是一种试验风格的纹身，既遵循了老传统的一些东西，又多了一些不同的改变。',
-    },
-    {
-        index: 7,
-        name: '日式 (japanese)',
-        icon: require('../../../assets/images/styles/style_7.png'),
-        description:
-            '日式纹身的历史可以追溯到公元前5000年，因此这种风格的特点是非常鲜明的。这种风格的细节特别多，有特别考究的一套图案绘制方式，每个日式纹身都是一个复杂的艺术品。日式纹身通常会覆盖全身、整个背部或者四肢。',
-    },
-    {
-        index: 8,
-        name: '动漫 (anime)',
-        icon: require('../../../assets/images/styles/style_8.png'),
-        description:
-            '动漫纹身是一种受到日本动漫文化启发的纹身艺术。它通常包括以动漫角色、动漫场景或动漫元素为主题的纹身设计。',
-    },
+    // {
+    //     index: 6,
+    //     name: '新传统美式 (new school)',
+    //     icon: require('../../../assets/images/styles/style_6.png'),
+    //     description:
+    //         '相对于老传统，新传统颜色稍微多一点，颜色变化也稍微多一点，不过也具有老传统的“卡通”风格。这算是一种试验风格的纹身，既遵循了老传统的一些东西，又多了一些不同的改变。',
+    // },
+    // {
+    //     index: 7,
+    //     name: '日式 (japanese)',
+    //     icon: require('../../../assets/images/styles/style_7.png'),
+    //     description:
+    //         '日式纹身的历史可以追溯到公元前5000年，因此这种风格的特点是非常鲜明的。这种风格的细节特别多，有特别考究的一套图案绘制方式，每个日式纹身都是一个复杂的艺术品。日式纹身通常会覆盖全身、整个背部或者四肢。',
+    // },
+    // {
+    //     index: 8,
+    //     name: '动漫 (anime)',
+    //     icon: require('../../../assets/images/styles/style_8.png'),
+    //     description:
+    //         '动漫纹身是一种受到日本动漫文化启发的纹身艺术。它通常包括以动漫角色、动漫场景或动漫元素为主题的纹身设计。',
+    // },
     // {
     //   index: 9,
     //   name: '写实 (realism)',
