@@ -15,7 +15,7 @@
             :destroy-on-close="false"
             v-model:visible="showPopup"
         >
-            <img id="homepage_popup_logo" :src="logoImage" width="70px" height="70px" />
+            <img id="homepage_popup_logo" :src="logoImage" />
             <nut-button id="homepage_popup_login_btn" block @click="goToIndex">
                 <p id="homepage_login_btn_text">手机号快捷登录</p>
             </nut-button>
@@ -24,9 +24,6 @@
             </nut-button>
             <nut-checkbox id="homepage_popup_checkbox" label="我同意《用户服务协议》和《隐私政策》" v-model="checkbox">
                 我同意《用户服务协议》和《隐私政策》
-                <template #checkedIcon>
-                    <img :src="checkedIcon" width="20px" height="20px" />
-                </template>
             </nut-checkbox>
         </nut-popup>
     </view>
@@ -36,7 +33,6 @@
 import Taro from '@tarojs/taro';
 import { ref } from 'vue';
 import logoImage from '../../../assets/images/homepage_login_popup_logo.png';
-import checkedIcon from '../../../assets/images/checkbox_checked_icon.png';
 import './index.scss';
 
 export default {
@@ -70,7 +66,6 @@ export default {
                     icon: 'none',
                     duration: 2000,
                 });
-                return;
             }
         };
         return {
@@ -79,7 +74,6 @@ export default {
             goToIndex,
             showPopup,
             logoImage,
-            checkedIcon,
             checkbox,
         };
     },
