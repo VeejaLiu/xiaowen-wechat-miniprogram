@@ -2,6 +2,7 @@
     <view class="container">
         <button @click="doLogin">Login</button>
         <button open-type="getPhoneNumber" @getphonenumber="doGetPhoneNumber">getPhoneNumber</button>
+        <button open-type="getPhoneNumber" @getphonenumber="doGetRealtimePhoneNumber">getRealtimePhoneNumber</button>
 
         <!-- 文本展示框 -->
         <div :style="{ fontSize: '10px', width: '100%' }">
@@ -22,9 +23,21 @@ export default {
             log: '',
         });
 
-        const doGetPhoneNumber = async () => {
-            const res = await Taro.getPhoneNumber();
-            console.log(res);
+        const doGetPhoneNumber = async (e) => {
+            console.log('doGetPhoneNumber');
+            console.log(e);
+            // const res = await Taro.getPhoneNumber();
+            // console.log(res);
+        };
+
+        const doGetRealtimePhoneNumber = async (e) => {
+            console.log('doGetRealtimePhoneNumber');
+            console.log(e);
+            // const res = await Taro.getRealtimePhoneNumber();
+            // console.log(res);
+        };
+        const getPhoneNumber = (e) => {
+            console.log(e);
         };
 
         const doLogin = async () => {
@@ -46,6 +59,8 @@ export default {
             ...toRefs(state),
             doLogin,
             doGetPhoneNumber,
+            getPhoneNumber,
+            doGetRealtimePhoneNumber,
         };
     },
 };
