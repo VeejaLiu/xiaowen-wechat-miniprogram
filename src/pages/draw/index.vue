@@ -60,11 +60,7 @@
                 </span>
             </div>
             <div class="quota-floating flex-row items-center shrink-0" @click="goToGetQuota()">
-                <img
-                    class="shrink-0 image_6"
-                    src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/654c561c5a7e3f03102666c0/654f17d1f9a7df001222bfcc/16996823081082869059.png"
-                    alt="Image"
-                />
+                <img class="shrink-0 image_6" :src="QuotaCoinImage" alt="Image" />
                 <span class="font_1 text_9">{{ user_quota }}</span>
             </div>
         </div>
@@ -75,6 +71,7 @@
 import { reactive, ref, toRefs } from 'vue';
 import './index.scss';
 import CoinImage from '../../../assets/images/coin.png';
+import QuotaCoinImage from '../../../assets/images/mdi_ink.png';
 import Taro from '@tarojs/taro';
 import { tattooStyles } from './TattooStyle';
 
@@ -85,7 +82,7 @@ export default {
         const prompt = ref('');
         const state = reactive({
             selectedStyle: 0,
-            user_quota: 0,
+            user_quota: 100,
         });
 
         const goToGeneResPage = () => {
@@ -107,6 +104,7 @@ export default {
             goToGeneResPage,
             goToGetQuota,
             CoinImage,
+            QuotaCoinImage,
             ...toRefs(state),
             tattooStyles,
         };
