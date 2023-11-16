@@ -10,6 +10,7 @@
   height: 10vh;
   justify-content: space-between;
   //background-color: aquamarine;
+  padding-left: 1vh;
 }
 
 .styles-images-div {
@@ -54,29 +55,23 @@
 
 
 .bottom {
+  margin-top: 3vh;
   position: relative;
   //background-color: #ffff11;
+  height: auto;
+  max-height: 7vh;
   width: 100vw;
-  height: 10vh;
   // 内容居中
   //display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
-.bottom-generate {
-  width: 62vw;
-  margin: 0 auto;
-  //background-color: #8d7e00;
-}
-
-.quota-consume-tip {
-  width: 20vw;
-  margin: 0 auto;
-}
 
 .generate_btn {
   width: 62vw;
+  height: 5.237vh;
+  margin: 0 auto;
   background: radial-gradient(
                   215.83% 83.33% at 100% 0%,
                   rgba(255, 255, 255, 0.7) 0%,
@@ -93,6 +88,17 @@
   text-align: center;
   letter-spacing: 0.05em;
   color: #010101;
+}
+
+.quota-consume-tip {
+  margin: 0 auto;
+  //background-color: #9ff432;
+  // 自动适应内容宽度
+  text-align: center;
+}
+
+.quota-consume-tip span {
+  display: inline-block;
 }
 
 .quota-floating {

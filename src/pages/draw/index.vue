@@ -49,17 +49,17 @@
         3. Quota consumption per time
          -->
         <div class="bottom">
-            <div class="bottom-generate">
-                <nut-button class="generate_btn" block @click="goToGeneResPage">
-                    <p>制作纹身</p>
-                </nut-button>
-                <div class="quota-consume-tip">
+            <nut-button class="generate_btn" block @click="goToGeneResPage">
+                <p>制作纹身</p>
+            </nut-button>
+            <div class="quota-consume-tip">
+                <span>
                     10
-                    <img :style="{ width: '1vh', height: '1vh' }" :src="CoinImage" alt="Coin Image" />
+                    <img :style="{ width: '1.8vh', height: '1.8vh' }" :src="CoinImage" alt="Coin Image" />
                     /次
-                </div>
+                </span>
             </div>
-            <div class="quota-floating flex-row items-center shrink-0">
+            <div class="quota-floating flex-row items-center shrink-0" @click="goToGetQuota()">
                 <img
                     class="shrink-0 image_6"
                     src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/654c561c5a7e3f03102666c0/654f17d1f9a7df001222bfcc/16996823081082869059.png"
@@ -95,9 +95,17 @@ export default {
             });
         };
 
+        const goToGetQuota = () => {
+            console.log('go to get_quota');
+            Taro.navigateTo({
+                url: '/pages/get_quota/index',
+            });
+        };
+
         return {
             prompt,
             goToGeneResPage,
+            goToGetQuota,
             CoinImage,
             ...toRefs(state),
             tattooStyles,
