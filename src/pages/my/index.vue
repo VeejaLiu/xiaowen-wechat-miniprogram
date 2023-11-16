@@ -28,10 +28,15 @@
 
     <!-- History -->
     <div class="flex-col list">
-        <div class="flex-col list-item space-y-16" v-for="(history, index) in historyData" :key="index">
+        <div
+            class="flex-col list-item space-y-16"
+            v-for="(history, index) in historyData"
+            :key="index"
+            @click="goToGeneResPage()"
+        >
             <div class="flex-row justify-between items-center group_8">
                 <span class="font_3 text_5">{{ history.style }} </span>
-                <div class="flex-row items-center space-x-2" @click="goToGeneResPage()">
+                <div class="flex-row items-center space-x-2">
                     <span class="font_2">查看 ></span>
                 </div>
             </div>
