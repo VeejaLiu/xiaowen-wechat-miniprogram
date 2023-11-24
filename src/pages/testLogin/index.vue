@@ -25,19 +25,88 @@ export default {
 
         const doGetPhoneNumber = async (e) => {
             console.log('doGetPhoneNumber');
+
+            /*
+             * Login
+             */
+            const res = await Taro.login();
+            console.log(res);
+            state.log += `login: ${JSON.stringify(res)}\n`;
+            const loginRes = await Taro.request({
+                method: 'POST',
+                url: 'http://localhost:10100/api/v1/login',
+                data: {
+                    code: res.code,
+                },
+            });
+            console.log(loginRes.data);
+
             console.log(e);
-            // const res = await Taro.getPhoneNumber();
-            // console.log(res);
+            console.log(JSON.stringify(e.detail));
+            state.log += `loginRes: ${JSON.stringify(e.detail)}\n`;
+            if (e.detail.errMsg === 'getPhoneNumber:ok') {
+                console.log('getPhoneNumber ok');
+                const callBackendResult = await Taro.request({
+                    header: {
+                        'content-type': 'application/json',
+                        token: loginRes.data.token,
+                    },
+                    method: 'POST',
+                    url: 'http://localhost:10100/api/v1/login/getPhoneNumber',
+                    data: {
+                        token: loginRes.data.token,
+                        code: e.detail.code,
+                        encryptedData: e.detail.encryptedData,
+                        iv: e.detail.iv,
+                    },
+                });
+                console.log(callBackendResult.data);
+            } else {
+                console.log('getPhoneNumber fail');
+            }
         };
 
         const doGetRealtimePhoneNumber = async (e) => {
             console.log('doGetRealtimePhoneNumber');
             console.log(e);
-            // const res = await Taro.getRealtimePhoneNumber();
-            // console.log(res);
+            console.log(JSON.stringify(e.detail));
+
+            if (e.detail.errMsg === 'getPhoneNumber:ok') {
+                console.log('getPhoneNumber ok');
+                const callBackendResult = await Taro.request({
+                    method: 'POST',
+                    url: 'http://localhost:10100/api/v1/admin/testCode',
+                    data: {
+                        code: e.detail.code,
+                        encryptedData: e.detail.encryptedData,
+                        iv: e.detail.iv,
+                    },
+                });
+                console.log(callBackendResult.data);
+            } else {
+                console.log('getPhoneNumber fail');
+            }
         };
-        const getPhoneNumber = (e) => {
+        const getPhoneNumber = async (e) => {
+            console.log('getPhoneNumber');
             console.log(e);
+            console.log(JSON.stringify(e.detail));
+            state.log += `loginRes: ${JSON.stringify(e.detail)}\n`;
+            if (e.detail.errMsg === 'getPhoneNumber:ok') {
+                console.log('getPhoneNumber ok');
+                const callBackendResult = await Taro.request({
+                    method: 'POST',
+                    url: 'http://localhost:10100/api/v1/admin/testCode',
+                    data: {
+                        code: e.detail.code,
+                        encryptedData: e.detail.encryptedData,
+                        iv: e.detail.iv,
+                    },
+                });
+                console.log(callBackendResult.data);
+            } else {
+                console.log('getPhoneNumber fail');
+            }
         };
 
         const doLogin = async () => {
