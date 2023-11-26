@@ -35,9 +35,53 @@ import { ref } from 'vue';
 import logoImage from '../../../assets/images/homepage_login_popup_logo.png';
 import './index.scss';
 
+async function login() {
+    const existingToken = Taro.getStorageSync('token');
+    const existingSessionKey = Taro.getStorageSync('sessionKey');
+    if (existingToken && existingSessionKey) {
+        console.log('existingToken: ', existingToken);
+        console.log('existingSessionKey: ', existingSessionKey);
+        return;
+    }
+    console.log('login');
+    const loginRes = await Taro.login();
+    console.log('loginRes: ', loginRes);
+
+    const res = await Taro.request({
+        method: 'POST',
+        url: 'http://localhost:10100/api/v1/login',
+        data: {
+            code: loginRes.code,
+        },
+    });
+    console.log('res.data: ', res.data);
+
+    const { token, sessionKey } = res.data;
+    Taro.setStorageSync('token', token);
+    Taro.setStorageSync('sessionKey', sessionKey);
+}
+
 export default {
     name: 'Index',
     components: {},
+
+    // On Load
+    onLoad() {
+        console.log('onLoad');
+        login().then(() => {
+            console.log('login successfully!');
+        });
+    },
+    // On ready
+    onReady() {
+        console.log('onReady');
+    },
+
+    // On show
+    onShow() {
+        console.log('onShow');
+    },
+
     setup() {
         const showPopup = ref(false);
         let checkbox = ref(false);
