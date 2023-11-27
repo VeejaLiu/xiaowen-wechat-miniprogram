@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import Taro, { chooseImage } from '@tarojs/taro';
 import './index.scss';
 import ShareIcon from '../../../assets/images/gen_res_icon/share.png';
@@ -81,6 +81,17 @@ export default {
             'http://123.60.97.192:9001/pic/2023-11-08T22:32:21.972631_2.png',
         ]);
         const isProcessing = ref(true);
+
+        onMounted(() => {
+            // 在页面加载完成后获取路由参数
+            const { generateHistoryId, prompt, style } = Taro.getCurrentInstance().router.params;
+            // 在这里进行相应的操作，例如更新视图或发送网络请求
+            console.log(`[generate_result_detail/index] onMounted`);
+            console.log(`[generate_result_detail/index] generateHistoryId: ${generateHistoryId}`);
+            console.log(`[generate_result_detail/index] prompt: ${prompt}`);
+            console.log(`[generate_result_detail/index] style: ${style}`);
+        });
+
         const goToGenerate = () => {
             Taro.navigateTo({
                 url: '/pages/index/index',
