@@ -49,7 +49,7 @@
         3. Quota consumption per time
          -->
         <div class="bottom">
-            <nut-button class="generate_btn" block @click="goToGeneResPage">
+            <nut-button class="generate_btn" block @click="draw">
                 <p>制作纹身</p>
             </nut-button>
             <div class="quota-consume-tip">
@@ -59,7 +59,7 @@
                     /次
                 </span>
             </div>
-            <div class="quota-floating flex-row items-center shrink-0" @click="goToGetQuota()">
+            <div class="quota-floating flex-row items-center shrink-0" @click="goToGetQuota">
                 <img class="shrink-0 image_6" :src="QuotaCoinImage" alt="Image" />
                 <span class="font_1 text_9">{{ user_quota }}</span>
             </div>
@@ -78,6 +78,17 @@ import { tattooStyles } from './TattooStyle';
 export default {
     name: 'Index',
     components: {},
+
+    onShow() {
+        console.log('[draw/index] onShow');
+        // 获取用户剩余配额
+        this.user_quota = 10;
+    },
+
+    onLunch() {
+        console.log('[draw/index] onLunch');
+    },
+
     setup() {
         const prompt = ref('');
         const state = reactive({
@@ -85,11 +96,52 @@ export default {
             user_quota: 100,
         });
 
-        const goToGeneResPage = () => {
-            console.log('go to generate_result_detail');
-            Taro.navigateTo({
-                url: '/pages/generate_result_detail/index',
-            });
+        const draw = async () => {
+            try {
+                console.log('Start to draw');
+                if (prompt.value === '') {
+                    Taro.showToast({
+                        title: '请填写描述',
+                        icon: 'none',
+                        duration: 2000,
+                    });
+                    return;
+                }
+                console.log('prompt: ', prompt.value);
+                console.log('selectedStyle: ', state.selectedStyle);
+
+                const token = Taro.getStorageSync('token');
+
+                const drawRes = await Taro.request({
+                    url: 'http://localhost:10100/api/v1/draw',
+                    method: 'POST',
+                    header: {
+                        'content-type': 'application/json',
+                        token: token,
+                    },
+                    data: {
+                        prompt: prompt.value,
+                        style: state.selectedStyle,
+                    },
+                });
+
+                console.log('drawRes: ', drawRes);
+
+                if (drawRes.statusCode === 200) {
+                    const { generateHistoryId } = drawRes.data;
+                    console.log('generateHistoryId: ', generateHistoryId);
+                    await Taro.navigateTo({
+                        url: `/pages/generate_result_detail/index?generateHistoryId=${generateHistoryId}&prompt=${prompt.value}&style=${state.selectedStyle}`,
+                    });
+                }
+            } catch (e) {
+                console.log('e: ', e);
+                await Taro.showToast({
+                    title: '制作失败',
+                    icon: 'none',
+                    duration: 2000,
+                });
+            }
         };
 
         const goToGetQuota = () => {
@@ -101,7 +153,7 @@ export default {
 
         return {
             prompt,
-            goToGeneResPage,
+            draw,
             goToGetQuota,
             CoinImage,
             QuotaCoinImage,
