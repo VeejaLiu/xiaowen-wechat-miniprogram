@@ -16,7 +16,12 @@
             v-model:visible="showPopup"
         >
             <img id="homepage_popup_logo" :src="logoImage" />
-            <nut-button id="homepage_popup_login_btn" block @click="goToIndex">
+            <nut-button
+                id="homepage_popup_login_btn"
+                open-type="getPhoneNumber"
+                @getphonenumber="doGetPhoneNumber"
+                block
+            >
                 <p id="homepage_login_btn_text">手机号快捷登录</p>
             </nut-button>
             <nut-button id="homepage_popup_cancel_login_btn" block @click="showPopup = false">
@@ -36,29 +41,37 @@ import logoImage from '../../../assets/images/homepage_login_popup_logo.png';
 import './index.scss';
 
 async function login() {
-    const existingToken = Taro.getStorageSync('token');
-    const existingSessionKey = Taro.getStorageSync('sessionKey');
-    if (existingToken && existingSessionKey) {
-        console.log('existingToken: ', existingToken);
-        console.log('existingSessionKey: ', existingSessionKey);
-        return;
-    }
     console.log('login');
-    const loginRes = await Taro.login();
-    console.log('loginRes: ', loginRes);
+    await Taro.checkSession({
+        success() {
+            console.log('checkSession success');
+            const token = Taro.getStorageSync('token');
+            const sessionKey = Taro.getStorageSync('sessionKey');
+            if (token && sessionKey) {
+                console.log('token: ', token);
+                console.log('sessionKey: ', sessionKey);
+                Taro.navigateTo({
+                    url: '/pages/index/index',
+                });
+            }
+        },
+        async fail() {
+            console.log('checkSession fail');
+            const loginRes = await Taro.login();
+            console.log('loginRes: ', loginRes);
 
-    const res = await Taro.request({
-        method: 'POST',
-        url: 'http://localhost:10100/api/v1/login',
-        data: {
-            code: loginRes.code,
+            const res = await Taro.request({
+                method: 'POST',
+                url: 'http://localhost:10100/api/v1/login',
+                data: { code: loginRes.code },
+            });
+            console.log('res.data: ', res.data);
+
+            const { token, sessionKey } = res.data;
+            Taro.setStorageSync('token', token);
+            Taro.setStorageSync('sessionKey', sessionKey);
         },
     });
-    console.log('res.data: ', res.data);
-
-    const { token, sessionKey } = res.data;
-    Taro.setStorageSync('token', token);
-    Taro.setStorageSync('sessionKey', sessionKey);
 }
 
 export default {
@@ -67,19 +80,16 @@ export default {
 
     // On Load
     onLoad() {
-        console.log('onLoad');
-        login().then(() => {
-            console.log('login successfully!');
-        });
+        console.log('[/homepage/index] onLoad()');
     },
     // On ready
     onReady() {
-        console.log('onReady');
+        console.log('[/homepage/index] onReady()');
     },
 
     // On show
     onShow() {
-        console.log('onShow');
+        console.log('[/homepage/index] onShow()');
     },
 
     setup() {
@@ -101,8 +111,11 @@ export default {
             console.log('goToIndex');
             console.log('Checkbox.value: ', checkbox.value);
             if (checkbox.value) {
-                Taro.navigateTo({
-                    url: '/pages/index/index',
+                login().then(() => {
+                    console.log('login successfully!');
+                    Taro.navigateTo({
+                        url: '/pages/index/index',
+                    });
                 });
             } else {
                 Taro.showToast({
@@ -112,10 +125,89 @@ export default {
                 });
             }
         };
+
+        const doGetPhoneNumber = async (e) => {
+            console.log('doGetPhoneNumber');
+
+            console.log('Checkbox.value: ', checkbox.value);
+            if (!checkbox.value) {
+                Taro.showToast({
+                    title: '请先同意《用户服务协议》和《隐私政策》',
+                    icon: 'none',
+                    duration: 2000,
+                });
+                return;
+            }
+
+            /*
+             * Login
+             */
+            const res = await Taro.login();
+            console.log(res);
+            const loginRes = await Taro.request({
+                method: 'POST',
+                url: 'http://localhost:10100/api/v1/login',
+                data: {
+                    code: res.code,
+                },
+            });
+            console.log(`loginRes.data: ${JSON.stringify(loginRes.data)}`);
+            Taro.setStorageSync('token', loginRes.data.token);
+            console.log(`loginRes.data.token: ${loginRes.data.token}`);
+            Taro.setStorageSync('sessionKey', loginRes.data.sessionKey);
+            console.log(`loginRes.data.sessionKey: ${loginRes.data.sessionKey}`);
+
+            if (e.detail.errMsg === 'getPhoneNumber:ok') {
+                console.log('getPhoneNumber ok');
+                const callBackendResult = await Taro.request({
+                    header: {
+                        'content-type': 'application/json',
+                        token: loginRes.data.token,
+                        session_key: loginRes.data.sessionKey,
+                    },
+                    method: 'POST',
+                    url: 'http://localhost:10100/api/v1/login/getPhoneNumber',
+                    data: {
+                        code: e.detail.code,
+                        encryptedData: e.detail.encryptedData,
+                        iv: e.detail.iv,
+                    },
+                });
+                console.log(callBackendResult.data);
+                if (callBackendResult.data === true) {
+                    console.log('call backend ok');
+                    Taro.showToast({
+                        title: '登录成功',
+                        icon: 'success',
+                        duration: 2000,
+                    });
+                    Taro.redirectTo({
+                        url: '/pages/index/index',
+                    });
+                } else {
+                    console.log('call backend fail');
+                    Taro.showToast({
+                        title: '登录失败,请重试',
+                        icon: 'none',
+                        duration: 2000,
+                    });
+                }
+            } else {
+                console.log('getPhoneNumber fail');
+                console.log('getPhoneNumber fail');
+                Taro.showToast({
+                    title: '登录失败,请重试',
+                    icon: 'none',
+                    duration: 2000,
+                });
+            }
+        };
+
         return {
             doPopup,
             doAgree,
             goToIndex,
+            doGetPhoneNumber,
             showPopup,
             logoImage,
             checkbox,

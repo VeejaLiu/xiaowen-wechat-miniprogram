@@ -24,6 +24,7 @@ import { ref } from 'vue';
 import './index.scss';
 import DrawPage from '../draw/index.vue';
 import MyPage from '../my/index.vue';
+import Taro from '@tarojs/taro';
 
 const icon = {
     home: {
@@ -43,6 +44,34 @@ export default {
         MyPage,
     },
     state: {},
+
+    onLoad() {
+        console.log('[/pages/index/index] onLoad()');
+        Taro.checkSession({
+            success() {
+                console.log('checkSession success');
+                const token = Taro.getStorageSync('token');
+                const sessionKey = Taro.getStorageSync('sessionKey');
+
+                if (token && sessionKey) {
+                    console.log('token: ', token);
+                    console.log('sessionKey: ', sessionKey);
+                } else {
+                    Taro.setStorageSync('token', null);
+                    Taro.setStorageSync('sessionKey', null);
+                    Taro.navigateTo({
+                        url: '/pages/homepage/index',
+                    });
+                }
+            },
+            fail() {
+                console.log('checkSession fail');
+                Taro.navigateTo({
+                    url: '/pages/homepage/index',
+                });
+            },
+        });
+    },
 
     setup() {
         const activeTab = ref(0);
