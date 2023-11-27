@@ -73,7 +73,7 @@ import './index.scss';
 import CoinImage from '../../../assets/images/coin.png';
 import QuotaCoinImage from '../../../assets/images/mdi_ink.png';
 import Taro from '@tarojs/taro';
-import { tattooStyles } from './TattooStyle';
+import { tattooStyles } from '../../constant/TattooStyle';
 
 export default {
     name: 'Index',

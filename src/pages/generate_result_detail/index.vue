@@ -3,20 +3,24 @@
         <!-- Top -->
         <div class="flex-row group_4">
             <span class="font_2 text_3">风格：</span>
-            <span class="font_2 text_4">点刺（dotwork）</span>
+            <span class="font_2 text_4">
+                {{ tattooStyles[styleText]?.name }}
+            </span>
         </div>
 
         <div class="flex-row group_5">
             <span class="font_2 text_3">描述：</span>
-            <span class="font_2 text_4">带刺的玫瑰</span>
+            <span class="font_2 text_4">
+                {{ promptText }}
+            </span>
         </div>
         <!-- Top End -->
 
         <div class="img-area">
             <img class="image-show" :src="imageData[chooseImage]" />
             <div class="img-area-op">
-                <img class="img-area-share" :src="ShareIcon" />
-                <img class="img-area-download" :src="DownloadIcon" />
+                <img v-if="!isProcessing" class="img-area-share" :src="ShareIcon" />
+                <img v-if="!isProcessing" class="img-area-download" :src="DownloadIcon" />
             </div>
         </div>
         <nut-grid class="image-chose" :border="false" square>
@@ -60,6 +64,7 @@ import Taro, { chooseImage } from '@tarojs/taro';
 import './index.scss';
 import ShareIcon from '../../../assets/images/gen_res_icon/share.png';
 import DownloadIcon from '../../../assets/images/gen_res_icon/download.png';
+import { tattooStyles } from '../../constant/TattooStyle';
 
 export default {
     name: 'Index',
@@ -74,22 +79,71 @@ export default {
         const handleClick = () => {};
 
         const chooseImage = ref(0);
-        const imageData = ref([
-            'http://123.60.97.192:9001/pic/2023-11-08T22:40:13.929681_1.png',
-            'http://123.60.97.192:9001/pic/2023-11-08T22:40:13.929681_2.png',
-            'http://123.60.97.192:9001/pic/2023-11-08T22:32:21.972631_1.png',
-            'http://123.60.97.192:9001/pic/2023-11-08T22:32:21.972631_2.png',
-        ]);
+        const imageData = ref([]);
         const isProcessing = ref(true);
+        const styleText = ref('');
+        const promptText = ref('');
+        const currentGenerateHistoryId = ref(6);
 
-        onMounted(() => {
+        const setStyleAndPrompt = async (generateHistoryId) => {
+            currentGenerateHistoryId.value = generateHistoryId;
+            await Taro.request({
+                header: {
+                    'content-type': 'application/json',
+                    token: await Taro.getStorageSync('token'),
+                },
+                url: `http://localhost:10100/api/v1/history/${currentGenerateHistoryId.value}`,
+                method: 'GET',
+                success: async (res) => {
+                    console.log(res);
+                    const { style, prompt, status, images } = res.data;
+                    styleText.value = style;
+                    promptText.value = prompt;
+                    imageData.value = images;
+                    // 生成中
+                    switch (status) {
+                        case 0:
+                            // 生成中
+                            isProcessing.value = true;
+                            // 5s后重新获取
+                            setTimeout(() => {
+                                setStyleAndPrompt(generateHistoryId);
+                            }, 5000);
+                            break;
+                        case 1:
+                            // 生成成功
+                            isProcessing.value = false;
+                            break;
+                        case 2:
+                        default:
+                            // 生成失败
+                            isProcessing.value = false;
+                            Taro.showToast({
+                                title: '抱歉，本次生成失败',
+                                icon: 'none',
+                                duration: 2000,
+                            });
+                            break;
+                    }
+                },
+                fail: (err) => {
+                    Taro.showToast({
+                        title: '获取历史记录失败',
+                        icon: 'none',
+                        duration: 2000,
+                    });
+                },
+            });
+        };
+
+        onMounted(async () => {
             // 在页面加载完成后获取路由参数
-            const { generateHistoryId, prompt, style } = Taro.getCurrentInstance().router.params;
+            const { generateHistoryId } = Taro.getCurrentInstance().router.params;
             // 在这里进行相应的操作，例如更新视图或发送网络请求
-            console.log(`[generate_result_detail/index] onMounted`);
-            console.log(`[generate_result_detail/index] generateHistoryId: ${generateHistoryId}`);
-            console.log(`[generate_result_detail/index] prompt: ${prompt}`);
-            console.log(`[generate_result_detail/index] style: ${style}`);
+            console.log(`[generate_result_detail/index][onMounted()] generateHistoryId: ${generateHistoryId}`);
+
+            // set style and prompt text and generateHistoryId
+            await setStyleAndPrompt(6);
         });
 
         const goToGenerate = () => {
@@ -98,6 +152,9 @@ export default {
             });
         };
         return {
+            styleText,
+            promptText,
+            currentGenerateHistoryId,
             isProcessing,
             chooseImage,
             imageData,
@@ -106,6 +163,7 @@ export default {
             goToMy,
             ShareIcon,
             DownloadIcon,
+            tattooStyles,
         };
     },
 };
