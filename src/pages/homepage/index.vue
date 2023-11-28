@@ -27,8 +27,13 @@
             <nut-button id="homepage_popup_cancel_login_btn" block @click="showPopup = false">
                 <p id="homepage_login_btn_text">暂不登录</p>
             </nut-button>
-            <nut-checkbox id="homepage_popup_checkbox" label="我同意《用户服务协议》和《隐私政策》" v-model="checkbox">
-                我同意《用户服务协议》和《隐私政策》
+            <nut-checkbox id="homepage_popup_checkbox" label="" v-model="checkbox">
+                <p>
+                    我同意
+                    <b @click.stop="goToUserAgreement">《用户服务协议》</b>
+                    和
+                    <b @click.stop="goToPrivacy">《隐私政策》</b>
+                </p>
             </nut-checkbox>
         </nut-popup>
     </view>
@@ -203,10 +208,25 @@ export default {
             }
         };
 
+        const goToPrivacy = () => {
+            console.log('goToPrivacy');
+            Taro.navigateTo({
+                url: '/pages/privacy_policy/index',
+            });
+        };
+        const goToUserAgreement = () => {
+            console.log('goToUserAgreement');
+            Taro.navigateTo({
+                url: '/pages/user_service_agreement/index',
+            });
+        };
+
         return {
             doPopup,
             doAgree,
             goToIndex,
+            goToPrivacy,
+            goToUserAgreement,
             doGetPhoneNumber,
             showPopup,
             logoImage,
