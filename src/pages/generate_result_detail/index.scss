@@ -4,11 +4,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   //background-color: gray;
+  padding-top: 2.5vh;
 }
 
 // TOP Start =========================
 .group_4 {
-  margin-top: 2.5vh;
+  //margin-top: 2.5vh;
   margin-left: 2.5vh;
 }
 
@@ -85,17 +86,35 @@
 }
 
 .btn-area {
-  margin-left: 1.5rem;
-  margin-top: 1.5rem;
-  margin-right: 1.5rem;
-  width: auto;
+  margin: 0 auto;
+  width: 80vw;
   //background-color: #71fcb7;
   justify-content: space-between;
+  align-items: center;
 }
 
 .btn-area .btn {
-  margin-left: 20%;
-  margin-right: 20%;
+  margin: 2.5vh 20% 1vh;
   width: 60%;
   justify-content: space-between;
+}
+
+
+.ai-generate-tips {
+  width: 20vw;
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.ai-generate-tips p {
+  font-size: 1.746vh;
+  line-height: 1.621vh;
+  color: #000000;
+}
+
+.ai-generate-tips img {
+  width: 1.746vh;
+  height: 1.746vh;
+  margin-right: 1vh;
 }

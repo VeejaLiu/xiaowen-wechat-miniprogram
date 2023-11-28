@@ -32,10 +32,12 @@
             class="flex-col list-item space-y-16"
             v-for="(history, index) in historyData"
             :key="index"
-            @click="goToGeneResPage()"
+            @click="goToGeneResPage(history.generateHistoryId)"
         >
             <div class="flex-row justify-between items-center group_8">
-                <span class="font_3 text_5">{{ history.style }} </span>
+                <span class="font_3 text_5">
+                    {{ TATTOO_STYLES[history.style]?.name }}
+                </span>
                 <div class="flex-row items-center space-x-2">
                     <span class="font_2">查看 ></span>
                 </div>
@@ -57,7 +59,7 @@
             >
                 <!-- 利用imageData进行循环 -->
                 <nut-grid-item
-                    v-for="(image, index) in history.image"
+                    v-for="(image, index) in history.images"
                     :key="index"
                     :style="{
                         '--nut-grid-item-content-padding': '2px',
@@ -75,28 +77,67 @@
 <script lang="js">
 import Taro from '@tarojs/taro';
 import './index.scss';
+import { onMounted, ref } from 'vue';
+import { TATTOO_STYLES } from '../../constant/TattooStyle';
 
 export default {
     name: 'Index',
     components: {},
+
     setup() {
-        // 同样的数据重复10遍
-        const style = '点刺';
-        const description = '带刺的玫瑰';
+        const historyData = ref([]);
 
         const images = [
-            'http://123.60.97.192:9001/pic/2023-11-08T22:40:13.929681_1.png',
-            'http://123.60.97.192:9001/pic/2023-11-08T22:40:13.929681_2.png',
-            'http://123.60.97.192:9001/pic/2023-11-08T22:32:21.972631_1.png',
-            'http://123.60.97.192:9001/pic/2023-11-08T22:32:21.972631_2.png',
+            'http://123.60.97.192:9001/pic/blank.png',
+            'http://123.60.97.192:9001/pic/blank.png',
+            'http://123.60.97.192:9001/pic/blank.png',
+            'http://123.60.97.192:9001/pic/blank.png',
         ];
 
-        const historyData = Array(10).fill({
-            style,
-            description,
-            image: images,
+        async function getAllGenerateHistory() {
+            const token = Taro.getStorageSync('token');
+            const res = await Taro.request({
+                url: `http://localhost:10100/api/v1/history`,
+                method: 'GET',
+                header: {
+                    token: token,
+                },
+                success: (res) => {
+                    console.log('get all generate history success', res);
+                    const { data, total } = res.data;
+                    historyData.value = data.map((item) => {
+                        // createTime: "2023-11-27T09:04:01.000Z"
+                        // generateUsedTime: 0
+                        // id: 144
+                        // images: []
+                        // prompt: "adsdadsad"
+                        // status: 2
+                        // style: 0
+                        // userId: "14634b3a-3c93-4b69-aefd-92fee9fe52a2"
+                        if (item.images.length === 0) {
+                            item.images = images;
+                        }
+                        return {
+                            generateHistoryId: item.id,
+                            style: item.style,
+                            description: item.prompt,
+                            images: item.images,
+                        };
+                    });
+                },
+                fail: (err) => {
+                    console.log('get all generate history fail', err);
+                    Taro.showToast({
+                        title: '很抱歉，获取生成历史失败',
+                        icon: 'none',
+                    });
+                },
+            });
+        }
+
+        onMounted(async () => {
+            await getAllGenerateHistory();
         });
-        const handleClick = () => {};
 
         const goToGetQuota = () => {
             console.log('go to get_quota');
@@ -105,10 +146,10 @@ export default {
             });
         };
 
-        const goToGeneResPage = () => {
+        const goToGeneResPage = (generateHistoryId) => {
             console.log('go to generate_result_detail');
             Taro.navigateTo({
-                url: '/pages/generate_result_detail/index',
+                url: `/pages/generate_result_detail/index?generateHistoryId=${generateHistoryId}`,
             });
         };
 
@@ -116,7 +157,7 @@ export default {
             goToGetQuota,
             goToGeneResPage,
             historyData,
-            handleClick,
+            TATTOO_STYLES,
         };
     },
 };

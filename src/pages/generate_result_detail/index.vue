@@ -4,7 +4,7 @@
         <div class="flex-row group_4">
             <span class="font_2 text_3">风格：</span>
             <span class="font_2 text_4">
-                {{ tattooStyles[styleText]?.name }}
+                {{ TATTOO_STYLES[styleText]?.name }}
             </span>
         </div>
 
@@ -47,13 +47,17 @@
                 }"
                 type="default"
                 @click=""
-                >生成好了通知我</nut-button
             >
+                生成好了通知我
+            </nut-button>
         </div>
 
         <div class="btn-area" v-if="!isProcessing">
             <nut-button class="btn" color="black">新的制作</nut-button>
-            <p>内容由AI生成</p>
+            <div class="ai-generate-tips">
+                <p>内容由AI生成</p>
+                <img :src="AiTipIcon" />
+            </div>
         </div>
     </view>
 </template>
@@ -64,7 +68,9 @@ import Taro, { chooseImage } from '@tarojs/taro';
 import './index.scss';
 import ShareIcon from '../../../assets/images/gen_res_icon/share.png';
 import DownloadIcon from '../../../assets/images/gen_res_icon/download.png';
-import { tattooStyles } from '../../constant/TattooStyle';
+import AiTipIcon from '../../../assets/images/gen_res_icon/ai_generated_tip.png';
+
+import { TATTOO_STYLES } from '../../constant/TattooStyle';
 
 export default {
     name: 'Index',
@@ -79,14 +85,22 @@ export default {
         const handleClick = () => {};
 
         const chooseImage = ref(0);
-        const imageData = ref([]);
+        const imageData = ref([
+            'http://123.60.97.192:9001/pic/blank.png',
+            'http://123.60.97.192:9001/pic/blank.png',
+            'http://123.60.97.192:9001/pic/blank.png',
+            'http://123.60.97.192:9001/pic/blank.png',
+        ]);
         const isProcessing = ref(true);
         const styleText = ref('');
         const promptText = ref('');
-        const currentGenerateHistoryId = ref(6);
+        const currentGenerateHistoryId = ref(0);
 
         const setStyleAndPrompt = async (generateHistoryId) => {
             currentGenerateHistoryId.value = generateHistoryId;
+            if (currentGenerateHistoryId.value === 0) {
+                return;
+            }
             await Taro.request({
                 header: {
                     'content-type': 'application/json',
@@ -99,7 +113,9 @@ export default {
                     const { style, prompt, status, images } = res.data;
                     styleText.value = style;
                     promptText.value = prompt;
-                    imageData.value = images;
+                    if (images?.length > 0) {
+                        imageData.value = images;
+                    }
                     // 生成中
                     switch (status) {
                         case 0:
@@ -143,7 +159,7 @@ export default {
             console.log(`[generate_result_detail/index][onMounted()] generateHistoryId: ${generateHistoryId}`);
 
             // set style and prompt text and generateHistoryId
-            await setStyleAndPrompt(6);
+            await setStyleAndPrompt(generateHistoryId);
         });
 
         const goToGenerate = () => {
@@ -163,7 +179,8 @@ export default {
             goToMy,
             ShareIcon,
             DownloadIcon,
-            tattooStyles,
+            AiTipIcon,
+            TATTOO_STYLES,
         };
     },
 };

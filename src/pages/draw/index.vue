@@ -73,7 +73,7 @@ import './index.scss';
 import CoinImage from '../../../assets/images/coin.png';
 import QuotaCoinImage from '../../../assets/images/mdi_ink.png';
 import Taro from '@tarojs/taro';
-import { tattooStyles } from '../../constant/TattooStyle';
+import { TATTOO_STYLES } from '../../constant/TattooStyle';
 
 export default {
     name: 'Index',
@@ -131,7 +131,7 @@ export default {
                     const { generateHistoryId } = drawRes.data;
                     console.log('generateHistoryId: ', generateHistoryId);
                     await Taro.navigateTo({
-                        url: `/pages/generate_result_detail/index?generateHistoryId=${generateHistoryId}&prompt=${prompt.value}&style=${state.selectedStyle}`,
+                        url: `/pages/generate_result_detail/index?generateHistoryId=${generateHistoryId}`,
                     });
                 }
             } catch (e) {
@@ -158,7 +158,7 @@ export default {
             CoinImage,
             QuotaCoinImage,
             ...toRefs(state),
-            tattooStyles,
+            tattooStyles: TATTOO_STYLES,
         };
     },
 };
