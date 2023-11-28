@@ -7,6 +7,7 @@ export default defineAppConfig({
         'pages/testLogin/index',
         'pages/privacy_policy/index',
         'pages/user_service_agreement/index',
+        'pages/user_setting/index',
     ],
     window: {
         backgroundTextStyle: 'light',
