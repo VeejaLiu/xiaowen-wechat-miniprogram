@@ -100,9 +100,9 @@ export default {
             'http://123.60.97.192:9001/pic/blank.png',
         ];
 
-        function getUserInfo() {
+        async function getUserInfo() {
             const token = Taro.getStorageSync('token');
-            Taro.request({
+            await Taro.request({
                 url: `http://localhost:10100/api/v1/user/info`,
                 method: 'GET',
                 header: { token: token },
