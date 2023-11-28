@@ -79,12 +79,6 @@ export default {
     name: 'Index',
     components: {},
 
-    onShow() {
-        console.log('[draw/index] onShow');
-        // 获取用户剩余配额
-        this.user_quota = 10;
-    },
-
     onLunch() {
         console.log('[draw/index] onLunch');
     },
@@ -95,6 +89,27 @@ export default {
             selectedStyle: 0,
             user_quota: 100,
         });
+
+        function getUserInfo() {
+            const token = Taro.getStorageSync('token');
+            Taro.request({
+                url: `http://localhost:10100/api/v1/user/info`,
+                method: 'GET',
+                header: { token: token },
+                success: (res) => {
+                    console.log('get user info success', res);
+                    const data = res.data;
+                    state.user_quota = data.quota;
+                },
+                fail: (err) => {
+                    console.log('get user info fail', err);
+                    Taro.showToast({
+                        title: '很抱歉，获取用户信息失败',
+                        icon: 'none',
+                    });
+                },
+            });
+        }
 
         const draw = async () => {
             try {
