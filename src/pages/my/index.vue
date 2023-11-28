@@ -3,18 +3,19 @@
     <div class="flex-row items-center section_3 space-x-20">
         <div class="flex-row items-center flex-auto">
             <div class="shrink-0 section_4"></div>
-            <span class="font_1 text_3">LesliLesliLesliLesli</span>
-            <img
-                class="shrink-0 image_6"
-                src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/654c561c5a7e3f03102666c0/654f17d1f9a7df001222bfcc/16996823100036226984.png"
-            />
+            <span class="font_1 text_3">
+                {{ userInfo.nickName }}
+            </span>
+            <img class="shrink-0 image_6" :src="userInfo.avatarUrl" />
         </div>
         <div class="flex-row items-center shrink-0 section_5 space-x-4" @click="goToGetQuota()">
             <img
                 class="shrink-0 image_5"
                 src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/654c561c5a7e3f03102666c0/654f17d1f9a7df001222bfcc/16996823099847673226.png"
             />
-            <span class="font_1 text_4">60</span>
+            <span class="font_1 text_4">
+                {{ userInfo.quota }}
+            </span>
         </div>
     </div>
     <!-- User info End -->
@@ -86,6 +87,11 @@ export default {
 
     setup() {
         const historyData = ref([]);
+        const userInfo = ref({
+            avatarUrl: '',
+            nickName: '获取中',
+            quota: 0,
+        });
 
         const images = [
             'http://123.60.97.192:9001/pic/blank.png',
@@ -93,6 +99,36 @@ export default {
             'http://123.60.97.192:9001/pic/blank.png',
             'http://123.60.97.192:9001/pic/blank.png',
         ];
+
+        function getUserInfo() {
+            const token = Taro.getStorageSync('token');
+            Taro.request({
+                url: `http://localhost:10100/api/v1/user/info`,
+                method: 'GET',
+                header: { token: token },
+                success: (res) => {
+                    console.log('get user info success', res);
+                    // userId: user.user_id,
+                    // nickname: user.nickname,
+                    // avatarUrl: user.avatar_url,
+                    // createTime: user.create_time,
+                    // quota: userQuota.quota,
+                    const data = res.data;
+                    userInfo.value = {
+                        avatarUrl: data.avatarUrl,
+                        nickName: data.nickname,
+                        quota: data.quota,
+                    };
+                },
+                fail: (err) => {
+                    console.log('get user info fail', err);
+                    Taro.showToast({
+                        title: '很抱歉，获取用户信息失败',
+                        icon: 'none',
+                    });
+                },
+            });
+        }
 
         async function getAllGenerateHistory() {
             const token = Taro.getStorageSync('token');
@@ -136,7 +172,8 @@ export default {
         }
 
         onMounted(async () => {
-            await getAllGenerateHistory();
+            getUserInfo();
+            getAllGenerateHistory();
         });
 
         const goToGetQuota = () => {
@@ -157,6 +194,7 @@ export default {
             goToGetQuota,
             goToGeneResPage,
             historyData,
+            userInfo,
             TATTOO_STYLES,
         };
     },
