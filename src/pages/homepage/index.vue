@@ -186,7 +186,7 @@ export default {
                         icon: 'success',
                         duration: 2000,
                     });
-                    Taro.redirectTo({
+                    Taro.navigateTo({
                         url: '/pages/index/index',
                     });
                 } else {

@@ -1,7 +1,7 @@
 <template>
     <!-- User info Start -->
     <div class="flex-row items-center section_3 space-x-20">
-        <div class="flex-row items-center flex-auto">
+        <div class="flex-row items-center flex-auto" @click="goToUserSetting">
             <div class="shrink-0 section_4"></div>
             <span class="font_1 text_3">
                 {{ userInfo.nickName }}
@@ -190,9 +190,17 @@ export default {
             });
         };
 
+        const goToUserSetting = () => {
+            console.log('go to user_setting');
+            Taro.navigateTo({
+                url: '/pages/user_setting/index',
+            });
+        };
+
         return {
             goToGetQuota,
             goToGeneResPage,
+            goToUserSetting,
             historyData,
             userInfo,
             TATTOO_STYLES,
