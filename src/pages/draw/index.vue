@@ -68,7 +68,7 @@
 </template>
 
 <script>
-import { reactive, ref, toRefs } from 'vue';
+import { onMounted, reactive, ref, toRefs } from 'vue';
 import './index.scss';
 import CoinImage from '../../../assets/images/coin.png';
 import QuotaCoinImage from '../../../assets/images/mdi_ink.png';
@@ -110,6 +110,10 @@ export default {
                 },
             });
         }
+
+        onMounted(async () => {
+            getUserInfo();
+        });
 
         const draw = async () => {
             try {
