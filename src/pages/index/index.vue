@@ -57,8 +57,8 @@ export default {
                     console.log('token: ', token);
                     console.log('sessionKey: ', sessionKey);
                 } else {
-                    Taro.setStorageSync('token', null);
-                    Taro.setStorageSync('sessionKey', null);
+                    Taro.removeStorageSync('token');
+                    Taro.removeStorageSync('sessionKey');
                     Taro.navigateTo({
                         url: '/pages/homepage/index',
                     });
