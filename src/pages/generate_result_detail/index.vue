@@ -19,7 +19,7 @@
         <div class="img-area">
             <img class="image-show" :src="imageData[chooseImage]" />
             <div class="img-area-op">
-                <img v-if="!isProcessing" class="img-area-share" :src="ShareIcon" />
+                <img v-if="!isProcessing" class="img-area-share" :src="ShareIcon" @click="doShareImage" />
                 <img v-if="!isProcessing" class="img-area-download" :src="DownloadIcon" />
             </div>
         </div>
@@ -46,14 +46,14 @@
                     '--nut-button-border-width': '0px',
                 }"
                 type="default"
-                @click=""
+                @click="requestSubscribeMessage"
             >
                 生成好了通知我
             </nut-button>
         </div>
 
         <div class="btn-area" v-if="!isProcessing">
-            <nut-button class="btn" color="black">新的制作</nut-button>
+            <nut-button class="btn" color="black" @click="goToGenerate">新的制作</nut-button>
             <div class="ai-generate-tips">
                 <p>内容由AI生成</p>
                 <img :src="AiTipIcon" />
@@ -163,10 +163,81 @@ export default {
         });
 
         const goToGenerate = () => {
-            Taro.navigateTo({
+            Taro.redirectTo({
                 url: '/pages/index/index',
             });
         };
+
+        const requestSubscribeMessage = async () => {
+            const res = await Taro.requestSubscribeMessage({
+                tmplIds: ['tOTzytOQzSoqLB0z7UnEp2GNFZQi4tkPdDJ0yoxxaXs'],
+            });
+            console.log(res);
+            const { errMsg } = res;
+            if (errMsg === 'requestSubscribeMessage:ok') {
+                await Taro.request({
+                    header: {
+                        'content-type': 'application/json',
+                        token: await Taro.getStorageSync('token'),
+                    },
+                    url: `http://localhost:10100/api/v1/notification/subscribe`,
+                    method: 'POST',
+                    data: {
+                        generateHistoryId: currentGenerateHistoryId.value,
+                    },
+                    success: async (res) => {
+                        console.log(res);
+                        const { success } = res.data;
+                        if (success) {
+                            Taro.showToast({
+                                title: '订阅成功',
+                                icon: 'success',
+                                duration: 2000,
+                            });
+                        } else {
+                            Taro.showToast({
+                                title: '订阅失败',
+                                icon: 'none',
+                                duration: 2000,
+                            });
+                        }
+                    },
+                    fail: (err) => {
+                        Taro.showToast({
+                            title: '订阅失败',
+                            icon: 'none',
+                            duration: 2000,
+                        });
+                    },
+                });
+                Taro.showToast({
+                    title: '订阅成功',
+                    icon: 'success',
+                    duration: 2000,
+                });
+            } else {
+                Taro.showToast({
+                    title: '订阅失败',
+                    icon: 'none',
+                    duration: 2000,
+                });
+            }
+        };
+
+        const doShareImage = async () => {
+            console.log('doShareImage');
+            Taro.downloadFile({
+                url: 'http://123.60.97.192:9001/pic/2023-11-07T17:04:13.829028_1.png',
+                success: (res) => {
+                    Taro.showShareImageMenu({
+                        path: res.tempFilePath,
+                        needShowEntrance: true,
+                        style: 'v2',
+                    });
+                },
+            });
+        };
+
         return {
             styleText,
             promptText,
@@ -177,6 +248,8 @@ export default {
             handleClick,
             goToGenerate,
             goToMy,
+            requestSubscribeMessage,
+            doShareImage,
             ShareIcon,
             DownloadIcon,
             AiTipIcon,

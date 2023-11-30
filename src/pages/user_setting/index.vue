@@ -28,8 +28,7 @@ export default {
             });
         };
         const doLogOut = () => {
-            Taro.removeStorageSync('token');
-            Taro.removeStorageSync('sessionKey');
+            Taro.clearStorageSync();
             Taro.redirectTo({
                 url: '/pages/index/index',
             });

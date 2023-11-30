@@ -47,30 +47,14 @@ export default {
 
     onLoad() {
         console.log('[/pages/index/index] onLoad()');
-        Taro.checkSession({
-            success() {
-                console.log('checkSession success');
-                const token = Taro.getStorageSync('token');
-                const sessionKey = Taro.getStorageSync('sessionKey');
 
-                if (token && sessionKey) {
-                    console.log('token: ', token);
-                    console.log('sessionKey: ', sessionKey);
-                } else {
-                    Taro.removeStorageSync('token');
-                    Taro.removeStorageSync('sessionKey');
-                    Taro.navigateTo({
-                        url: '/pages/homepage/index',
-                    });
-                }
-            },
-            fail() {
-                console.log('checkSession fail');
-                Taro.navigateTo({
-                    url: '/pages/homepage/index',
-                });
-            },
-        });
+        const token = Taro.getStorageSync('token');
+        if (!token) {
+            console.log('[/pages/index/index] token not exist');
+            Taro.redirectTo({
+                url: '/pages/homepage/index',
+            });
+        }
     },
 
     setup() {

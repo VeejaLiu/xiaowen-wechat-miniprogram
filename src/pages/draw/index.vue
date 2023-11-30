@@ -92,6 +92,10 @@ export default {
 
         function getUserInfo() {
             const token = Taro.getStorageSync('token');
+            if (!token) {
+                console.log('token not exist');
+                return;
+            }
             Taro.request({
                 url: `http://localhost:10100/api/v1/user/info`,
                 method: 'GET',
