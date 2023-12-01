@@ -46,8 +46,18 @@ export default {
     state: {},
 
     onLoad() {
-        console.log('[/pages/index/index] onLoad()');
+        // get params
+        const options = Taro.getLaunchOptionsSync();
+        console.log(`[index/index] onLoad() options: ${JSON.stringify(options)}`);
+        const inviteUserId = options?.query?.inviteUserId;
+        if (inviteUserId) {
+            console.log(`[index/index] onLoad() inviteUserId: ${inviteUserId}`);
+            Taro.setStorageSync('inviteUserId', inviteUserId);
+        } else {
+            console.log(`[index/index] onLoad() inviteUserId not exist`);
+        }
 
+        console.log('[/pages/index/index] onLoad()');
         const token = Taro.getStorageSync('token');
         if (!token) {
             console.log('[/pages/index/index] token not exist');

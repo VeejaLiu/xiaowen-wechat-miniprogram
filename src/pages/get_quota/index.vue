@@ -17,7 +17,7 @@
             <div class="flex-row items-baseline group_7 gary-text">
                 <span class="self-start font_2">0.99元 / 10积分</span>
             </div>
-            <div class="flex-col justify-start items-center text-wrapper_2 button">
+            <div class="flex-col justify-start items-center text-wrapper_2 button" @click="doRecharge">
                 <span class="font_2 text_5">去充值</span>
             </div>
         </div>
@@ -43,9 +43,13 @@
             <div class="flex-row items-baseline group_7">
                 <span class="self-start font_3">+100</span>
             </div>
-            <div class="flex-col justify-start items-center text-wrapper_2 button">
+            <button
+                class="flex-col justify-start items-center text-wrapper_2 button"
+                open-type="share"
+                @click="doShare"
+            >
                 <span class="font_2 text_5">去邀请</span>
-            </div>
+            </button>
         </div>
         <!-- 邀请好友 End -->
 
@@ -62,7 +66,7 @@
                 <span class="font_3">+8</span>
                 <span class="font_1 text_6">/次</span>
             </div>
-            <div class="flex-col justify-start items-center text-wrapper_2 button">
+            <div class="flex-col justify-start items-center text-wrapper_2 button" @click="doWatchAd">
                 <span class="font_2 text_5">观看</span>
             </div>
         </div>
@@ -120,6 +124,16 @@ const QUOTA_CONSTANT = {
 export default {
     name: 'Index',
     components: {},
+
+    onShareAppMessage() {
+        console.log('onShareAppMessage');
+        const userId = Taro.getStorageSync('userId');
+        return {
+            title: '快来看看我生成的纹身吧，太棒了',
+            path: `/pages/index/index?inviteUserId=${userId}`,
+        };
+    },
+
     setup() {
         const userInfo = ref({
             avatarUrl: '',
@@ -202,9 +216,38 @@ export default {
             getUserInfo();
             getQuotaHistory();
         });
+
+        /**
+         * 去邀请
+         */
+        async function doShare() {
+            console.log(`[get_quota/index] doShare`);
+            await Taro.showShareMenu({
+                withShareTicket: true,
+                menus: ['shareAppMessage', 'shareTimeline'],
+            });
+        }
+
+        async function doWatchAd() {
+            await Taro.showToast({
+                title: '广告功能暂未开放',
+                icon: 'none',
+            });
+        }
+
+        async function doRecharge() {
+            await Taro.showToast({
+                title: '充值功能暂未开放',
+                icon: 'none',
+            });
+        }
+
         return {
             userInfo,
             quotaHistory,
+            doShare,
+            doWatchAd,
+            doRecharge,
         };
     },
 };
