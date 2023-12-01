@@ -14,6 +14,7 @@ declare module '@vue/runtime-core' {
     NutPopup: typeof import('@nutui/nutui-taro')['Popup']
     NutTabbar: typeof import('@nutui/nutui-taro')['Tabbar']
     NutTabbarItem: typeof import('@nutui/nutui-taro')['TabbarItem']
+    NutTextarea: typeof import('@nutui/nutui-taro')['Textarea']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

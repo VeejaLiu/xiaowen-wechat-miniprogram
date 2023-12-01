@@ -1,6 +1,5 @@
 .font_1 {
     font-size: 0.75rem;
-    font-family: PingFang SC;
     line-height: 0.66rem;
     color: #1a1d21cc;
 }
@@ -40,13 +39,6 @@
     height: 0.063rem;
 }
 
-.font_1 {
-    font-size: 0.75rem;
-    font-family: PingFang SC;
-    line-height: 0.66rem;
-    color: #1a1d21cc;
-}
-
 .text_3 {
     line-height: 0.69rem;
 }
@@ -75,14 +67,12 @@
 
 .font_2 {
     font-size: 0.88rem;
-    font-family: PingFang SC;
     line-height: 0.81rem;
     color: #000000;
 }
 
 .font_3 {
     font-size: 1.5rem;
-    font-family: PingFang SC;
     line-height: 1.13rem;
     color: #000000;
 }
@@ -136,13 +126,11 @@
 }
 .font_4 {
     font-size: 0.88rem;
-    font-family: PingFang SC;
     line-height: 0.81rem;
     color: #000000b3;
 }
 .font_5 {
     font-size: 0.88rem;
-    font-family: PingFang SC;
     line-height: 0.66rem;
     color: #000000;
 }

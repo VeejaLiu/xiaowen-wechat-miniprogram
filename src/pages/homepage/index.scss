@@ -1,7 +1,6 @@
 .home_page_root {
   height: 100vh;
   width: 100vw;
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -28,7 +27,6 @@
 }
 
 #homepage_login_btn_text {
-  font-family: 'PingFang SC', serif;
   font-style: normal;
   font-weight: 500;
   font-size: 30px;
@@ -84,6 +82,7 @@
 
 #homepage_popup_checkbox {
   position: absolute;
+  display: flex;
   left: 0;
   right: 0;
   margin: 45vh auto;

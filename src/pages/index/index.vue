@@ -24,6 +24,7 @@ import { ref } from 'vue';
 import './index.scss';
 import DrawPage from '../draw/index.vue';
 import MyPage from '../my/index.vue';
+import Taro from '@tarojs/taro';
 
 const icon = {
     home: {
@@ -43,6 +44,28 @@ export default {
         MyPage,
     },
     state: {},
+
+    onLoad() {
+        // get params
+        const options = Taro.getLaunchOptionsSync();
+        console.log(`[index/index] onLoad() options: ${JSON.stringify(options)}`);
+        const inviteUserId = options?.query?.inviteUserId;
+        if (inviteUserId) {
+            console.log(`[index/index] onLoad() inviteUserId: ${inviteUserId}`);
+            Taro.setStorageSync('inviteUserId', inviteUserId);
+        } else {
+            console.log(`[index/index] onLoad() inviteUserId not exist`);
+        }
+
+        console.log('[/pages/index/index] onLoad()');
+        const token = Taro.getStorageSync('token');
+        if (!token) {
+            console.log('[/pages/index/index] token not exist');
+            Taro.redirectTo({
+                url: '/pages/homepage/index',
+            });
+        }
+    },
 
     setup() {
         const activeTab = ref(0);
