@@ -19,8 +19,8 @@
         <div class="img-area">
             <img class="image-show" :src="imageData[chooseImage]" />
             <div class="img-area-op">
-                <img v-if="!isProcessing" class="img-area-share" :src="ShareIcon" @click="doShareImage" />
-                <img v-if="!isProcessing" class="img-area-download" :src="DownloadIcon" />
+                <!--                <img v-if="!isProcessing" class="img-area-share" :src="ShareIcon" @click="doShareImage" />-->
+                <!--                <img v-if="!isProcessing" class="img-area-download" :src="DownloadIcon" />-->
             </div>
         </div>
         <nut-grid class="image-chose" :border="false" square>
@@ -71,6 +71,7 @@ import DownloadIcon from '../../../assets/images/gen_res_icon/download.png';
 import AiTipIcon from '../../../assets/images/gen_res_icon/ai_generated_tip.png';
 
 import { TATTOO_STYLES } from '../../constant/TattooStyle';
+import { BACKEND_URL } from '../../constant/Urls';
 
 export default {
     name: 'Index',
@@ -106,7 +107,7 @@ export default {
                     'content-type': 'application/json',
                     token: await Taro.getStorageSync('token'),
                 },
-                url: `http://localhost:10100/api/v1/history/${currentGenerateHistoryId.value}`,
+                url: `${BACKEND_URL}/api/v1/history/${currentGenerateHistoryId.value}`,
                 method: 'GET',
                 success: async (res) => {
                     console.log(res);
@@ -180,7 +181,7 @@ export default {
                         'content-type': 'application/json',
                         token: await Taro.getStorageSync('token'),
                     },
-                    url: `http://localhost:10100/api/v1/notification/subscribe`,
+                    url: `${BACKEND_URL}/api/v1/notification/subscribe`,
                     method: 'POST',
                     data: {
                         generateHistoryId: currentGenerateHistoryId.value,
