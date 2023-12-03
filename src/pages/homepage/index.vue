@@ -136,7 +136,7 @@ export default {
 
             if (e.detail.errMsg === 'getPhoneNumber:ok') {
                 console.log('[doGetPhoneNumber] getPhoneNumber ok');
-                const inviteCode = await Taro.getStorageSync('inviteCode');
+                const inviteBy = await Taro.getStorageSync('inviteBy');
                 const callBackendResult = await Taro.request({
                     header: {
                         'content-type': 'application/json',
@@ -146,7 +146,7 @@ export default {
                     url: 'http://localhost:10100/api/v1/login/getPhoneNumber',
                     data: {
                         user_id: userId,
-                        inviteCode: inviteCode,
+                        inviteBy: inviteBy,
                         code: e.detail.code,
                         encryptedData: e.detail.encryptedData,
                         iv: e.detail.iv,

@@ -49,19 +49,18 @@ export default {
         // get params
         const options = Taro.getLaunchOptionsSync();
         console.log(`[index/index] onLoad() options: ${JSON.stringify(options)}`);
-        const inviteCode = options?.query?.inviteCode;
-        if (inviteCode) {
-            console.log(`[index/index] onLoad() inviteCode: ${inviteCode}`);
-            Taro.setStorageSync('inviteCode', inviteCode);
+        const inviteBy = options?.query?.inviteBy;
+        if (inviteBy) {
+            console.log(`[index/index] onLoad() inviteBy: ${inviteBy}`);
+            Taro.setStorageSync('inviteBy', inviteBy);
         } else {
-            console.log(`[index/index] onLoad() inviteCode not exist`);
+            console.log(`[index/index] onLoad() inviteBy not exist`);
         }
 
         console.log('[/pages/index/index] onLoad()');
         const token = Taro.getStorageSync('token');
         if (!token) {
             console.log('[/pages/index/index] token not exist');
-            Taro.clearStorageSync();
             await Taro.redirectTo({
                 url: '/pages/homepage/index',
             });
