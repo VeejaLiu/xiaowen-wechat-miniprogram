@@ -5,7 +5,7 @@
             风格
             <div :style="{ marginTop: '0.5rem' }">
                 <text :style="{ color: 'rgba(0, 0, 0, 0.6)' }">已选:</text>
-                {{ tattooStyles[selectedStyle].name }}
+                {{ tattooStyles.filter((item) => item.index === selectedStyle)[0].name }}
             </div>
         </div>
         <!-- Top End -->
@@ -17,7 +17,7 @@
                 <nut-grid-item
                     v-for="(item, index) in tattooStyles"
                     :key="index"
-                    @click="selectedStyle = index"
+                    @click="selectedStyle = item.index"
                     :style="{
                         // border: '1px solid rgba(0, 0, 0, 0.2)',
                         backgroundColor: 'none',
@@ -25,7 +25,7 @@
                     }"
                 >
                     <img
-                        :class="{ 'styles-image': true, 'styles-image-selected': selectedStyle === index }"
+                        :class="{ 'styles-image': true, 'styles-image-selected': selectedStyle === item.index }"
                         :src="item.icon"
                         alt="Style Image"
                     />
@@ -74,6 +74,7 @@ import CoinImage from '../../../assets/images/coin.png';
 import QuotaCoinImage from '../../../assets/images/mdi_ink.png';
 import Taro from '@tarojs/taro';
 import { TATTOO_STYLES } from '../../constant/TattooStyle';
+import { BACKEND_URL } from '../../constant/Urls';
 
 export default {
     name: 'Index',
@@ -86,7 +87,7 @@ export default {
     setup() {
         const prompt = ref('');
         const state = reactive({
-            selectedStyle: 0,
+            selectedStyle: 1,
             user_quota: 100,
         });
 
@@ -97,7 +98,7 @@ export default {
                 return;
             }
             Taro.request({
-                url: `http://localhost:10100/api/v1/user/info`,
+                url: `${BACKEND_URL}/api/v1/user/info`,
                 method: 'GET',
                 header: { token: token },
                 success: (res) => {
@@ -136,7 +137,7 @@ export default {
                 const token = Taro.getStorageSync('token');
 
                 const drawRes = await Taro.request({
-                    url: 'http://localhost:10100/api/v1/draw',
+                    url: `${BACKEND_URL}/api/v1/draw`,
                     method: 'POST',
                     header: {
                         'content-type': 'application/json',
@@ -155,6 +156,20 @@ export default {
                     console.log('generateHistoryId: ', generateHistoryId);
                     await Taro.navigateTo({
                         url: `/pages/generate_result_detail/index?generateHistoryId=${generateHistoryId}`,
+                    });
+                } else {
+                    if (drawRes.data.message === "user's quota is not enough") {
+                        await Taro.showToast({
+                            title: '对不起，您的配额不足',
+                            icon: 'none',
+                            duration: 3000,
+                        });
+                        return;
+                    }
+                    await Taro.showToast({
+                        title: '制作失败',
+                        icon: 'none',
+                        duration: 2000,
                     });
                 }
             } catch (e) {
