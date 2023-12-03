@@ -44,6 +44,7 @@ import Taro from '@tarojs/taro';
 import { ref } from 'vue';
 import logoImage from '../../../assets/images/homepage_login_popup_logo.png';
 import './index.scss';
+import { BACKEND_URL } from '../../constant/Urls';
 
 export default {
     name: 'Index',
@@ -59,7 +60,7 @@ export default {
                     console.log(`[/homepage/index] res.code: ${res.code}`);
                     Taro.request({
                         method: 'POST',
-                        url: 'http://localhost:10100/api/v1/login',
+                        url: `${BACKEND_URL}/api/v1/login`,
                         data: { code: res.code },
                         success: function (res) {
                             console.log('[/homepage/index] Taro.request success');
@@ -143,7 +144,7 @@ export default {
                         session_key: sessionKey,
                     },
                     method: 'POST',
-                    url: 'http://localhost:10100/api/v1/login/getPhoneNumber',
+                    url: `${BACKEND_URL}/api/v1/login/getPhoneNumber`,
                     data: {
                         user_id: userId,
                         inviteBy: inviteBy,
