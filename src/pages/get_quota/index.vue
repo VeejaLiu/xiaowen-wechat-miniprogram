@@ -127,10 +127,10 @@ export default {
 
     onShareAppMessage() {
         console.log('onShareAppMessage');
-        const userId = Taro.getStorageSync('userId');
+        const inviteCode = Taro.getStorageSync('inviteCode');
         return {
             title: '快来看看我生成的纹身吧，太棒了',
-            path: `/pages/index/index?inviteUserId=${userId}`,
+            path: `/pages/index/index?inviteBy=${inviteCode}`,
         };
     },
 

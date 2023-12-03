@@ -67,10 +67,11 @@ export default {
                             // result.nickname = user.nickname;
                             // result.sessionKey = user.session_key;
                             console.log(`[/homepage/index] res.data: ${JSON.stringify(res.data)}`);
-                            const { userId, nickname, sessionKey } = res.data;
+                            const { userId, nickname, sessionKey, inviteCode } = res.data;
                             Taro.setStorageSync('userId', userId);
                             Taro.setStorageSync('nickname', nickname);
                             Taro.setStorageSync('sessionKey', sessionKey);
+                            Taro.setStorageSync('inviteCode', inviteCode);
                         },
                         fail: function (err) {
                             console.log('[/homepage/index] Taro.request fail');
@@ -135,7 +136,7 @@ export default {
 
             if (e.detail.errMsg === 'getPhoneNumber:ok') {
                 console.log('[doGetPhoneNumber] getPhoneNumber ok');
-                const inviteUserId = await Taro.getStorageSync('inviteUserId');
+                const inviteCode = await Taro.getStorageSync('inviteCode');
                 const callBackendResult = await Taro.request({
                     header: {
                         'content-type': 'application/json',
@@ -145,7 +146,7 @@ export default {
                     url: 'http://localhost:10100/api/v1/login/getPhoneNumber',
                     data: {
                         user_id: userId,
-                        inviteUserId: inviteUserId,
+                        inviteCode: inviteCode,
                         code: e.detail.code,
                         encryptedData: e.detail.encryptedData,
                         iv: e.detail.iv,
