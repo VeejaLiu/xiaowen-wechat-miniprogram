@@ -124,7 +124,9 @@ export default {
             }
 
             const sessionKey = await Taro.getStorageSync('sessionKey');
+            console.log('sessionKey: ', sessionKey);
             const userId = await Taro.getStorageSync('userId');
+            console.log('userId: ', userId);
             if (!sessionKey || !userId) {
                 console.log('[doGetPhoneNumber] sessionKey or userId not exist');
                 Taro.showToast({
@@ -141,11 +143,11 @@ export default {
                 const callBackendResult = await Taro.request({
                     header: {
                         'content-type': 'application/json',
-                        session_key: sessionKey,
                     },
                     method: 'POST',
                     url: `${BACKEND_URL}/api/v1/login/getPhoneNumber`,
                     data: {
+                        session_key: sessionKey,
                         user_id: userId,
                         inviteBy: inviteBy,
                         code: e.detail.code,
@@ -170,7 +172,7 @@ export default {
                         duration: 2000,
                     });
 
-                    await Taro.redirectTo({
+                    await Taro.reLaunch({
                         url: '/pages/index/index',
                     });
                 } else {
