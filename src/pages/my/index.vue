@@ -90,7 +90,7 @@ export default {
         const historyData = ref([]);
         const userInfo = ref({
             avatarUrl: '',
-            nickName: '获取中',
+            nickName: 'wx_xxxx',
             quota: 0,
         });
 
@@ -120,6 +120,8 @@ export default {
                         nickName: data.nickname,
                         quota: data.quota,
                     };
+                    Taro.setStorageSync('nickname', data.nickname);
+                    Taro.setStorageSync('user_quota', data.quota);
                 },
                 fail: (err) => {
                     console.log('get user info fail', err);
@@ -173,6 +175,14 @@ export default {
         }
 
         onMounted(async () => {
+            const cacheNickname = Taro.getStorageSync('nickname');
+            const cacheUserQuota = Taro.getStorageSync('user_quota');
+            if (cacheNickname) {
+                userInfo.value.nickName = cacheNickname;
+            }
+            if (cacheUserQuota) {
+                userInfo.value.quota = cacheUserQuota;
+            }
             getUserInfo();
             getAllGenerateHistory();
         });
