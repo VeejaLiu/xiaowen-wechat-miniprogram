@@ -4,7 +4,7 @@
         <div class="flex-row group_4">
             <span class="font_2 text_3">风格：</span>
             <span class="font_2 text_4">
-                {{ TATTOO_STYLES[styleText]?.name }}
+                {{ TATTOO_STYLES.find((item) => item.index === Number(styleText))?.name }}
             </span>
         </div>
 
