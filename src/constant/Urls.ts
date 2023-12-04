@@ -1,1 +1,1 @@
-export const BACKEND_URL = 'http://123.60.97.192:10100';
+export const BACKEND_URL = 'https://wenshenai.com:10101';
