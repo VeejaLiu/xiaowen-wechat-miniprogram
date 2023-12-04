@@ -4,13 +4,13 @@
         <MyPage v-if="activeTab === 1" />
 
         <nut-tabbar id="tab_bar" @tab-switch="tabSwitch" :bottom="true">
-            <nut-tabbar-item tab-title="生成">
+            <nut-tabbar-item tab-title="">
                 <template #icon="props">
                     <img :src="props.active ? icon.home.active : icon.home.normal" alt="" />
                 </template>
                 <!-- <router-link to="/draw"></router-link> -->
             </nut-tabbar-item>
-            <nut-tabbar-item tab-title="我的">
+            <nut-tabbar-item tab-title="">
                 <template #icon="props">
                     <img :src="props.active ? icon.my.active : icon.my.normal" alt="" />
                 </template>
