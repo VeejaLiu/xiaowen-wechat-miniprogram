@@ -61,7 +61,7 @@
             </div>
             <div class="quota-floating flex-row items-center shrink-0" @click="goToGetQuota">
                 <img class="shrink-0 image_6" :src="QuotaCoinImage" alt="Image" />
-                <span class="font_1 text_9">{{ user_quota }}</span>
+                <span class="font_1 text_9">{{ user_quota > 99 ? '99+' : user_quota }}</span>
             </div>
         </div>
     </div>
