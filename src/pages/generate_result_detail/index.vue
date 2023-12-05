@@ -56,9 +56,30 @@
             <nut-button class="btn" color="black" @click="goToGenerate">新的制作</nut-button>
             <div class="ai-generate-tips">
                 <p>内容由AI生成</p>
-                <img :src="AiTipIcon" />
+                <img :src="AiTipIcon" @click="showPopup = true" />
             </div>
         </div>
+
+        <nut-popup
+            id="homepage_popup"
+            position="bottom"
+            closeable
+            round
+            :style="{ height: '30%' }"
+            :overlay="false"
+            :safe-area-inset-bottom="true"
+            :destroy-on-close="false"
+            v-model:visible="showPopup"
+        >
+            <div class="flex-row justify-center items-center relative group_10">
+                <span class="font_1 text_2 text_7">AI 生成内容特别声明</span>
+            </div>
+            <span class="mt-34 text_8">
+                特别声明:
+                本平台所有生成内容均为人工智能生成，不代表本平台的观点和立场，且本平台对其生成内容的真实性、合法性、准确性等不做任何保证，也不承担任何责任。
+                <br />
+            </span>
+        </nut-popup>
     </view>
 </template>
 
@@ -78,6 +99,8 @@ export default {
     methods: { chooseImage },
     components: {},
     setup() {
+        const showPopup = ref(false);
+
         const goToMy = () => {
             Taro.navigateTo({
                 url: '/pages/my/index',
@@ -246,6 +269,7 @@ export default {
             isProcessing,
             chooseImage,
             imageData,
+            showPopup,
             handleClick,
             goToGenerate,
             goToMy,
