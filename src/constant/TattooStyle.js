@@ -12,14 +12,14 @@
 
 export const TATTOO_STYLES = [
     {
-        index: 0,
+        index: 1,
         name: '点刺',
         icon: require('../../assets/images/styles/style_0.png'),
         description:
             '这种风格的纹身通常是由特别多的点来设计和构成，通过点的密集程度来表现深浅和过度，基本上所有的题材都能用这种方式来表达。',
     },
     {
-        index: 1,
+        index: 2,
         name: '纯黑',
         icon: require('../../assets/images/styles/style_1.png'),
         description: '这种风格只有一种颜色：纯粹的黑。通常是大面积的黑色或者纯黑色线条的图案。',

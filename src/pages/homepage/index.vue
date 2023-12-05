@@ -44,6 +44,7 @@ import Taro from '@tarojs/taro';
 import { ref } from 'vue';
 import logoImage from '../../../assets/images/homepage_login_popup_logo.png';
 import './index.scss';
+import { BACKEND_URL } from '../../constant/Urls';
 
 export default {
     name: 'Index',
@@ -59,7 +60,7 @@ export default {
                     console.log(`[/homepage/index] res.code: ${res.code}`);
                     Taro.request({
                         method: 'POST',
-                        url: 'http://localhost:10100/api/v1/login',
+                        url: `${BACKEND_URL}/api/v1/login`,
                         data: { code: res.code },
                         success: function (res) {
                             console.log('[/homepage/index] Taro.request success');
@@ -67,10 +68,11 @@ export default {
                             // result.nickname = user.nickname;
                             // result.sessionKey = user.session_key;
                             console.log(`[/homepage/index] res.data: ${JSON.stringify(res.data)}`);
-                            const { userId, nickname, sessionKey } = res.data;
+                            const { userId, nickname, sessionKey, inviteCode } = res.data;
                             Taro.setStorageSync('userId', userId);
                             Taro.setStorageSync('nickname', nickname);
                             Taro.setStorageSync('sessionKey', sessionKey);
+                            Taro.setStorageSync('inviteCode', inviteCode);
                         },
                         fail: function (err) {
                             console.log('[/homepage/index] Taro.request fail');
@@ -122,7 +124,9 @@ export default {
             }
 
             const sessionKey = await Taro.getStorageSync('sessionKey');
+            console.log('sessionKey: ', sessionKey);
             const userId = await Taro.getStorageSync('userId');
+            console.log('userId: ', userId);
             if (!sessionKey || !userId) {
                 console.log('[doGetPhoneNumber] sessionKey or userId not exist');
                 Taro.showToast({
@@ -135,17 +139,17 @@ export default {
 
             if (e.detail.errMsg === 'getPhoneNumber:ok') {
                 console.log('[doGetPhoneNumber] getPhoneNumber ok');
-                const inviteUserId = await Taro.getStorageSync('inviteUserId');
+                const inviteBy = await Taro.getStorageSync('inviteBy');
                 const callBackendResult = await Taro.request({
                     header: {
                         'content-type': 'application/json',
-                        session_key: sessionKey,
                     },
                     method: 'POST',
-                    url: 'http://localhost:10100/api/v1/login/getPhoneNumber',
+                    url: `${BACKEND_URL}/api/v1/login/getPhoneNumber`,
                     data: {
+                        session_key: sessionKey,
                         user_id: userId,
-                        inviteUserId: inviteUserId,
+                        inviteBy: inviteBy,
                         code: e.detail.code,
                         encryptedData: e.detail.encryptedData,
                         iv: e.detail.iv,
@@ -168,7 +172,7 @@ export default {
                         duration: 2000,
                     });
 
-                    await Taro.redirectTo({
+                    await Taro.reLaunch({
                         url: '/pages/index/index',
                     });
                 } else {

@@ -4,7 +4,7 @@
         <div class="flex-row group_4">
             <span class="font_2 text_3">风格：</span>
             <span class="font_2 text_4">
-                {{ TATTOO_STYLES[styleText]?.name }}
+                {{ TATTOO_STYLES.find((item) => item.index === Number(styleText))?.name }}
             </span>
         </div>
 
@@ -19,8 +19,8 @@
         <div class="img-area">
             <img class="image-show" :src="imageData[chooseImage]" />
             <div class="img-area-op">
-                <img v-if="!isProcessing" class="img-area-share" :src="ShareIcon" @click="doShareImage" />
-                <img v-if="!isProcessing" class="img-area-download" :src="DownloadIcon" />
+                <!--                <img v-if="!isProcessing" class="img-area-share" :src="ShareIcon" @click="doShareImage" />-->
+                <!--                <img v-if="!isProcessing" class="img-area-download" :src="DownloadIcon" />-->
             </div>
         </div>
         <nut-grid class="image-chose" :border="false" square>
@@ -56,9 +56,30 @@
             <nut-button class="btn" color="black" @click="goToGenerate">新的制作</nut-button>
             <div class="ai-generate-tips">
                 <p>内容由AI生成</p>
-                <img :src="AiTipIcon" />
+                <img :src="AiTipIcon" @click="showPopup = true" />
             </div>
         </div>
+
+        <nut-popup
+            id="homepage_popup"
+            position="bottom"
+            closeable
+            round
+            :style="{ height: '30%' }"
+            :overlay="false"
+            :safe-area-inset-bottom="true"
+            :destroy-on-close="false"
+            v-model:visible="showPopup"
+        >
+            <div class="flex-row justify-center items-center relative group_10">
+                <span class="font_1 text_2 text_7">AI 生成内容特别声明</span>
+            </div>
+            <span class="mt-34 text_8">
+                特别声明:
+                本平台所有生成内容均为人工智能生成，不代表本平台的观点和立场，且本平台对其生成内容的真实性、合法性、准确性等不做任何保证，也不承担任何责任。
+                <br />
+            </span>
+        </nut-popup>
     </view>
 </template>
 
@@ -71,12 +92,15 @@ import DownloadIcon from '../../../assets/images/gen_res_icon/download.png';
 import AiTipIcon from '../../../assets/images/gen_res_icon/ai_generated_tip.png';
 
 import { TATTOO_STYLES } from '../../constant/TattooStyle';
+import { BACKEND_URL } from '../../constant/Urls';
 
 export default {
     name: 'Index',
     methods: { chooseImage },
     components: {},
     setup() {
+        const showPopup = ref(false);
+
         const goToMy = () => {
             Taro.navigateTo({
                 url: '/pages/my/index',
@@ -106,7 +130,7 @@ export default {
                     'content-type': 'application/json',
                     token: await Taro.getStorageSync('token'),
                 },
-                url: `http://localhost:10100/api/v1/history/${currentGenerateHistoryId.value}`,
+                url: `${BACKEND_URL}/api/v1/history/${currentGenerateHistoryId.value}`,
                 method: 'GET',
                 success: async (res) => {
                     console.log(res);
@@ -180,7 +204,7 @@ export default {
                         'content-type': 'application/json',
                         token: await Taro.getStorageSync('token'),
                     },
-                    url: `http://localhost:10100/api/v1/notification/subscribe`,
+                    url: `${BACKEND_URL}/api/v1/notification/subscribe`,
                     method: 'POST',
                     data: {
                         generateHistoryId: currentGenerateHistoryId.value,
@@ -245,6 +269,7 @@ export default {
             isProcessing,
             chooseImage,
             imageData,
+            showPopup,
             handleClick,
             goToGenerate,
             goToMy,

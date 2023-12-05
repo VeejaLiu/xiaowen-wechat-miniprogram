@@ -101,6 +101,7 @@
 import Taro from '@tarojs/taro';
 import './index.css';
 import { onMounted, ref } from 'vue';
+import { BACKEND_URL } from '../../constant/Urls';
 
 const QUOTA_CONSTANT = {
     CHANGE_TYPE: {
@@ -127,10 +128,10 @@ export default {
 
     onShareAppMessage() {
         console.log('onShareAppMessage');
-        const userId = Taro.getStorageSync('userId');
+        const inviteCode = Taro.getStorageSync('inviteCode');
         return {
             title: '快来看看我生成的纹身吧，太棒了',
-            path: `/pages/index/index?inviteUserId=${userId}`,
+            path: `/pages/index/index?inviteBy=${inviteCode}`,
         };
     },
 
@@ -146,7 +147,7 @@ export default {
         async function getUserInfo() {
             const token = Taro.getStorageSync('token');
             await Taro.request({
-                url: `http://localhost:10100/api/v1/user/info`,
+                url: `${BACKEND_URL}/api/v1/user/info`,
                 method: 'GET',
                 header: { token: token },
                 success: (res) => {
@@ -176,7 +177,7 @@ export default {
         async function getQuotaHistory() {
             const token = Taro.getStorageSync('token');
             await Taro.request({
-                url: `http://localhost:10100/api/v1/quota/history`,
+                url: `${BACKEND_URL}/api/v1/quota/history`,
                 method: 'GET',
                 header: { token: token },
                 success: (res) => {

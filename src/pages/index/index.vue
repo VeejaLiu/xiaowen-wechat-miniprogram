@@ -4,13 +4,13 @@
         <MyPage v-if="activeTab === 1" />
 
         <nut-tabbar id="tab_bar" @tab-switch="tabSwitch" :bottom="true">
-            <nut-tabbar-item tab-title="生成">
+            <nut-tabbar-item tab-title="">
                 <template #icon="props">
                     <img :src="props.active ? icon.home.active : icon.home.normal" alt="" />
                 </template>
                 <!-- <router-link to="/draw"></router-link> -->
             </nut-tabbar-item>
-            <nut-tabbar-item tab-title="我的">
+            <nut-tabbar-item tab-title="">
                 <template #icon="props">
                     <img :src="props.active ? icon.my.active : icon.my.normal" alt="" />
                 </template>
@@ -45,23 +45,23 @@ export default {
     },
     state: {},
 
-    onLoad() {
+    async onLoad() {
         // get params
         const options = Taro.getLaunchOptionsSync();
         console.log(`[index/index] onLoad() options: ${JSON.stringify(options)}`);
-        const inviteUserId = options?.query?.inviteUserId;
-        if (inviteUserId) {
-            console.log(`[index/index] onLoad() inviteUserId: ${inviteUserId}`);
-            Taro.setStorageSync('inviteUserId', inviteUserId);
+        const inviteBy = options?.query?.inviteBy;
+        if (inviteBy) {
+            console.log(`[index/index] onLoad() inviteBy: ${inviteBy}`);
+            Taro.setStorageSync('inviteBy', inviteBy);
         } else {
-            console.log(`[index/index] onLoad() inviteUserId not exist`);
+            console.log(`[index/index] onLoad() inviteBy not exist`);
         }
 
         console.log('[/pages/index/index] onLoad()');
         const token = Taro.getStorageSync('token');
         if (!token) {
             console.log('[/pages/index/index] token not exist');
-            Taro.redirectTo({
+            await Taro.redirectTo({
                 url: '/pages/homepage/index',
             });
         }

@@ -37,7 +37,7 @@
         >
             <div class="flex-row justify-between items-center group_8">
                 <span class="font_3 text_5">
-                    {{ TATTOO_STYLES[history.style]?.name }}
+                    {{ TATTOO_STYLES.find((item) => Number(item.index) === Number(history.style))?.name }}
                 </span>
                 <div class="flex-row items-center space-x-2">
                     <span class="font_2">查看 ></span>
@@ -80,6 +80,7 @@ import Taro from '@tarojs/taro';
 import './index.scss';
 import { onMounted, ref } from 'vue';
 import { TATTOO_STYLES } from '../../constant/TattooStyle';
+import { BACKEND_URL } from '../../constant/Urls';
 
 export default {
     name: 'Index',
@@ -89,7 +90,7 @@ export default {
         const historyData = ref([]);
         const userInfo = ref({
             avatarUrl: '',
-            nickName: '获取中',
+            nickName: 'wx_xxxx',
             quota: 0,
         });
 
@@ -103,7 +104,7 @@ export default {
         async function getUserInfo() {
             const token = Taro.getStorageSync('token');
             await Taro.request({
-                url: `http://localhost:10100/api/v1/user/info`,
+                url: `${BACKEND_URL}/api/v1/user/info`,
                 method: 'GET',
                 header: { token: token },
                 success: (res) => {
@@ -119,6 +120,8 @@ export default {
                         nickName: data.nickname,
                         quota: data.quota,
                     };
+                    Taro.setStorageSync('nickname', data.nickname);
+                    Taro.setStorageSync('user_quota', data.quota);
                 },
                 fail: (err) => {
                     console.log('get user info fail', err);
@@ -133,7 +136,7 @@ export default {
         async function getAllGenerateHistory() {
             const token = Taro.getStorageSync('token');
             const res = await Taro.request({
-                url: `http://localhost:10100/api/v1/history`,
+                url: `${BACKEND_URL}/api/v1/history`,
                 method: 'GET',
                 header: {
                     token: token,
@@ -172,6 +175,14 @@ export default {
         }
 
         onMounted(async () => {
+            const cacheNickname = Taro.getStorageSync('nickname');
+            const cacheUserQuota = Taro.getStorageSync('user_quota');
+            if (cacheNickname) {
+                userInfo.value.nickName = cacheNickname;
+            }
+            if (cacheUserQuota) {
+                userInfo.value.quota = cacheUserQuota;
+            }
             getUserInfo();
             getAllGenerateHistory();
         });

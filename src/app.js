@@ -3,6 +3,7 @@ import './app.scss';
 import '@nutui/nutui-taro/dist/style.css';
 import { IconFont } from '@nutui/icons-vue-taro';
 import Taro from '@tarojs/taro';
+import { BACKEND_URL } from './constant/Urls';
 
 const App = createApp({
     async onLaunch(options) {
@@ -30,7 +31,7 @@ const App = createApp({
 
                 const loginRes = await Taro.request({
                     method: 'POST',
-                    url: 'http://localhost:10100/api/v1/login',
+                    url: `${BACKEND_URL}/api/v1/login`,
                     data: { code: res.code },
                 });
                 console.log(`[app][onLaunch] backend login res: ${JSON.stringify(loginRes)}`);
