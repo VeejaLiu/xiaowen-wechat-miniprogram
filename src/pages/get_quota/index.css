@@ -49,10 +49,10 @@
     margin-left: 1.5rem;
     margin-right: 1.5rem;
     padding: 1.13rem 1.38rem;
-    background-image: linear-gradient(194.5deg, #04040433 0%, #8d8f8c33 49.5%, #00000033 97.9%);
+    background-color: #f2f7f5;
     border-radius: 1rem;
     overflow: hidden;
-    border: solid 0.063rem #1a1d211a;
+    border: solid 0.063rem #dfffe91a;
 }
 
 .space-x-6 > *:not(:first-child) {
@@ -63,6 +63,7 @@
     border-radius: 1.44rem;
     width: 1.5rem;
     height: 1.5rem;
+    margin-right: 12px;
 }
 
 .font_2 {
@@ -88,17 +89,19 @@
     background-color: #ffffff;
     border-radius: 0.5rem;
     width: 4.63rem;
-    border: solid 0.063rem #000000;
+    border: solid 0.063rem #c7ffeb;
+    background-color: #1a1d21;
 }
 
 .text_5 {
     font-size: 0.81rem;
     line-height: 0.75rem;
+    color: #ffffff;
 }
 
 .group_7 {
     margin-top: 0.63rem;
-    padding: 0 2.38rem;
+    padding: 0;
 }
 
 .text_6 {

@@ -10,13 +10,16 @@
   height: 10vh;
   justify-content: space-between;
   //background-color: aquamarine;
-  padding-left: 1vh;
+  padding: 36px;
+  color:#373737;
+  // font-size: 14px;
 }
 
 .styles-images-div {
   width: 100vw;
   max-height: 47vh;
   //background-color: #00cccc;
+  padding: 24px;
 }
 
 .styles-grid {
@@ -27,32 +30,58 @@
   width: 100%;
   height: 100%;
   border-radius: 20px;
-  border: 5px solid rgba(0, 0, 0, 0.3);
+  border: 1px solid #E4E4E4;
 }
 
 .styles-image-selected {
-  border: 5px solid var(--primary, #000);
+  border: 4px solid #373737;
 }
 
 .prompt-div {
   width: 100vw;
   height: 20vh;
-  //background-color: #8d7e00;
-  padding: 0 1vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  
+  // background-color: #8d7e00;
+  padding-left: 42px;
+  // border: 1px solid #E4E4E4;
 }
 
 .prompt-title {
   height: 3vh;
-  //background-color: #00cccc;
+  margin-bottom: 5px;
+  padding-left: 0px;
+  color:#373737;
 }
 
 
 .prompt-textarea {
-  height: 14vh;
-  max-height: 14vh;
-  //background-color: #1a1d21;
+  height: 17vh;
+  max-height: 17vh;
+  border: 4px solid #373737;
+  padding: 8px; /* 增加内间距 */
+  margin-top: 8px; /* 若需要，调整与上方元素的间距 */
+  font-size: 14px; /* 调整字体大小 */
+  color: #333; /* 字体颜色 */
+  box-sizing: border-box; /* 确保内间距和边框不会增加输入框的总宽度 */
+  width: 94%; /* 确保输入框宽度与容器宽度一致 */
+  background: #F7F7F7;
+  border-radius: 20px;
 }
 
+.nut-textarea {
+  position: relative;
+  width: 100%;
+  height: 16vh;
+  box-sizing: border-box;
+  display: flex;
+  background: transparent;
+  padding: 12px;
+  margin-bottom: 24px;
+  border-radius: 20px;
+}
 
 .bottom {
   margin-top: 3vh;
@@ -72,13 +101,14 @@
   width: 62vw;
   height: 5.237vh;
   margin: 0 auto;
-  background: radial-gradient(
-                  215.83% 83.33% at 100% 0%,
-                  rgba(255, 255, 255, 0.7) 0%,
-                  rgba(255, 255, 255, 0.07) 51.11%,
-                  rgba(255, 255, 255, 7e-5) 100%
-  ),
-  linear-gradient(46.59deg, rgba(13, 231, 255, 9e-5) 2.92%, rgba(13, 231, 255, 0.63) 88.7%), #9ff432;
+  // background: radial-gradient(
+  //                 215.83% 83.33% at 100% 0%,
+  //                 rgba(255, 255, 255, 0.7) 0%,
+  //                 rgba(255, 255, 255, 0.07) 51.11%,
+  //                 rgba(255, 255, 255, 7e-5) 100%
+  // ),
+  // linear-gradient(46.59deg, rgba(13, 231, 255, 9e-5) 2.92%, rgba(13, 231, 255, 0.63) 88.7%), #9ff432;
+  background-color: #131619;
   border: 0;
   border-radius: 131px;
   font-style: normal;
@@ -87,7 +117,8 @@
   line-height: 22px;
   text-align: center;
   letter-spacing: 0.05em;
-  color: #010101;
+  color: #ffffff;
+  margin-bottom: 4px;
 }
 
 .quota-consume-tip {
@@ -99,6 +130,9 @@
 
 .quota-consume-tip span {
   display: inline-block;
+  margin-top: 12px;
+  color: #5c5b5b;
+  font-size: 12vm;
 }
 
 .quota-floating {
@@ -116,9 +150,9 @@
 }
 
 .image_6 {
-  border-radius: 2.993vh;
-  width: 3.891vh;
-  height: 3.891vh;
+  border-radius: 0vh;
+  width: 3vh;
+  height: 4vh;
 }
 
 .font_1 {

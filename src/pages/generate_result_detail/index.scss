@@ -5,18 +5,20 @@
   -moz-osx-font-smoothing: grayscale;
   //background-color: gray;
   padding-top: 2.5vh;
+
 }
 
 // TOP Start =========================
 .group_4 {
   //margin-top: 2.5vh;
-  margin-left: 2.5vh;
+  margin-left: 1.5rem;
 }
 
 .font_2 {
   font-size: 1.746vh;
   line-height: 1.621vh;
   color: #000000;
+  line-height: normal;
 }
 
 .text_3 {
@@ -25,11 +27,15 @@
 
 .text_4 {
   opacity: 0.6;
+  max-width: fit-content;
+  line-height: normal;
+  text-align: top;
 }
 
 .group_5 {
   margin-top: 2.5vh;
-  margin-left: 2.5vh;
+  margin-left: 1.5rem;
+  max-width: 80%;
 }
 
 // TOP End =========================
@@ -87,15 +93,15 @@
 
 .btn-area {
   margin: 0 auto;
-  width: 80vw;
+  width: 90vw;
   //background-color: #71fcb7;
   justify-content: space-between;
   align-items: center;
 }
 
 .btn-area .btn {
-  margin: 2.5vh 20% 1vh;
-  width: 60%;
+  margin: 2.5vh 15% 1.5vh;
+  width: 70%;
   justify-content: space-between;
 }
 
@@ -110,7 +116,7 @@
 .ai-generate-tips p {
   font-size: 1.746vh;
   line-height: 1.621vh;
-  color: #000000;
+  color: #383838;
 }
 
 .ai-generate-tips img {
