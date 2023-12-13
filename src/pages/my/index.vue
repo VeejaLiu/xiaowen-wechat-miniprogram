@@ -11,7 +11,7 @@
         <div class="flex-row items-center shrink-0 section_5 space-x-4" @click="goToGetQuota()">
             <img
                 class="shrink-0 image_5"
-                src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/654c561c5a7e3f03102666c0/654f17d1f9a7df001222bfcc/16996823099847673226.png"
+                src="https://img.js.design/assets/img/6576cee4447f06ffde48f6f9.png#7795f2fc5d57ab8ec3edc0bdba6ef181"
             />
             <span class="font_1 text_4">
                 {{ userInfo.quota }}
@@ -22,7 +22,7 @@
 
     <!-- History Title Start -->
     <div class="flex-col items-start group_6 space-y-8">
-        <span class="font_2">生成历史</span>
+        <span class="font_title">生成历史</span>
         <div class="section_6"></div>
     </div>
     <!-- History Title End -->

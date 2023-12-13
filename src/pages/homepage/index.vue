@@ -25,7 +25,7 @@
                 <p id="homepage_login_btn_text">手机号快捷登录</p>
             </nut-button>
             <nut-button id="homepage_popup_cancel_login_btn" block @click="showPopup = false">
-                <p id="homepage_login_btn_text">暂不登录</p>
+                <p id="homepage_login_btn_text1">暂不登录</p>
             </nut-button>
             <nut-checkbox id="homepage_popup_checkbox" label="" v-model="checkbox">
                 <p>
