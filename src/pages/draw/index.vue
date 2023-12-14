@@ -2,10 +2,12 @@
     <div class="drawIndex">
         <!-- Top -->
         <div class="top">
-            风格
+            <text :style="{ color: 'rgba(13, 13, 13, 0.80)' , fontSize: '14px'}">纹身风格</text>
             <div :style="{ marginTop: '0.5rem' }">
-                <text :style="{ color: 'rgba(0, 0, 0, 0.6)' }">已选:</text>
-                {{ tattooStyles.filter((item) => item.index === selectedStyle)[0].name }}
+                <text :style="{ color: 'rgba(0, 0, 0, 0.6)' , fontSize: '14px'}">已选： </text>
+                <text :style="{ color: 'rgba(0, 0, 0, 0.6)' , fontSize: '14px'}">
+                    {{ tattooStyles.filter((item) => item.index === selectedStyle)[0].name }}
+                </text>
             </div>
         </div>
         <!-- Top End -->
@@ -19,9 +21,9 @@
                     :key="index"
                     @click="selectedStyle = item.index"
                     :style="{
-                        // border: '1px solid rgba(0, 0, 0, 0.2)',
+                        // border: '0.5px solid rgba(0.9, 0.9, 0.9, 1)',
                         backgroundColor: 'none',
-                        '--nut-grid-item-content-padding': '5px',
+                        '--nut-grid-item-content-padding': '4px',
                     }"
                 >
                     <img
@@ -35,11 +37,17 @@
         <!-- Styles image selector End -->
 
         <!-- Prompt Input -->
+        
         <div class="prompt-div">
-            <div class="prompt-title">描述</div>
-            <!-- 显示字数 -->
-            <nut-textarea class="prompt-textarea" v-model="prompt" limit-show max-length="50" />
+         <div class="prompt-title">
+            <text :style="{ color: 'rgba(13, 13, 13, 0.80)', fontSize: '14px'}">纹身描述</text>
+         </div>
+        <!-- 显示字数 -->
+        <div class="prompt-textarea">
+         <nut-textarea  v-model="prompt" limit-show max-length="50" placeholder="请输入纹身描述" />
         </div>
+        </div>
+
         <!-- Prompt Input End -->
 
         <!--
@@ -56,7 +64,7 @@
                 <span>
                     10
                     <img :style="{ width: '1.8vh', height: '1.8vh' }" :src="CoinImage" alt="Coin Image" />
-                    /次
+                    / 次
                 </span>
             </div>
             <div class="quota-floating flex-row items-center shrink-0" @click="goToGetQuota">
@@ -70,8 +78,8 @@
 <script>
 import { onMounted, reactive, ref, toRefs } from 'vue';
 import './index.scss';
-import CoinImage from '../../../assets/images/coin.png';
-import QuotaCoinImage from '../../../assets/images/mdi_ink.png';
+import CoinImage from '../../../assets/images/coin.svg';
+import QuotaCoinImage from '../../../assets/images/mdi_ink.svg';
 import Taro from '@tarojs/taro';
 import { TATTOO_STYLES } from '../../constant/TattooStyle';
 import { BACKEND_URL } from '../../constant/Urls';

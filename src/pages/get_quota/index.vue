@@ -2,10 +2,10 @@
     <div class="flex-col page">
         <!-- 积分余额 Start -->
         <div class="flex-col relative section_quota">
-            <div class="flex-row items-center space-x-6">
+            <div class="flex-row items-center space-x-8">
                 <img
                     class="image_8"
-                    src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/654c561c5a7e3f03102666c0/654f17d1f9a7df001222bfcc/16996823098311387882.png"
+                    src="https://img.js.design/assets/img/6576cee4447f06ffde48f6f9.png#7795f2fc5d57ab8ec3edc0bdba6ef181"
                 />
                 <span class="font_2">积分余额</span>
             </div>
@@ -36,7 +36,7 @@
             <div class="flex-row items-center space-x-6">
                 <img
                     class="image_8"
-                    src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/654c561c5a7e3f03102666c0/654f17d1f9a7df001222bfcc/16996823098311387882.png"
+                    src="https://img.js.design/assets/img/6576cee4447f06ffde48f6f9.png#7795f2fc5d57ab8ec3edc0bdba6ef181"
                 />
                 <span class="font_2">每成功邀请一名好友注册</span>
             </div>
@@ -58,7 +58,7 @@
             <div class="flex-row items-center space-x-6">
                 <img
                     class="image_8"
-                    src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/654c561c5a7e3f03102666c0/654f17d1f9a7df001222bfcc/16996823098311387882.png"
+                    src="https://img.js.design/assets/img/6576cee4447f06ffde48f6f9.png#7795f2fc5d57ab8ec3edc0bdba6ef181"
                 />
                 <span class="font_2">观看视频（1/20 每日）</span>
             </div>

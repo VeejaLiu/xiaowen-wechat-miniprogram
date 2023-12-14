@@ -1,7 +1,8 @@
 .section_3 {
-  margin: 0 2.494vh;
+  margin: 1vh 2.5vh;
   padding: 1.995vh 1.372vh 1.995vh 1.995vh;
-  background-color: #1a1d210d;
+  background-color: #fafafa;
+  // background-image: url(https://img.js.design/assets/img/6576d62299920a422320c6b6.png#f34db83ad34dbbe3a60c0be937382c33);
   border-radius: 1.496vh;
   overflow: hidden;
   border: solid 0.125vh #1111110d;
@@ -13,7 +14,7 @@
 
 .section_4 {
   border-radius: 2.494vh;
-  background-image: url(https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/654c561c5a7e3f03102666c0/654f17d1f9a7df001222bfcc/16996823015525153002.png);
+  background-image: url(https://img.js.design/assets/img/6576d62299920a422320c6b6.png#f34db83ad34dbbe3a60c0be937382c33);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   width: 5.985vh;
@@ -32,16 +33,23 @@
 }
 
 .image_6 {
-  margin-left: 1.496vh;
-  width: 1.621vh;
-  height: 1.621vh;
+  margin-right: 0.25vh;
+  width: 3vh;
+  height: 4vh;
+}
+
+.image_8 {
+  margin: 100px;
+  width: 3vh;
+  height: 4vh;
 }
 
 .section_5 {
   padding: 0.623vh 0.748vh;
   background-color: #ffffff;
-  border-radius: 1.496vh;
+  border-radius: 16px;
   height: 3.741vh;
+  border: solid 1px #d2d2d2;
 }
 
 .space-x-4 > *:not(:first-child) {
@@ -72,27 +80,29 @@
 .font_2 {
   font-size: 1.746vh;
   line-height: 1.621vh;
-  color: #000000cc;
+  color: rgb(111 111 111 / 80%);
+  margin-left: 4px;
 }
 
 .section_6 {
-  margin-top: 0.6rem;
+  margin-top: 0.55rem;
   background-color: #1a1d21;
   border-radius: 0.499vh 0.499vh 0px 0px;
   box-shadow: 0px 0.499vh 0.748vh -0.499vh #b6f09c29, 0px 1.247vh 1.87vh -0.374vh #b6f09c29;
-  width: 7.107vh;
-  height: 0.349vh;
+  width: 7.1vh;
+  height: 0.3vh;
+
 }
 
 
 .space-x-4 > *:not(:first-child) {
-  margin-left: 0.499vh;
+  margin-left: 12px;
 }
 
-.font_2 {
-  font-size: 1.746vh;
+.font_title {
+  font-size: 1.7vh;
   line-height: 1.621vh;
-  color: #000000cc;
+  color: #000000;
 }
 
 .group_7 {
@@ -167,7 +177,7 @@
 
 .text_6 {
   margin-left: 1.247vh;
-  line-height: 1.746vh;
+  line-height: normal;
 }
 
 .section_8 {

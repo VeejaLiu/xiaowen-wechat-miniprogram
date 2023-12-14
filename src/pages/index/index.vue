@@ -28,12 +28,12 @@ import Taro from '@tarojs/taro';
 
 const icon = {
     home: {
-        normal: require('../../../assets/images/icon_tabbar_home_normal.png'),
-        active: require('../../../assets/images/icon_tabbar_home_active.png'),
+        normal: require('../../../assets/images/icon_tabbar_home_normal.svg'),
+        active: require('../../../assets/images/icon_tabbar_home_active.svg'),
     },
     my: {
-        normal: require('../../../assets/images/icon_tabbar_my_normal.png'),
-        active: require('../../../assets/images/icon_tabbar_my_active.png'),
+        normal: require('../../../assets/images/icon_tabbar_my_normal.svg'),
+        active: require('../../../assets/images/icon_tabbar_my_active.svg'),
     },
 };
 
