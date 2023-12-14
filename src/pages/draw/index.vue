@@ -2,10 +2,10 @@
     <div class="drawIndex">
         <!-- Top -->
         <div class="top">
-            <text :style="{ color: 'rgba(13, 13, 13, 0.80)' , fontSize: '14px'}">纹身风格</text>
+            <text :style="{ color: 'rgba(13, 13, 13, 0.80)' , fontSize: '28rpx'}">纹身风格</text>
             <div :style="{ marginTop: '0.5rem' }">
-                <text :style="{ color: 'rgba(0, 0, 0, 0.6)' , fontSize: '14px'}">已选： </text>
-                <text :style="{ color: 'rgba(0, 0, 0, 0.6)' , fontSize: '14px'}">
+                <text :style="{ color: 'rgba(0, 0, 0, 0.6)' , fontSize: '28rpx'}">已选： </text>
+                <text :style="{ color: 'rgba(0, 0, 0, 0.6)' , fontSize: '28rpx'}">
                     {{ tattooStyles.filter((item) => item.index === selectedStyle)[0].name }}
                 </text>
             </div>
@@ -40,7 +40,7 @@
         
         <div class="prompt-div">
          <div class="prompt-title">
-            <text :style="{ color: 'rgba(13, 13, 13, 0.80)', fontSize: '14px'}">纹身描述</text>
+            <text :style="{ color: 'rgba(13, 13, 13, 0.80)', fontSize: '28rpx'}">纹身描述</text>
          </div>
         <!-- 显示字数 -->
         <div class="prompt-textarea">

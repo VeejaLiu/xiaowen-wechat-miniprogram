@@ -61,8 +61,8 @@
 
 
 .prompt-textarea {
-  height: 17vh;
-  max-height: 17vh;
+  height: 16vh;
+  max-height: 16vh;
   border: 4px solid #373737;
   padding: 8px; /* 增加内间距 */
   margin-top: 8px; /* 若需要，调整与上方元素的间距 */
@@ -74,10 +74,23 @@
   border-radius: 20px;
 }
 
+.nut-textarea__limit {
+  position: absolute;
+  right: 12rpx;
+  bottom: 32rpx;
+  font-size: 24rpx;
+}
+
+.nut-textarea__textarea {
+  height: 13vh;
+  max-height: 13vh;
+}
+
 .nut-textarea {
   position: relative;
   width: 100%;
   height: 16vh;
+  max-height: 16vh;
   box-sizing: border-box;
   display: flex;
   background: transparent;
