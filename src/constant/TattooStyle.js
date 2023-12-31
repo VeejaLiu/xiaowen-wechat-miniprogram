@@ -26,76 +26,68 @@ export const TATTOO_STYLES = [
     {
         index: 1,
         name: '点刺',
-        icon: require('../../assets/images/styles/style_0.png'),
+        icon: require('../../assets/images/styles/dotwork-cat.png'),
         description:
             '这种风格的纹身通常是由特别多的点来设计和构成，通过点的密集程度来表现深浅和过度，基本上所有的题材都能用这种方式来表达。',
     },
     {
         index: 2,
         name: '纯黑',
-        icon: require('../../assets/images/styles/style_1.png'),
+        icon: require('../../assets/images/styles/blackgrey-cat.png'),
         description: '这种风格只有一种颜色：纯粹的黑。通常是大面积的黑色或者纯黑色线条的图案。',
     },
     {
         index: 3,
         name: '小清新',
-        icon: require('../../assets/images/styles/style_2.png'),
+        icon: require('../../assets/images/styles/minimalist-cat.png'),
         description:
             '这种风格的纹身通常以简洁的线条和轮廓为主，类似于手绘的草图或速写。它强调线条的流畅和简洁，通常没有过多的细节或阴影。',
     },
     {
         index: 4,
-        name: '几何线条',
-        icon: require('../../assets/images/styles/style_4.png'),
+        name: '几何',
+        icon: require('../../assets/images/styles/geo-cat.png'),
         description:
             '几何纹身就是利用线条和图形构成。极简主义却又充满个性，利用直线曲线和棱角的巧妙结合，可以带给人一种独特的优雅感觉。',
     },
     {
         index: 5,
-        name: '传统美式',
-        icon: require('../../assets/images/styles/style_5.png'),
+        name: 'Old School',
+        icon: require('../../assets/images/styles/oldschool-cat.png'),
         description:
             '这种风格是“最像纹身的纹身”，是相对比较流行的一种风格。这种风格有很实在的轮廓线，很少的颜色变化和过度以及很少的细节。这种纹身都很简单，但是普遍会被认为：相对其他风格的纹身，这种纹身会更经久不衰。',
     },
     {
         index: 6,
-        name: '新传统美式',
-        icon: require('../../assets/images/styles/style_6.png'),
+        name: 'New School',
+        icon: require('../../assets/images/styles/newschool-cat.png'),
         description:
             '相对于老传统，新传统颜色稍微多一点，颜色变化也稍微多一点，不过也具有老传统的“卡通”风格。这算是一种试验风格的纹身，既遵循了老传统的一些东西，又多了一些不同的改变。',
     },
     {
         index: 7,
         name: '日式',
-        icon: require('../../assets/images/styles/style_7.png'),
+        icon: require('../../assets/images/styles/japanese-cat.png'),
         description:
             '日式纹身的历史可以追溯到公元前5000年，因此这种风格的特点是非常鲜明的。这种风格的细节特别多，有特别考究的一套图案绘制方式，每个日式纹身都是一个复杂的艺术品。日式纹身通常会覆盖全身、整个背部或者四肢。',
     },
     {
         index: 8,
-        name: '动漫',
-        icon: require('../../assets/images/styles/style_8.png'),
-        description:
-            '动漫纹身是一种受到日本动漫文化启发的纹身艺术。它通常包括以动漫角色、动漫场景或动漫元素为主题的纹身设计。',
-    },
-    {
-        index: 9,
         name: '写实',
-        icon: require('../../assets/images/styles/style_8.png'),
+        icon: require('../../assets/images/styles/realism-cat.png'),
         description:
             '写实纹身是一种以真实主义风格表现图像的纹身艺术。它追求逼真的细节和精确的描绘，以再现现实世界中的人物、动物、植物或物体等。',
     },
     {
-        index: 10,
-        name: '超现实',
-        icon: require('../../assets/images/styles/style_8.png'),
-        description:
-            '风格名字就能很好地表达内容了：非现实的纹身。可能会使用带条纹的颜色、不寻常的形状来表现这个图形，使之具有很独特的艺术感。',
+        index: 9,
+        name: '垃圾波尔卡',
+        icon: require('../../assets/images/styles/tp-cat.png'),
+        description: '',
     },
     {
-        index: 11,
+        index: 10,
         name: '图腾',
-        icon: require('../../assets/images/styles/style_8.png'),
+        icon: require('../../assets/images/styles/tribal-cat.png'),
         description:
             '图腾纹身是一种受到原始部落文化和图腾信仰启发的纹身艺术。图腾在不同的文化中具有不同的含义和象征意义，通常代表着特定的动物、自然元素或神灵等。',
     },
