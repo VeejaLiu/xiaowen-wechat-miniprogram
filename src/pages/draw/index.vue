@@ -2,10 +2,10 @@
     <div class="drawIndex">
         <!-- Top -->
         <div class="top">
-            <text :style="{ color: 'rgba(13, 13, 13, 0.80)' , fontSize: '28rpx'}">纹身风格</text>
+            <text :style="{ color: 'rgba(13, 13, 13, 0.80)', fontSize: '28rpx' }">纹身风格</text>
             <div :style="{ marginTop: '0.5rem' }">
-                <text :style="{ color: 'rgba(0, 0, 0, 0.6)' , fontSize: '28rpx'}">已选： </text>
-                <text :style="{ color: 'rgba(0, 0, 0, 0.6)' , fontSize: '28rpx'}">
+                <text :style="{ color: 'rgba(0, 0, 0, 0.6)', fontSize: '28rpx' }">已选： </text>
+                <text :style="{ color: 'rgba(0, 0, 0, 0.6)', fontSize: '28rpx' }">
                     {{ tattooStyles.filter((item) => item.index === selectedStyle)[0].name }}
                 </text>
             </div>
@@ -37,15 +37,15 @@
         <!-- Styles image selector End -->
 
         <!-- Prompt Input -->
-        
+
         <div class="prompt-div">
-         <div class="prompt-title">
-            <text :style="{ color: 'rgba(13, 13, 13, 0.80)', fontSize: '28rpx'}">纹身描述</text>
-         </div>
-        <!-- 显示字数 -->
-        <div class="prompt-textarea">
-         <nut-textarea  v-model="prompt" limit-show max-length="50" placeholder="请输入纹身描述" />
-        </div>
+            <div class="prompt-title">
+                <text :style="{ color: 'rgba(13, 13, 13, 0.80)', fontSize: '28rpx' }">纹身描述</text>
+            </div>
+            <!-- 显示字数 -->
+            <div class="prompt-textarea">
+                <nut-textarea v-model="prompt" limit-show max-length="50" placeholder="请输入纹身描述" />
+            </div>
         </div>
 
         <!-- Prompt Input End -->
@@ -109,8 +109,15 @@ export default {
                 url: `${BACKEND_URL}/api/v1/user/info`,
                 method: 'GET',
                 header: { token: token },
-                success: (res) => {
+                success: async (res) => {
                     console.log('get user info success', res);
+                    if (res.statusCode === 401) {
+                        console.log('errorCode is 401, Clear all storage');
+                        Taro.clearStorageSync();
+                        await Taro.redirectTo({
+                            url: '/pages/index/index',
+                        });
+                    }
                     const data = res.data;
                     state.user_quota = data.quota;
                 },
