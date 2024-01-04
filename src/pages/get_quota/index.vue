@@ -3,10 +3,7 @@
         <!-- 积分余额 Start -->
         <div class="flex-col relative section_quota">
             <div class="flex-row items-center space-x-8">
-                <img
-                    class="image_8"
-                    src="https://img.js.design/assets/img/6576cee4447f06ffde48f6f9.png#7795f2fc5d57ab8ec3edc0bdba6ef181"
-                />
+                <img class="image_8" :src="QuotaIcon" />
                 <span class="font_2">积分余额</span>
             </div>
             <div class="flex-row items-baseline group_7">
@@ -34,10 +31,7 @@
         <!-- 邀请好友 Start -->
         <div class="flex-col relative section_6">
             <div class="flex-row items-center space-x-6">
-                <img
-                    class="image_8"
-                    src="https://img.js.design/assets/img/6576cee4447f06ffde48f6f9.png#7795f2fc5d57ab8ec3edc0bdba6ef181"
-                />
+                <img class="image_8" :src="QuotaIcon" />
                 <span class="font_2">每成功邀请一名好友注册</span>
             </div>
             <div class="flex-row items-baseline group_7">
@@ -56,10 +50,7 @@
         <!-- 观看视频 Start -->
         <div class="flex-col relative section_6">
             <div class="flex-row items-center space-x-6">
-                <img
-                    class="image_8"
-                    src="https://img.js.design/assets/img/6576cee4447f06ffde48f6f9.png#7795f2fc5d57ab8ec3edc0bdba6ef181"
-                />
+                <img class="image_8" :src="QuotaIcon" />
                 <span class="font_2">观看视频（1/20 每日）</span>
             </div>
             <div class="flex-row items-baseline group_7">
@@ -102,6 +93,7 @@ import Taro from '@tarojs/taro';
 import './index.css';
 import { onMounted, ref } from 'vue';
 import { BACKEND_URL } from '../../constant/Urls';
+import QuotaIcon from '../../../assets/images/quota_icon.png';
 
 const QUOTA_CONSTANT = {
     CHANGE_TYPE: {
@@ -249,6 +241,7 @@ export default {
             doShare,
             doWatchAd,
             doRecharge,
+            QuotaIcon,
         };
     },
 };
