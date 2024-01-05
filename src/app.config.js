@@ -4,7 +4,6 @@ export default defineAppConfig({
         'pages/homepage/index',
         'pages/get_quota/index',
         'pages/generate_result_detail/index',
-        'pages/testLogin/index',
         'pages/privacy_policy/index',
         'pages/user_service_agreement/index',
         'pages/user_setting/index',
