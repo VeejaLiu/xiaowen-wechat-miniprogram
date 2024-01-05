@@ -9,10 +9,7 @@
             <img class="shrink-0 image_6" :src="userInfo.avatarUrl" />
         </div>
         <div class="flex-row items-center shrink-0 section_5 space-x-4" @click="goToGetQuota()">
-            <img
-                class="shrink-0 image_5"
-                src="https://img.js.design/assets/img/6576cee4447f06ffde48f6f9.png#7795f2fc5d57ab8ec3edc0bdba6ef181"
-            />
+            <img class="shrink-0 image_5" :src="QuotaIcon" />
             <span class="font_1 text_4">
                 {{ userInfo.quota }}
             </span>
@@ -81,6 +78,7 @@ import './index.scss';
 import { onMounted, ref } from 'vue';
 import { TATTOO_STYLES } from '../../constant/TattooStyle';
 import { BACKEND_URL } from '../../constant/Urls';
+import QuotaIcon from '../../../assets/images/quota/quota_icon.png';
 
 export default {
     name: 'Index',
@@ -215,6 +213,7 @@ export default {
             historyData,
             userInfo,
             TATTOO_STYLES,
+            QuotaIcon,
         };
     },
 };

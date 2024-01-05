@@ -1,6 +1,6 @@
 {
   "miniprogramRoot": "dist/",
-  "projectname": "wechat-app",
+  "projectname": "AI纹身助手",
   "description": "纹身生成小程序",
   "appid": "wxf43021ed4e2ce4ba",
   "setting": {
