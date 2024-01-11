@@ -5,40 +5,91 @@
   //background-color: #f6f7f9;
 }
 
-.top {
+.title{
   width: 100vw;
-  height: 10vh;
+  // height: 10vh;
   justify-content: space-between;
   //background-color: aquamarine;
-  padding: 36px;
+  padding-left: 36px;
+  padding-bottom: 4px;
+  margin-top: 2rem;
+  margin-bottom: 0.05rem;
   color:#373737;
+  
   // font-size: 14px;
 }
 
 .styles-images-div {
   width: 100vw;
-  max-height: 100vh;
+  max-height: 50vh;
   //background-color: #00cccc;
-  padding: 24px;
-  width: 100vw;
-  max-height: 47vh; /* 限制最大高度，防止内容溢出 */
+  padding: 24rpx;
   overflow: auto; /* 允许滚动 */
 }
 
+
 .styles-grid {
   background-color: transparent;
+  // display: grid;
+  // grid-template-columns: repeat(4, 1fr); /* 默认4列 */
+ 
+}
+
+.nut-grid-item {
+  position: relative; /* 必须设置定位，以便内部的蒙版可以绝对定位 */
+  left: 0;
+  
 }
 
 .styles-image {
   width: 100%;
   height: 100%;
   border-radius: 20px;
-  border: 1px solid #E4E4E4;
+  border: 0.125rem solid #E4E4E4;
+  display: block; /* 块状显示，避免底部空白 */
 }
 
 .styles-image-selected {
-  border: 4px solid #373737;
+  position: relative;
+  border: 0.125rem solid #373737;
+  opacity: 0.8;
 }
+
+.image-wrapper {
+  position: relative; /* 设置相对定位 */
+  width: 100%; /* 设置宽度为100% */
+  height: 100%; /* 设置高度为100% */
+}
+
+/* 蒙版层的样式 */
+.image-overlay {
+  display: none; /* 默认不显示，v-show指令将控制此属性 */
+  position: absolute; /* 绝对定位 */
+  top: 0; /* 顶部对齐 */
+  left: 0; /* 左侧对齐 */
+  right: 0; /* 右侧对齐 */
+  bottom: 0; /* 底部对齐 */
+  background-color:  #00000020;
+  border-radius: 20px;
+}
+
+/* 选中状态的网格项样式，此时显示蒙版 */
+.nut-grid-item.is-selected .image-overlay {
+  display: block; /* 当网格项被选中时，显示蒙版 */
+}
+
+.select-icon {
+
+  display: none; /* 默认不显示，v-show指令将控制此属性 */
+  position: absolute; /* 绝对定位 */
+  left: 36%;
+  top: 38%;
+}
+
+.nut-grid-item.is-selected .select-icon {
+  display: block; /* 当网格项被选中时，显示 */
+}
+
 
 .prompt-div {
   width: 100vw;
@@ -46,16 +97,16 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  
   // background-color: #8d7e00;
-  padding-left: 42px;
+  padding-left: 40px;
+  margin-top: 2rem;
+  margin-bottom: 20px;
   // border: 1px solid #E4E4E4;
 }
 
 .prompt-title {
   height: 3vh;
-  margin-bottom: 5px;
-  padding-left: 0px;
+  margin-bottom: 16px;
   color:#373737;
 }
 
@@ -63,9 +114,10 @@
 .prompt-textarea {
   height: 16vh;
   max-height: 16vh;
-  border: 4px solid #373737;
+  border: 0.125rem solid #373737;
   padding: 8px; /* 增加内间距 */
   margin-top: 8px; /* 若需要，调整与上方元素的间距 */
+  margin-bottom: 8px;
   font-size: 14px; /* 调整字体大小 */
   color: #333; /* 字体颜色 */
   box-sizing: border-box; /* 确保内间距和边框不会增加输入框的总宽度 */
@@ -100,7 +152,7 @@
 }
 
 .bottom {
-  margin-top: 3vh;
+  margin-top: 0.5vh;
   position: relative;
   //background-color: #ffff11;
   height: auto;
@@ -115,7 +167,7 @@
 
 .generate_btn {
   width: 62vw;
-  height: 5.237vh;
+  height: 20%vh;
   margin: 0 auto;
   // background: radial-gradient(
   //                 215.83% 83.33% at 100% 0%,
@@ -129,12 +181,14 @@
   border-radius: 131px;
   font-style: normal;
   font-weight: 500;
-  font-size: 30px;
+  // font-size: 28px;
   line-height: 22px;
   text-align: center;
   letter-spacing: 0.05em;
   color: #ffffff;
   margin-bottom: 4px;
+  font-size: 2vh;
+  line-height: 1.631vh;
 }
 
 .quota-consume-tip {
@@ -153,16 +207,17 @@
 
 .quota-floating {
   position: absolute;
-  width: 8.167vh;
+  width: 8.1vh;
   height: 5.237vh;
   top: 0;
   right: 0;
   background-color: #ffffff;
-  padding: 0.748vh 0 0.748vh 1.122vh;
+  padding: 0.7vh 0 0.7vh 0.8vh;
   overflow: hidden;
   border: solid 0.125vh #0000000d;
   filter: drop-shadow(0px 1.496vh 2.993vh #00000005);
   border-radius: 2.494vh 0 0 2.494vh;
+  box-shadow: 0px 12px 48px 16px rgba(0, 0, 0, 0.02), 0px 6px 16px -8px rgba(0, 0, 0, 0.08);
 }
 
 .image_6 {
@@ -171,13 +226,11 @@
   height: 4vh;
 }
 
-.font_1 {
-  font-size: 1.995vh;
-}
-
-.text_9 {
+.quota_text {
+  font-size: 70.33%vh;
   color: #000000b3;
-  line-height: 1.496vh;
+  line-height: 1.5vh;
+  padding-right: 2px;
 }
 
 @media (min-width: 768px) {
