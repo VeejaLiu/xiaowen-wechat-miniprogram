@@ -1,41 +1,5 @@
 <template>
     <div class="drawIndex">
-        <!-- Top -->
-        <div class="top">
-            <text :style="{ color: 'rgba(13, 13, 13, 0.80)', fontSize: '28rpx' }">纹身风格</text>
-            <div :style="{ marginTop: '0.5rem' }">
-                <text :style="{ color: 'rgba(0, 0, 0, 0.6)', fontSize: '28rpx' }">已选： </text>
-                <text :style="{ color: 'rgba(0, 0, 0, 0.6)', fontSize: '28rpx' }">
-                    {{ tattooStyles.filter((item) => item.index === selectedStyle)[0].name }}
-                </text>
-            </div>
-        </div>
-        <!-- Top End -->
-
-        <!-- Styles image selector -->
-        <div class="styles-images-div">
-            <nut-grid class="styles-grid" :border="false" square :columnNum="4">
-                <!-- 利用imageData进行循环 -->
-                <nut-grid-item
-                    v-for="(item, index) in tattooStyles"
-                    :key="index"
-                    @click="selectedStyle = item.index"
-                    :style="{
-                        // border: '0.5px solid rgba(0.9, 0.9, 0.9, 1)',
-                        backgroundColor: 'none',
-                        '--nut-grid-item-content-padding': '4px',
-                    }"
-                >
-                    <img
-                        :class="{ 'styles-image': true, 'styles-image-selected': selectedStyle === item.index }"
-                        :src="item.icon"
-                        alt="Style Image"
-                    />
-                </nut-grid-item>
-            </nut-grid>
-        </div>
-        <!-- Styles image selector End -->
-
         <!-- Prompt Input -->
 
         <div class="prompt-div">
@@ -49,6 +13,53 @@
         </div>
 
         <!-- Prompt Input End -->
+        <!-- Top -->
+        <div class="style-section">
+        <div class="title">
+            <text :style="{ color: 'rgba(13, 13, 13, 0.80)', fontSize: '28rpx' }">纹身风格</text>
+            <div :style="{ marginTop: '0.5rem' }">
+                <text :style="{ color: 'rgba(0, 0, 0, 0.6)', fontSize: '28rpx' }">已选： </text>
+                <text :style="{ color: 'rgba(0, 0, 0, 0.6)', fontSize: '28rpx' }">
+                    {{ tattooStyles.filter((item) => item.index === selectedStyle)[0].name }}
+                </text>
+            </div>
+        </div>
+        <!-- Top End -->
+
+        <!-- Styles image selector -->
+        <div class="styles-images-div">
+            <nut-grid class="styles-grid" :border="false" :square="true" :columnNum="computedColumnNum">
+                <!-- 利用imageData进行循环 -->
+                <nut-grid-item 
+                    v-for="(item, index) in tattooStyles"
+                    :key="index"
+                    @click="selectedStyle = item.index"
+                    :class="{ 'is-selected': selectedStyle === item.index }"
+                    :style="{
+                        // border: '0.5px solid rgba(0.9, 0.9, 0.9, 1)',
+                        backgroundColor: 'none',
+                        '--nut-grid-item-content-padding': '4px ',
+                       
+                    }"
+                >
+                 <div class="image-wrapper">
+                    <img
+                        :class="{ 'styles-image': true, 'styles-image-selected': selectedStyle === item.index }"
+                        :src="item.icon"
+                        alt="Style Image"
+                    />
+                    <div class="image-overlay" v-show="selectedStyle === item.index"></div>
+                    <div class="select-icon">
+                    <img  :style="{ width: '2.5vh', height: '2.5vh' }" :src="QuotaCoinImage" alt="Coin Image" />
+                    </div>
+                    </div>
+                </nut-grid-item>
+            </nut-grid>
+        </div>
+        </div>
+        <!-- Styles image selector End -->
+
+        
 
         <!--
         Bottom, including:
@@ -69,7 +80,7 @@
             </div>
             <div class="quota-floating flex-row items-center shrink-0" @click="goToGetQuota">
                 <img class="shrink-0 image_6" :src="QuotaCoinImage" alt="Image" />
-                <span class="font_1 text_9">{{ user_quota > 99 ? '99+' : user_quota }}</span>
+                <span class="quota_text">{{ user_quota > 99 ? '99+' : user_quota }}</span>
             </div>
         </div>
     </div>
@@ -87,6 +98,7 @@ import { BACKEND_URL } from '../../constant/Urls';
 export default {
     name: 'Index',
     components: {},
+
 
     onLunch() {
         console.log('[draw/index] onLunch');
@@ -214,5 +226,19 @@ export default {
             tattooStyles: TATTOO_STYLES,
         };
     },
+
+    data() {
+    return {
+      // ... other data properties
+    };
+  },
+  computed: {
+    computedColumnNum() {
+      // 使用计算属性根据屏幕宽度初始化列数
+      const screenWidth = window.innerWidth;
+      return screenWidth >= 768 ? 5 : 4; // 假设768px是你的断点
+    }
+  },
+  // ... other options like methods, created, etc.
 };
 </script>

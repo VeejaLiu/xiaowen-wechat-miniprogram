@@ -93,7 +93,7 @@ import Taro from '@tarojs/taro';
 import './index.css';
 import { onMounted, ref } from 'vue';
 import { BACKEND_URL } from '../../constant/Urls';
-import QuotaIcon from '../../../assets/images/quota_icon.png';
+import QuotaIcon from '../../../assets/images/quota/quota_icon.png';
 
 const QUOTA_CONSTANT = {
     CHANGE_TYPE: {

@@ -1,15 +1,22 @@
 #tab_bar {
   --nut-tabbar-unactive-color: black;
   --nut-tabbar-active-color: #9CFE6C;
-  --nut-tabbar-height: 13vh;
+  --nut-tabbar-height: 10vh;
+  
+}
+
+.nut-tabbar{
+height: 8.44%vh;
+background: rgba(255, 255, 255, 0.70);
+backdrop-filter: blur(15px);
 }
 
 .nut-tabbar-item_icon-box_icon .h5-img {
-  width: 48rpx;
-  height: 48rpx;
+  width: 50px;
+  height: 50px;
 }
 
-// .ut-tabbar-item{
-//   width: 40rpx;
-//   height: 40rpx;
-// }
+
+.nut-tabbar-item{
+  height: 60px;
+}

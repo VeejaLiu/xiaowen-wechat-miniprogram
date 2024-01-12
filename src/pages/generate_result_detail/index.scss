@@ -72,9 +72,9 @@
 
 
 .image-chose {
-  margin-left: 1.5rem;
-  margin-top: 1.5rem;
-  margin-right: 1.5rem;
+  margin-left: 1.2rem;
+  margin-top: 1.2rem;
+  margin-right: 1.2rem;
   width: auto;
 }
 
@@ -82,27 +82,29 @@
   width: 100%;
   height: 100%;
   aspect-ratio: 1 / 1;
-  border-radius: 5%; /* 添加圆角,参数是百分比形式 */
-  border: 4px solid #ccc;
+  border-radius: 12px; /* 添加圆角,参数是百分比形式 */
+  border: -0.875rem solid #E4E4E4;
 }
 
 .image-item-active {
   // 边框
-  border: 4px solid #000;
+  border: 0.125rem solid #000;
 }
 
 .btn-area {
   margin: 0 auto;
-  width: 90vw;
+  // width: 70%vh;
+  width: 80vw;
+  height: 20%vh;
   //background-color: #71fcb7;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 
 .btn-area .btn {
   margin: 2.5vh 15% 1.5vh;
   width: 70%;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 
