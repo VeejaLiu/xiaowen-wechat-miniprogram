@@ -64,7 +64,7 @@
                         '--nut-grid-item-content-bg-color': 'none',
                     }"
                 >
-                    <img class="history-item-images-image" :src="image" />
+                    <img class="history-item-images-image" :src="image.thumbnail" />
                 </nut-grid-item>
             </nut-grid>
         </div>

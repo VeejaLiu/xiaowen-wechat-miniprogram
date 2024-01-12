@@ -17,7 +17,7 @@
         <!-- Top End -->
 
         <div class="img-area">
-            <img class="image-show" :src="imageData[chooseImage]" />
+            <img class="image-show" :src="imageData[chooseImage].original" />
             <div class="img-area-op">
                 <!--                <img v-if="!isProcessing" class="img-area-share" :src="ShareIcon" @click="doShareImage" />-->
                 <!--                <img v-if="!isProcessing" class="img-area-download" :src="DownloadIcon" />-->
@@ -34,7 +34,10 @@
                 }"
             >
                 <!-- :class="{ 'grid-item': true, selected: selectedStyle === index }"-->
-                <img :class="{ 'image-show': true, 'image-item-active': chooseImage === index }" :src="image" />
+                <img
+                    :class="{ 'image-show': true, 'image-item-active': chooseImage === index }"
+                    :src="image.thumbnail"
+                />
             </nut-grid-item>
         </nut-grid>
 
