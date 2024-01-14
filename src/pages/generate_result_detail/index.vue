@@ -113,10 +113,22 @@ export default {
 
         const chooseImage = ref(0);
         const imageData = ref([
-            'http://123.60.97.192:9001/pic/blank.png',
-            'http://123.60.97.192:9001/pic/blank.png',
-            'http://123.60.97.192:9001/pic/blank.png',
-            'http://123.60.97.192:9001/pic/blank.png',
+            {
+                original: 'http://123.60.97.192:9001/pic/blank.png',
+                thumbnail: 'http://123.60.97.192:9001/pic/blank.png',
+            },
+            {
+                original: 'http://123.60.97.192:9001/pic/blank.png',
+                thumbnail: 'http://123.60.97.192:9001/pic/blank.png',
+            },
+            {
+                original: 'http://123.60.97.192:9001/pic/blank.png',
+                thumbnail: 'http://123.60.97.192:9001/pic/blank.png',
+            },
+            {
+                original: 'http://123.60.97.192:9001/pic/blank.png',
+                thumbnail: 'http://123.60.97.192:9001/pic/blank.png',
+            },
         ]);
         const isProcessing = ref(true);
         const styleText = ref('');
