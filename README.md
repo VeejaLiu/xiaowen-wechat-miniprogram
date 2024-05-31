@@ -1,16 +1,21 @@
 # xiaowen-wechat-miniprogram
 
-Install pnpm:
-```bash
-npm install -g pnpm
+version:
+```
+"node": "18.12.1",
+"npm": "8.19.2"
 ```
 
 Install dependencies:
 ```bash
-pnpm install
+npm install
 ```
 
 Run script 'dev:weapp' to start.
+
+```
+npm run dev:weapp
+```
 
 
 Open this project by wechat developer tool, and then you can see the result.
