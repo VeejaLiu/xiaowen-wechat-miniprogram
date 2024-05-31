@@ -77,8 +77,8 @@ import Taro from '@tarojs/taro';
 import './index.scss';
 import { onMounted, ref } from 'vue';
 import { TATTOO_STYLES } from '../../constant/TattooStyle';
-import { BACKEND_URL } from '../../constant/Urls';
-import QuotaIcon from '../../../assets/images/quota/quota_icon.png';
+import { BACKEND_URL, SOURCE_PATH } from '../../constant/Urls';
+const QuotaIcon = SOURCE_PATH + "/images/quota/quota_icon.png";
 
 export default {
     name: 'Index',

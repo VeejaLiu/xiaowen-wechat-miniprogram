@@ -89,11 +89,11 @@
 <script>
 import { onMounted, reactive, ref, toRefs } from 'vue';
 import './index.scss';
-import CoinImage from '../../../assets/images/coin.svg';
-import QuotaCoinImage from '../../../assets/images/mdi_ink.svg';
 import Taro from '@tarojs/taro';
 import { TATTOO_STYLES } from '../../constant/TattooStyle';
-import { BACKEND_URL } from '../../constant/Urls';
+import { BACKEND_URL, SOURCE_PATH } from '../../constant/Urls';
+const CoinImage = SOURCE_PATH + "/images/coin.svg";
+const QuotaCoinImage = SOURCE_PATH + "/images/mdi_ink.svg";
 
 export default {
     name: 'Index',
