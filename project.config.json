@@ -1,6 +1,6 @@
 {
   "miniprogramRoot": "dist/",
-  "projectname": "AI纹身助手",
+  "projectname": "纹身手稿小助手",
   "description": "纹身生成小程序",
   "appid": "wxf43021ed4e2ce4ba",
   "setting": {

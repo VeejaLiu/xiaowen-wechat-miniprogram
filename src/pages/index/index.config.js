@@ -1,3 +1,3 @@
 export default definePageConfig({
-    navigationBarTitleText: 'AI纹身助手',
+    navigationBarTitleText: '纹身手稿小助手',
 });
