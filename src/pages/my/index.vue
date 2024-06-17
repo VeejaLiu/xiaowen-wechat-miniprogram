@@ -8,12 +8,12 @@
             </span>
             <img class="shrink-0 image_6" :src="userInfo.avatarUrl" />
         </div>
-        <div class="flex-row items-center shrink-0 section_5 space-x-4" @click="goToGetQuota()">
+        <!-- <div class="flex-row items-center shrink-0 section_5 space-x-4" @click="goToGetQuota()">
             <img class="shrink-0 image_5" :src="QuotaIcon" />
             <span class="font_1 text_4">
                 {{ userInfo.quota }}
             </span>
-        </div>
+        </div> -->
     </div>
     <!-- User info End -->
 

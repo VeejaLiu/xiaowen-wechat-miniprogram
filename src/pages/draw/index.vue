@@ -71,7 +71,7 @@
             <nut-button class="generate_btn" block @click="draw">
                 <p>制作纹身</p>
             </nut-button>
-            <div class="quota-consume-tip">
+            <!-- <div class="quota-consume-tip">
                 <span>
                     10
                     <img :style="{ width: '1.8vh', height: '1.8vh' }" :src="CoinImage" alt="Coin Image" />
@@ -81,7 +81,7 @@
             <div class="quota-floating flex-row items-center shrink-0" @click="goToGetQuota">
                 <img class="shrink-0 image_6" :src="QuotaCoinImage" alt="Image" />
                 <span class="quota_text">{{ user_quota > 99 ? '99+' : user_quota }}</span>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>
