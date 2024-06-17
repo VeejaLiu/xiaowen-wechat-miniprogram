@@ -110,10 +110,12 @@
 }
 
 .list {
-  margin-top: 1rem;
-  margin-left: 2.494vh;
-  margin-right: 2.494vh;
-  padding-bottom: 20vh;
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+  padding: 24rpx;
+  padding-bottom: 10vh;
+  box-sizing: border-box;
   overflow-y: auto;
   // 隐藏滚动条
   &::-webkit-scrollbar {
@@ -121,7 +123,7 @@
   }
 
   //background-color: #9CFE6C;
-  height: 80vh;
+  height: 81vh;
 }
 
 .list-item {
