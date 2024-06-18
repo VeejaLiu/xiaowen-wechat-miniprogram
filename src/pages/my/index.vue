@@ -1,19 +1,16 @@
 <template>
     <!-- User info Start -->
     <div class="flex-row items-center section_3 space-x-20">
-        <div class="flex-row items-center flex-auto" @click="goToUserSetting">
+        <div class="flex-row items-center flex-auto">
             <div class="shrink-0 section_4"></div>
             <span class="font_1 text_3">
                 {{ userInfo.nickName }}
             </span>
             <img class="shrink-0 image_6" :src="userInfo.avatarUrl" />
         </div>
-        <!-- <div class="flex-row items-center shrink-0 section_5 space-x-4" @click="goToGetQuota()">
-            <img class="shrink-0 image_5" :src="QuotaIcon" />
-            <span class="font_1 text_4">
-                {{ userInfo.quota }}
-            </span>
-        </div> -->
+        <div class="flex-row items-center shrink-0 section_5 space-x-4" @click="goToUserSetting">
+            <img class="shrink-0 image_5" :src="SettingIcon" />
+        </div>
     </div>
     <!-- User info End -->
 
@@ -78,7 +75,7 @@ import './index.scss';
 import { onMounted, ref } from 'vue';
 import { TATTOO_STYLES } from '../../constant/TattooStyle';
 import { BACKEND_URL, SOURCE_PATH } from '../../constant/Urls';
-const QuotaIcon = SOURCE_PATH + "/images/quota/quota_icon.png";
+const SettingIcon = SOURCE_PATH + "/images/base_icon/setting.svg";
 const PAGE_NUM = 10; // 每页数量
 
 export default {
@@ -243,7 +240,7 @@ export default {
             historyData,
             userInfo,
             TATTOO_STYLES,
-            QuotaIcon,
+            SettingIcon,
             lowerFunc
         };
     },
