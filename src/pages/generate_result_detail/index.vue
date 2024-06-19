@@ -96,6 +96,7 @@ import { BACKEND_URL, SOURCE_PATH } from '../../constant/Urls';
 const ShareIcon = SOURCE_PATH + '/images/gen_res_icon/share.png';
 const DownloadIcon = SOURCE_PATH + '/images/gen_res_icon/download.png';
 const AiTipIcon = SOURCE_PATH + '/images/gen_res_icon/ai_generated_tip.png';
+const BLANK_IMG = SOURCE_PATH + '/images/loading.png';
 
 export default {
     name: 'Index',
@@ -114,20 +115,20 @@ export default {
         const chooseImage = ref(0);
         const imageData = ref([
             {
-                original: 'http://123.60.97.192:9001/pic/blank.png',
-                thumbnail: 'http://123.60.97.192:9001/pic/blank.png',
+                original: BLANK_IMG,
+                thumbnail: BLANK_IMG,
             },
             {
-                original: 'http://123.60.97.192:9001/pic/blank.png',
-                thumbnail: 'http://123.60.97.192:9001/pic/blank.png',
+                original: BLANK_IMG,
+                thumbnail: BLANK_IMG,
             },
             {
-                original: 'http://123.60.97.192:9001/pic/blank.png',
-                thumbnail: 'http://123.60.97.192:9001/pic/blank.png',
+                original: BLANK_IMG,
+                thumbnail: BLANK_IMG,
             },
             {
-                original: 'http://123.60.97.192:9001/pic/blank.png',
-                thumbnail: 'http://123.60.97.192:9001/pic/blank.png',
+                original: BLANK_IMG,
+                thumbnail: BLANK_IMG,
             },
         ]);
         const isProcessing = ref(true);

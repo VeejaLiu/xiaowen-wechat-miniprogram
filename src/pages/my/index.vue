@@ -76,6 +76,7 @@ import { onMounted, ref } from 'vue';
 import { TATTOO_STYLES } from '../../constant/TattooStyle';
 import { BACKEND_URL, SOURCE_PATH } from '../../constant/Urls';
 const SettingIcon = SOURCE_PATH + "/images/base_icon/setting.svg";
+const BLANK_IMG = SOURCE_PATH + '/images/loading.png';
 const PAGE_NUM = 10; // 每页数量
 
 export default {
@@ -91,10 +92,22 @@ export default {
         });
 
         const images = [
-            'http://123.60.97.192:9001/pic/blank.png',
-            'http://123.60.97.192:9001/pic/blank.png',
-            'http://123.60.97.192:9001/pic/blank.png',
-            'http://123.60.97.192:9001/pic/blank.png',
+            {
+                original: BLANK_IMG,
+                thumbnail: BLANK_IMG,
+            },
+            {
+                original: BLANK_IMG,
+                thumbnail: BLANK_IMG,
+            },
+            {
+                original: BLANK_IMG,
+                thumbnail: BLANK_IMG,
+            },
+            {
+                original: BLANK_IMG,
+                thumbnail: BLANK_IMG,
+            }
         ];
 
         async function getUserInfo() {
