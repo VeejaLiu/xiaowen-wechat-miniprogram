@@ -16,14 +16,23 @@
             v-model:visible="showPopup"
         >
             <img id="homepage_popup_logo" :src="logoImage" />
-            <nut-button
-                id="homepage_popup_login_btn"
-                open-type="getPhoneNumber"
-                @getphonenumber="doGetPhoneNumber"
-                block
-            >
-                <p id="homepage_login_btn_text">手机号快捷登录</p>
-            </nut-button>
+                <nut-button
+                    v-if="checkbox"
+                    id="homepage_popup_login_btn"
+                    open-type="getPhoneNumber"
+                    @getphonenumber="doGetPhoneNumber"
+                    block
+                >
+                        <p id="homepage_login_btn_text">手机号快捷登录</p>
+                </nut-button>
+                <nut-button
+                    v-else
+                    id="homepage_popup_login_btn"
+                    @click="showPrivacyTips"
+                    block
+                >
+                        <p id="homepage_login_btn_text">手机号快捷登录</p>
+                </nut-button>
             <nut-button id="homepage_popup_cancel_login_btn" block @click="showPopup = false">
                 <p id="homepage_login_btn_text1">暂不登录</p>
             </nut-button>
@@ -114,9 +123,9 @@ export default {
             console.log('[doGetPhoneNumber] doGetPhoneNumber');
 
             console.log('[doGetPhoneNumber] Checkbox.value: ', checkbox.value);
-            if (!checkbox.value) {
+            if (e.detail.errMsg === 'getPhoneNumber:fail user deny') {
                 Taro.showToast({
-                    title: '请先同意《用户服务协议》和《隐私政策》',
+                    title: '授权被取消',
                     icon: 'none',
                     duration: 2000,
                 });
@@ -193,6 +202,17 @@ export default {
             }
         };
 
+        const showPrivacyTips = (e)=>{
+            if (!checkbox.value) {
+                Taro.showToast({
+                    title: '请先同意《用户服务协议》和《隐私政策》',
+                    icon: 'none',
+                    duration: 2000,
+                });
+                return;
+            }
+        }   
+
         const goToPrivacy = () => {
             console.log('goToPrivacy');
             Taro.navigateTo({
@@ -212,6 +232,7 @@ export default {
             goToPrivacy,
             goToUserAgreement,
             doGetPhoneNumber,
+            showPrivacyTips,
             showPopup,
             logoImage,
             checkbox,
