@@ -27,7 +27,7 @@
             <!-- 利用imageData进行循环 -->
             <nut-grid-item
                 v-for="(image, index) in imageData"
-                :key="index"
+                :key="image.thumbnail"
                 @click="chooseImage = index"
                 :style="{
                     '--nut-grid-item-content-padding': '5px',
