@@ -17,7 +17,7 @@
         <!-- Top End -->
 
         <div class="img-area">
-            <img class="image-show" :src="imageData[chooseImage].original" />
+            <img class="image-show" mode="aspectFit" :src="imageData[chooseImage].original" />
             <div class="img-area-op">
                 <!--                <img v-if="!isProcessing" class="img-area-share" :src="ShareIcon" @click="doShareImage" />-->
                 <!--                <img v-if="!isProcessing" class="img-area-download" :src="DownloadIcon" />-->
