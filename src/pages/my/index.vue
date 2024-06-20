@@ -1,6 +1,6 @@
 <template>
     <!-- User info Start -->
-    <div class="flex-row items-center section_3 space-x-20">
+    <div class="flex-row items-center section_3 space-x-20" @click="goToUserSetting">
         <div class="flex-row items-center flex-auto">
             <div class="shrink-0 section_4"></div>
             <span class="font_1 text_3">
@@ -8,7 +8,7 @@
             </span>
             <img class="shrink-0 image_6" :src="userInfo.avatarUrl" />
         </div>
-        <div class="flex-row items-center shrink-0 section_5 space-x-4" @click="goToUserSetting">
+        <div class="flex-row items-center shrink-0 section_5 space-x-4">
             <img class="shrink-0 image_5" :src="SettingIcon" />
         </div>
     </div>
