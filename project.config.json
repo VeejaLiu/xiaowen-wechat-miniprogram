@@ -1,6 +1,6 @@
 {
   "miniprogramRoot": "dist/",
-  "projectname": "AI纹身助手",
+  "projectname": "纹身手稿小助手",
   "description": "纹身生成小程序",
   "appid": "wxf43021ed4e2ce4ba",
   "setting": {
@@ -17,18 +17,28 @@
     },
     "minifyWXSS": false,
     "minifyWXML": false,
-    "ignoreUploadUnusedFiles": false
+    "ignoreUploadUnusedFiles": false,
+    "condition": true
   },
   "compileType": "miniprogram",
   "libVersion": "3.1.0",
   "srcMiniprogramRoot": "dist/",
   "packOptions": {
-    "ignore": [],
+    "ignore": [
+      {
+        "value": "assets",
+        "type": "folder"
+      }
+    ],
     "include": []
   },
   "condition": {},
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2
+  },
+  "projectArchitecture": "multiPlatform",
+  "simulatorPluginLibVersion": {
+    "wxext14566970e7e9f62": "3.0.2-8"
   }
 }

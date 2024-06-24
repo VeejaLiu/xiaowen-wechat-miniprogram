@@ -58,7 +58,7 @@ export default {
             state.log += `login: ${JSON.stringify(res)}\n`;
             const loginRes = await Taro.request({
                 method: 'POST',
-                url: 'http://localhost:10100/api/v1/login',
+                url: 'http://192.168.3.199:10100/api/v1/login',
                 data: {
                     code: res.code,
                 },
@@ -76,7 +76,7 @@ export default {
                         token: loginRes.data.token,
                     },
                     method: 'POST',
-                    url: 'http://localhost:10100/api/v1/login/getPhoneNumber',
+                    url: 'http://192.168.3.199:10100/api/v1/login/getPhoneNumber',
                     data: {
                         token: loginRes.data.token,
                         code: e.detail.code,
@@ -99,7 +99,7 @@ export default {
                 console.log('getPhoneNumber ok');
                 const callBackendResult = await Taro.request({
                     method: 'POST',
-                    url: 'http://localhost:10100/api/v1/admin/testCode',
+                    url: 'http://192.168.3.199:10100/api/v1/admin/testCode',
                     data: {
                         code: e.detail.code,
                         encryptedData: e.detail.encryptedData,
@@ -120,7 +120,7 @@ export default {
                 console.log('getPhoneNumber ok');
                 const callBackendResult = await Taro.request({
                     method: 'POST',
-                    url: 'http://localhost:10100/api/v1/admin/testCode',
+                    url: 'http://192.168.3.199:10100/api/v1/admin/testCode',
                     data: {
                         code: e.detail.code,
                         encryptedData: e.detail.encryptedData,
@@ -139,7 +139,7 @@ export default {
             state.log += `login: ${JSON.stringify(res)}\n`;
             const loginRes = await Taro.request({
                 method: 'POST',
-                url: 'http://localhost:10100/api/v1/login',
+                url: 'http://192.168.3.199:10100/api/v1/login',
                 data: {
                     code: res.code,
                 },

@@ -46,10 +46,8 @@
 
 .section_5 {
   padding: 0.623vh 0.748vh;
-  background-color: #ffffff;
   border-radius: 16px;
   height: 3.741vh;
-  border: solid 1px #d2d2d2;
 }
 
 .space-x-4 > *:not(:first-child) {
@@ -110,10 +108,12 @@
 }
 
 .list {
-  margin-top: 1rem;
-  margin-left: 2.494vh;
-  margin-right: 2.494vh;
-  padding-bottom: 20vh;
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+  padding: 24rpx;
+  padding-bottom: 10vh;
+  box-sizing: border-box;
   overflow-y: auto;
   // 隐藏滚动条
   &::-webkit-scrollbar {
@@ -121,7 +121,7 @@
   }
 
   //background-color: #9CFE6C;
-  height: 80vh;
+  height: 81vh;
 }
 
 .list-item {

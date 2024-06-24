@@ -17,7 +17,7 @@
         <!-- Top End -->
 
         <div class="img-area">
-            <img class="image-show" :src="imageData[chooseImage].original" />
+            <img :key="imageData[chooseImage].original" class="image-show" mode="aspectFit" :src="imageData[chooseImage].original" />
             <div class="img-area-op">
                 <!--                <img v-if="!isProcessing" class="img-area-share" :src="ShareIcon" @click="doShareImage" />-->
                 <!--                <img v-if="!isProcessing" class="img-area-download" :src="DownloadIcon" />-->
@@ -27,7 +27,7 @@
             <!-- 利用imageData进行循环 -->
             <nut-grid-item
                 v-for="(image, index) in imageData"
-                :key="index"
+                :key="image.thumbnail"
                 @click="chooseImage = index"
                 :style="{
                     '--nut-grid-item-content-padding': '5px',
@@ -90,12 +90,13 @@
 import { onMounted, ref } from 'vue';
 import Taro, { chooseImage } from '@tarojs/taro';
 import './index.scss';
-import ShareIcon from '../../../assets/images/gen_res_icon/share.png';
-import DownloadIcon from '../../../assets/images/gen_res_icon/download.png';
-import AiTipIcon from '../../../assets/images/gen_res_icon/ai_generated_tip.png';
 
 import { TATTOO_STYLES } from '../../constant/TattooStyle';
-import { BACKEND_URL } from '../../constant/Urls';
+import { BACKEND_URL, SOURCE_PATH } from '../../constant/Urls';
+const ShareIcon = SOURCE_PATH + '/images/gen_res_icon/share.png';
+const DownloadIcon = SOURCE_PATH + '/images/gen_res_icon/download.png';
+const AiTipIcon = SOURCE_PATH + '/images/gen_res_icon/ai_generated_tip.png';
+const BLANK_IMG = SOURCE_PATH + '/images/loading.png';
 
 export default {
     name: 'Index',
@@ -114,20 +115,20 @@ export default {
         const chooseImage = ref(0);
         const imageData = ref([
             {
-                original: 'http://123.60.97.192:9001/pic/blank.png',
-                thumbnail: 'http://123.60.97.192:9001/pic/blank.png',
+                original: BLANK_IMG,
+                thumbnail: BLANK_IMG,
             },
             {
-                original: 'http://123.60.97.192:9001/pic/blank.png',
-                thumbnail: 'http://123.60.97.192:9001/pic/blank.png',
+                original: BLANK_IMG,
+                thumbnail: BLANK_IMG,
             },
             {
-                original: 'http://123.60.97.192:9001/pic/blank.png',
-                thumbnail: 'http://123.60.97.192:9001/pic/blank.png',
+                original: BLANK_IMG,
+                thumbnail: BLANK_IMG,
             },
             {
-                original: 'http://123.60.97.192:9001/pic/blank.png',
-                thumbnail: 'http://123.60.97.192:9001/pic/blank.png',
+                original: BLANK_IMG,
+                thumbnail: BLANK_IMG,
             },
         ]);
         const isProcessing = ref(true);

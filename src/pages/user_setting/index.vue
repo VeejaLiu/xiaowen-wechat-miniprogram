@@ -1,41 +1,43 @@
 <template>
     <view class="index">
-        <button @click="goToUserAgreement">用户服务协议</button>
-        <button @click="goToPrivacy">隐私政策</button>
-        <!-- 意见反馈-->
-        <button @click="showToFeedback">意见反馈</button>
-        <button @click="doLogOut">退出登录</button>
+        <view class="item">
+            <view class="content" @click="goToUserAgreement">
+                <span>用户服务协议</span>
+                <image class="icon" :src="right_arrow"></image>
+            </view>
+            <view class="line"></view>
+        </view>
+        <view class="item">
+            <view class="content" @click="goToPrivacy">
+                <span>隐私政策</span>
+                <image class="icon" :src="right_arrow"></image>
+            </view>
+            <view class="line"></view>
+        </view>
+        <view class="item">
+            <view class="content">
+                <button class="feedback-btn" open-type="contact"></button>
+                <span>意见反馈</span>
+                <image class="icon" :src="right_arrow"></image>
+            </view>
+            <view class="line"></view>
+        </view>
+        <view class="logout" @click="doLogOut">
+            <view class="btn">退出登录</view>
+        </view>
     </view>
-
-    <!-- TODO 样式需要调整 @veeja-->
-    <nut-popup
-        position="bottom"
-        closeable
-        round
-        :style="{ height: '80%' }"
-        :overlay="false"
-        :safe-area-inset-bottom="true"
-        :destroy-on-close="false"
-        v-model:visible="showPopup"
-    >
-        <nut-rate v-model="rate" />
-        <nut-textarea v-model="textarea" limit-show max-length="500" />
-        <nut-button type="primary" round block @click="doSubmitFeedback">提交</nut-button>
-    </nut-popup>
 </template>
 
 <script>
 import { reactive, ref, toRefs } from 'vue';
 import Taro from '@tarojs/taro';
-import { BACKEND_URL } from '../../constant/Urls';
+import { ICON_URL } from '../../constant/Urls';
 export default {
     name: 'Index',
     components: {},
     setup() {
         const state = reactive({});
         const showPopup = ref(false);
-        const rate = ref(5);
-        const textarea = ref('');
 
         const goToPrivacy = () => {
             console.log('goToPrivacy');
@@ -50,56 +52,6 @@ export default {
             });
         };
 
-        const showToFeedback = () => {
-            console.log('showToFeedback');
-            showPopup.value = true;
-        };
-
-        const doSubmitFeedback = async () => {
-            console.log('doSubmitFeedback');
-
-            const rateValue = Number(rate.value);
-            const textareaValue = textarea.value;
-            if (rateValue < 1 || rateValue > 5) {
-                Taro.showToast({
-                    title: '请给出评分',
-                    icon: 'none',
-                    duration: 2000,
-                });
-                return;
-            }
-
-            if (textareaValue.trim() === '') {
-                Taro.showToast({
-                    title: '请填写反馈内容',
-                    icon: 'none',
-                    duration: 2000,
-                });
-                return;
-            }
-
-            await Taro.request({
-                url: `${BACKEND_URL}/api/v1/feedback/`,
-                method: 'POST',
-                header: {
-                    'content-type': 'application/json',
-                    token: await Taro.getStorageSync('token'),
-                },
-                data: {
-                    rate: rate.value,
-                    content: textarea.value,
-                },
-            });
-
-            await Taro.showToast({
-                title: '感谢您的反馈!!!',
-                icon: 'success',
-                duration: 2000,
-            });
-
-            showPopup.value = false;
-        };
-
         const doLogOut = () => {
             Taro.clearStorageSync();
             Taro.redirectTo({
@@ -111,12 +63,9 @@ export default {
             ...toRefs(state),
             goToPrivacy,
             goToUserAgreement,
-            showToFeedback,
-            doSubmitFeedback,
             doLogOut,
             showPopup,
-            rate,
-            textarea,
+            right_arrow: ICON_URL.BASE.right_arrow
         };
     },
 };
@@ -124,9 +73,59 @@ export default {
 
 <style lang="scss">
 .index {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    font-family: 'PingFang SC';
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-size: 32rpx;
+    color: #000000;
+    letter-spacing: 0.3rpx;
+    padding: 20rpx;
+    .item {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 8rpx;
+        .content {
+            display: flex;
+            height: 96rpx;
+            justify-content: space-between;
+            gap: 24rpx;
+            padding: 24rpx;
+            image {
+                width: 52rpx;
+                height: 52rpx;
+            }
+        }
+    }
+    .logout {
+        margin-top: 132rpx;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        padding: 24rpx;
+        .btn {
+            width: 100%;
+            height: 84rpx;
+            border: 2rpx solid #131619;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 40rpx;
+        }
+    }
+}
+.line {
+    margin: 0 24rpx;
+    height: 1rpx;
+    background-color: #E8E8E8;
+}
+.feedback-btn {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
 }
 </style>

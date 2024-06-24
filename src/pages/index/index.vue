@@ -25,15 +25,16 @@ import './index.scss';
 import DrawPage from '../draw/index.vue';
 import MyPage from '../my/index.vue';
 import Taro from '@tarojs/taro';
+import { SOURCE_PATH } from '../../constant/Urls';
 
 const icon = {
     home: {
-        normal: require('../../../assets/images/icon_tabbar_home_normal.svg'),
-        active: require('../../../assets/images/icon_tabbar_home_active.svg'),
+        normal: SOURCE_PATH + "/images/icon_tabbar_home_normal.svg",
+        active: SOURCE_PATH + "/images/icon_tabbar_home_active.svg",
     },
     my: {
-        normal: require('../../../assets/images/icon_tabbar_my_normal.svg'),
-        active: require('../../../assets/images/icon_tabbar_my_active.svg'),
+        normal: SOURCE_PATH + "/images/icon_tabbar_my_normal.svg",
+        active: SOURCE_PATH + "/images/icon_tabbar_my_active.svg",
     },
 };
 
@@ -65,6 +66,12 @@ export default {
                 url: '/pages/homepage/index',
             });
         }
+
+        // support share
+        Taro.showShareMenu({
+            withShareTicket: true,
+            menus: ['shareAppMessage', 'shareTimeline']
+        });
     },
 
     setup() {

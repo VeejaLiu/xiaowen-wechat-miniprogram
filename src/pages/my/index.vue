@@ -1,18 +1,15 @@
 <template>
     <!-- User info Start -->
-    <div class="flex-row items-center section_3 space-x-20">
-        <div class="flex-row items-center flex-auto" @click="goToUserSetting">
+    <div class="flex-row items-center section_3 space-x-20" @click="goToUserSetting">
+        <div class="flex-row items-center flex-auto">
             <div class="shrink-0 section_4"></div>
             <span class="font_1 text_3">
                 {{ userInfo.nickName }}
             </span>
             <img class="shrink-0 image_6" :src="userInfo.avatarUrl" />
         </div>
-        <div class="flex-row items-center shrink-0 section_5 space-x-4" @click="goToGetQuota()">
-            <img class="shrink-0 image_5" :src="QuotaIcon" />
-            <span class="font_1 text_4">
-                {{ userInfo.quota }}
-            </span>
+        <div class="flex-row items-center shrink-0 section_5 space-x-4">
+            <img class="shrink-0 image_5" :src="SettingIcon" />
         </div>
     </div>
     <!-- User info End -->
@@ -25,7 +22,7 @@
     <!-- History Title End -->
 
     <!-- History -->
-    <div class="flex-col list">
+    <scroll-view scroll-y="true" class="flex-col list" :enable-flex="true" @scrolltolower="lowerFunc">
         <div
             class="flex-col list-item space-y-16"
             v-for="(history, index) in historyData"
@@ -68,7 +65,7 @@
                 </nut-grid-item>
             </nut-grid>
         </div>
-    </div>
+    </scroll-view>
     <!-- History End -->
 </template>
 
@@ -77,8 +74,10 @@ import Taro from '@tarojs/taro';
 import './index.scss';
 import { onMounted, ref } from 'vue';
 import { TATTOO_STYLES } from '../../constant/TattooStyle';
-import { BACKEND_URL } from '../../constant/Urls';
-import QuotaIcon from '../../../assets/images/quota/quota_icon.png';
+import { BACKEND_URL, SOURCE_PATH } from '../../constant/Urls';
+const SettingIcon = SOURCE_PATH + "/images/base_icon/setting.svg";
+const BLANK_IMG = SOURCE_PATH + '/images/loading.png';
+const PAGE_NUM = 10; // 每页数量
 
 export default {
     name: 'Index',
@@ -93,10 +92,22 @@ export default {
         });
 
         const images = [
-            'http://123.60.97.192:9001/pic/blank.png',
-            'http://123.60.97.192:9001/pic/blank.png',
-            'http://123.60.97.192:9001/pic/blank.png',
-            'http://123.60.97.192:9001/pic/blank.png',
+            {
+                original: BLANK_IMG,
+                thumbnail: BLANK_IMG,
+            },
+            {
+                original: BLANK_IMG,
+                thumbnail: BLANK_IMG,
+            },
+            {
+                original: BLANK_IMG,
+                thumbnail: BLANK_IMG,
+            },
+            {
+                original: BLANK_IMG,
+                thumbnail: BLANK_IMG,
+            }
         ];
 
         async function getUserInfo() {
@@ -130,46 +141,70 @@ export default {
                 },
             });
         }
-
-        async function getAllGenerateHistory() {
-            const token = Taro.getStorageSync('token');
-            const res = await Taro.request({
-                url: `${BACKEND_URL}/api/v1/history`,
-                method: 'GET',
-                header: {
-                    token: token,
-                },
-                success: (res) => {
-                    console.log('get all generate history success', res);
-                    const { data, total } = res.data;
-                    historyData.value = data.map((item) => {
-                        // createTime: "2023-11-27T09:04:01.000Z"
-                        // generateUsedTime: 0
-                        // id: 144
-                        // images: []
-                        // prompt: "adsdadsad"
-                        // status: 2
-                        // style: 0
-                        // userId: "14634b3a-3c93-4b69-aefd-92fee9fe52a2"
-                        if (item.images.length === 0) {
-                            item.images = images;
-                        }
-                        return {
-                            generateHistoryId: item.id,
-                            style: item.style,
-                            description: item.prompt,
-                            images: item.images,
-                        };
-                    });
-                },
-                fail: (err) => {
-                    console.log('get all generate history fail', err);
-                    Taro.showToast({
-                        title: '很抱歉，获取生成历史失败',
-                        icon: 'none',
-                    });
-                },
+        /**
+         * 获取生成历史
+         */
+        async function getGenerateHistory(start, limit = PAGE_NUM) {
+            return new Promise((resolve, reject)=>{
+                const token = Taro.getStorageSync('token');
+                Taro.showLoading({
+                    title: '数据获取'
+                });
+                Taro.request({
+                    url: `${BACKEND_URL}/api/v1/history?start=${start}&limit=${limit}`,
+                    method: 'GET',
+                    header: {
+                        token: token,
+                    },
+                    success: (res) => {
+                        console.log('get all generate history success', res);
+                        resolve(res.data);
+                    },
+                    fail: (err) => {
+                        reject(err);
+                        console.log('get all generate history fail', err);
+                        Taro.showToast({
+                            title: '很抱歉，获取生成历史失败',
+                            icon: 'none',
+                        });
+                    },
+                    complete: ()=>{
+                        Taro.hideLoading();
+                    }
+                });
             });
+        }
+        /**
+         * 获取下一页数据
+         */
+        async function getNextPageGenerateHistory() {
+            const res = await getGenerateHistory(historyData.value.length).catch(err=>{
+                console.log('get generate history fail', err);
+                Taro.showToast({
+                    title: '很抱歉，获取生成历史失败',
+                    icon: 'none',
+                });
+            });
+            const { data, total } = res;
+            if(!data.length) {
+                Taro.showToast({
+                    title: '数据到底了',
+                    icon: 'none',
+                });
+                return;
+            }
+            const formatData = data.map((item) => {
+                if (item.images.length === 0) {
+                    item.images = images;
+                }
+                return {
+                    generateHistoryId: item.id,
+                    style: item.style,
+                    description: item.prompt,
+                    images: item.images,
+                };
+            });
+            historyData.value.push(...formatData);
         }
 
         onMounted(async () => {
@@ -182,7 +217,7 @@ export default {
                 userInfo.value.quota = cacheUserQuota;
             }
             getUserInfo();
-            getAllGenerateHistory();
+            getNextPageGenerateHistory();
         });
 
         const goToGetQuota = () => {
@@ -206,6 +241,11 @@ export default {
             });
         };
 
+        // 滚动至底部触发
+        const lowerFunc = ()=>{
+            getNextPageGenerateHistory();
+        }
+
         return {
             goToGetQuota,
             goToGeneResPage,
@@ -213,7 +253,8 @@ export default {
             historyData,
             userInfo,
             TATTOO_STYLES,
-            QuotaIcon,
+            SettingIcon,
+            lowerFunc
         };
     },
 };
