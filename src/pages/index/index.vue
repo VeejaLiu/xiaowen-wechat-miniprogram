@@ -66,6 +66,12 @@ export default {
                 url: '/pages/homepage/index',
             });
         }
+
+        // support share
+        Taro.showShareMenu({
+            withShareTicket: true,
+            menus: ['shareAppMessage', 'shareTimeline']
+        });
     },
 
     setup() {
