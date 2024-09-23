@@ -48,8 +48,11 @@ npm run dev:weapp
 
 在微信开发者工具中打开该项目目录，即可看到效果。
 
+## 4. 版权所有
 
-> **需要额外修改的地方：**
-> 1. src/constant/Urls.ts 中的 BASE_URL 需要修改为自己的后端服务地址。
-> 2. 修改 project.private.config.json 中的 setting.urlCheck 为
-     false。或者在微信开发者工具中关闭服务端校验域名。
+这并不是一个商业项目。允许任何人自由使用、复制、修改和分发软件，可以在此基础上创建商业产品，而不需要支付版权费用或获得额外许可。但是，我们不承担任何责任。
+
+**作者:**
+
+- Veeja
+  Liu([Linkedin](https://www.linkedin.com/in/weijia-liu-6594b5185/)/[Github](https://github.com/VeejaLiu))
