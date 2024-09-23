@@ -1,6 +1,6 @@
 # xiaowen-wechat-miniprogram 小纹AI纹身图案生成小程序
 
-Language: 中文 | [English](./README_en.md)
+Language: 中文 | [English](./README-en.md)
 
 > 标签：微信小程序、Taro、Stable diffusion、纹身图案生成、AIGC、文生图
 
