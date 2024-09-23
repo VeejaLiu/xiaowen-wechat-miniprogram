@@ -20,6 +20,9 @@ This is a WeChat mini program project based on Taro. It utilizes Stable Diffusio
 - [xiaowen-BMC](https://github.com/VeejaLiu/xiaowen-BMC): Frontend management project
 - [xiaowen-generate-server](https://github.com/VeejaLiu/xiaowen-generate-server): Resources related to Stable Diffusion (models, datasets, etc.)
 
+System structure diagram:
+![system-structure-diagram.png](docs/images/system-structure-diagram.png)
+
 ## 3. Quick Start the Project
 
 Recommended versions:
