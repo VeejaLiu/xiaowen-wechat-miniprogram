@@ -22,6 +22,9 @@ Language: 中文 | [English](./README_en.md)
 - [xiaowen-generate-server](https://github.com/VeejaLiu/xiaowen-generate-server)
   ：Stable diffusion 相关资源（模型、数据集等）
 
+系统结构示意图：
+![system-structure-diagram.png](docs/images/system-structure-diagram.png)
+
 ## 3. 快速启动项目
 
 版本推荐：
