@@ -2,7 +2,7 @@
   "name": "xiaowen-miniprogram",
   "version": "1.0.0",
   "private": true,
-  "description": "小纹AI-文身AI生成小程序",
+  "description": "小纹AI-纹身AI生成小程序",
   "engines": {
     "node": "18.12.1",
     "npm": "8.19.2"
