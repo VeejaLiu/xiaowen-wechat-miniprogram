@@ -1,6 +1,26 @@
 # xiaowen-wechat-miniprogram
 
-版本需求：
+小纹AI — 基于AI的纹身图案生成小程序。
+
+一个基于 Taro 的微信小程序项目。借助 Stable diffusion
+实现了生成纹身图案的功能。提供了若干种风格的纹身图案生成。
+
+## 1. 主要功能
+
+- 基础的用户登录、注册
+- 用户生成额度系统
+- 多种纹身图案风格选择（点刺、纯黑、小清新、几何线条、传统美式、新传统美式、日式、动漫、写实、超现实、图腾）
+
+## 2. 关联项目
+
+- [xiaowen-backend](https://github.com/VeejaLiu/xiaowen-backend)：后端项目
+- [xiaowen-BMC](https://github.com/VeejaLiu/xiaowen-BMC)：后台管理前端项目
+- [xiaowen-generate-server](https://github.com/VeejaLiu/xiaowen-generate-server)
+  ：Stable diffusion 相关资源（模型、数据集等）
+
+## 3. 快速启动项目
+
+版本推荐：
 
 ```
 "node": "18.12.1",
@@ -19,7 +39,7 @@ npm install
 npm run dev:weapp
 ```
 
-在微信开发者工具中打开该项目，即可看到效果。
+在微信开发者工具中打开该项目目录，即可看到效果。
 
 
 > **需要额外修改的地方：**
