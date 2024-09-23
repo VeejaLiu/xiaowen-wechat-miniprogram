@@ -1,4 +1,8 @@
-# xiaowen-wechat-miniprogram
+# xiaowen-wechat-miniprogram Xiaowen AI Tattoo Pattern Generation Mini Program
+
+Language: [中文](./README.md) | English
+
+> Tags: WeChat Mini Program, Taro, Stable Diffusion, Tattoo Pattern Generation, AIGC, Text-to-Image
 
 Xiaowen AI — An AI-based tattoo pattern generation mini program.
 
