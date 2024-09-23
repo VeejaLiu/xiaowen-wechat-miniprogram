@@ -22,8 +22,8 @@ This is a WeChat mini program project based on Taro. It utilizes Stable Diffusio
 
 System structure diagram:
 ![system-structure-diagram.png](docs/images/system-structure-diagram.png)
-## 3. Quick Start the Project
 
+## 3. Quick Start the Project
 
 Recommended versions:
 
