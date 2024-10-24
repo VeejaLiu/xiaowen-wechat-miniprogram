@@ -71,7 +71,7 @@
             <nut-button class="generate_btn" block @click="draw">
                 <p>制作纹身</p>
             </nut-button>
-            <!-- <div class="quota-consume-tip">
+            <div class="quota-consume-tip">
                 <span>
                     10
                     <img :style="{ width: '1.8vh', height: '1.8vh' }" :src="CoinImage" alt="Coin Image" />
@@ -81,7 +81,7 @@
             <div class="quota-floating flex-row items-center shrink-0" @click="goToGetQuota">
                 <img class="shrink-0 image_6" :src="QuotaCoinImage" alt="Image" />
                 <span class="quota_text">{{ user_quota > 99 ? '99+' : user_quota }}</span>
-            </div> -->
+            </div>
         </div>
     </div>
 </template>
@@ -91,9 +91,9 @@ import { onMounted, reactive, ref, toRefs } from 'vue';
 import './index.scss';
 import Taro from '@tarojs/taro';
 import { TATTOO_STYLES } from '../../constant/TattooStyle';
-import { BACKEND_URL, SOURCE_PATH } from '../../constant/Urls';
-const CoinImage = SOURCE_PATH + "/images/coin.svg";
-const QuotaCoinImage = SOURCE_PATH + "/images/mdi_ink.svg";
+import { BACKEND_URL } from '../../constant/Urls';
+import CoinImage from '../../../assets/images/coin.svg';
+import QuotaCoinImage from '../../../assets/images/mdi_ink.svg';
 
 export default {
     name: 'Index',

@@ -52,8 +52,8 @@
 import Taro from '@tarojs/taro';
 import { ref } from 'vue';
 import './index.scss';
-import { BACKEND_URL, SOURCE_PATH } from '../../constant/Urls';
-const logoImage = SOURCE_PATH + '/images/homepage_login_popup_logo.png';
+import { BACKEND_URL } from '../../constant/Urls';
+import logoImage from '../../../assets/images/homepage_login_popup_logo.png';
 
 export default {
     name: 'Index',

@@ -92,12 +92,11 @@ import Taro, { chooseImage } from '@tarojs/taro';
 import './index.scss';
 
 import { TATTOO_STYLES } from '../../constant/TattooStyle';
-import { BACKEND_URL, SOURCE_PATH } from '../../constant/Urls';
-const ShareIcon = SOURCE_PATH + '/images/gen_res_icon/share.png';
-const DownloadIcon = SOURCE_PATH + '/images/gen_res_icon/download.png';
-const AiTipIcon = SOURCE_PATH + '/images/gen_res_icon/ai_generated_tip.png';
-const BLANK_IMG = SOURCE_PATH + '/images/loading.png';
-
+import { BACKEND_URL } from '../../constant/Urls';
+import ShareIcon from '../../../assets/images/gen_res_icon/share.png';
+import DownloadIcon from '../../../assets/images/gen_res_icon/download.png';
+import AiTipIcon from '../../../assets/images/gen_res_icon/ai_generated_tip.png';
+import BLANK_IMG from '../../../assets/images/loading.png';
 export default {
     name: 'Index',
     methods: { chooseImage },

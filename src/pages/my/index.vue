@@ -75,8 +75,10 @@ import './index.scss';
 import { onMounted, ref } from 'vue';
 import { TATTOO_STYLES } from '../../constant/TattooStyle';
 import { BACKEND_URL, SOURCE_PATH } from '../../constant/Urls';
-const SettingIcon = SOURCE_PATH + "/images/base_icon/setting.svg";
-const BLANK_IMG = SOURCE_PATH + '/images/loading.png';
+import SettingIcon from '../../../assets/images/base_icon/setting.svg';
+import BLANK_IMG from '../../../assets/images/loading.png';
+import QuotaIcon from '../../../assets/images/quota/quota_icon.png';
+
 const PAGE_NUM = 10; // 每页数量
 
 export default {
