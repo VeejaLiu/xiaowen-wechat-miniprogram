@@ -11,18 +11,21 @@ Language: 中文 | [English](./README-en.md)
 
 ## 1. 主要功能
 
-- 基础的用户登录、注册
+- 用户登录、注册
 - 用户生成额度系统
 - 多种纹身图案风格选择（点刺、纯黑、小清新、几何线条、传统美式、新传统美式、日式、动漫、写实、超现实、图腾）
 
 ### 登录页面及主页
-![demo_1.jpg](docs%2Fimages%2Fdemo_1.jpg)
+
+<img src="docs/images/demo_1.jpg" alt="登录、注册、主页面"  height="500" />
 
 ### 我的页面/积分额度页面/设置页面
-![demo_2.jpg](docs%2Fimages%2Fdemo_2.jpg)
+
+<img src="docs/images/demo_2.jpg" alt="我的页面、积分额度页面、设置页面" height="500" />
 
 ### 纹身图案生成页面
-![demo_3.jpg](docs%2Fimages%2Fdemo_3.jpg)
+
+<img src="docs/images/demo_3.jpg" alt="纹身图案生成页面" height="500" />
 
 ## 2. 关联项目
 
