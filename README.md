@@ -88,4 +88,4 @@ npm run build:admin
 
 旧仓库归档后继续保留历史记录，后续开发统一在本仓库进行。历史分支以 `legacy/<模块>/<原分支名>` 标签保留；这些标签保存对应模块的子目录快照，其父提交为迁移前的原始分支头。
 
-迁移来源和校验方法见 [迁移说明](./docs/repository-consolidation.md)。原后端部署工作流保存在 `backend/.github/` 下作为历史资料，不会作为本仓库的 GitHub Actions 自动执行。
+迁移来源和校验方法见 [迁移说明](./docs/repository-consolidation.md)。原后端部署工作流已从统一仓库代码和历史标签的模块快照中删除。本仓库没有自动部署工作流。

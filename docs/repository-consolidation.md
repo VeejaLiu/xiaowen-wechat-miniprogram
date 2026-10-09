@@ -24,13 +24,15 @@ git show legacy/backend/master
 git log legacy/wechat-miniprogram/fengjun/master
 ```
 
-标签快照仅包含对应模块子目录，用于查阅旧版本；执行 `git rev-parse legacy/backend/master^{}^` 可以获取该分支的原始提交 ID。后续开发基于统一仓库默认分支。原本已存在的小程序开发分支也继续保留，不会强制改写。采用子目录快照可以避免将历史后端的根目录部署工作流注册到统一仓库。
+标签快照仅包含对应模块子目录，用于查阅旧版本；执行 `git rev-parse legacy/backend/master^{}^` 可以获取该分支的原始提交 ID。后续开发基于统一仓库默认分支。原本已存在的小程序开发分支也继续保留，不会强制改写。后端快照中同时删除了已停用的部署工作流，原始分支提交仍作为父提交保留。
 
 完整的来源提交、分支和文件数记录在 [repository-consolidation.json](./repository-consolidation.json)。另外三个来源仓库在主仓库合并并完成远端校验后归档，仍可只读访问其提交、Issues 和 Pull Requests。
 
 ## 文件与启动校验
 
 迁移时逐项比较原始 Git 文件对象与子目录中的文件对象，检查路径、文件模式和内容。业务源码、锁文件、图片和训练数据均保持原始内容。以下文件有明确调整：
+
+- 删除 `backend/.github/workflows/push_code_to_server.yml`，历史标签的后端模块快照也移除该文件。
 
 - 各模块 README：指向统一仓库子目录，补充新的工作目录与启动说明。
 - `backend/.env.test`：调整为本地服务地址与凭据占位值，实际环境配置保存在被忽略的 `.env` 中。
@@ -45,4 +47,4 @@ git log legacy/wechat-miniprogram/fengjun/master
 
 微信开发者工具应打开 `wechat-miniprogram/`，读取该目录中的 `project.config.json`，输出目录仍为模块内的 `dist/`。
 
-原后端的 SSH 部署工作流保存在 `backend/.github/workflows/`，不在统一仓库根目录的 `.github/workflows/` 中，因此不会在迁移推送时自动部署。未来若需要统一部署流程，应按模块调整工作目录并单独配置服务凭据。
+按迁移要求删除原后端的 SSH 部署工作流，统一仓库没有自动部署工作流。手动部署时应按模块选择工作目录，并单独配置服务凭据。

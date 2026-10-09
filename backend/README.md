@@ -50,4 +50,4 @@ pm2 start npm --name "xiaowen-backend" -- run start
 
 ## 部署说明
 
-原仓库的 SSH 部署工作流保留在本目录的 `.github/workflows/` 中作为历史资料。它不会作为统一仓库的 GitHub Actions 自动运行。迁移后的手动部署请以 `backend/` 为应用工作目录，仅部署本模块并单独配置环境变量。
+原仓库的 SSH 自动部署工作流已删除。手动部署请以 `backend/` 为应用工作目录，仅部署本模块并单独配置环境变量。

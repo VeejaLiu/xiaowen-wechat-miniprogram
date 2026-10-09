@@ -55,4 +55,4 @@ After dependencies are installed, root commands include `npm run dev:weapp`, `np
 
 Default branches were imported with their original Git histories. Original branch references are retained as `legacy/<component>/<original-branch>` tags. Each tag points to a module snapshot in its subdirectory, with the original branch head preserved as its first parent. The former `xiaowen-generate-server` repository now resolves to `xiaowen-sd-model`.
 
-The three source repositories are archived after verification; ongoing development belongs here. See [migration notes](./docs/repository-consolidation.md) for provenance and checks. The old deployment workflow inside `backend/.github/` is retained as historical material and does not execute as a workflow of this repository.
+The three source repositories are archived after verification; ongoing development belongs here. See [migration notes](./docs/repository-consolidation.md) for provenance and checks. The retired backend deployment workflow has been removed from the consolidated code and historical module snapshots. This repository has no automatic deployment workflows.
