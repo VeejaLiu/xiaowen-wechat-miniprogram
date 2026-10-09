@@ -1,0 +1,83 @@
+{
+  "migration_date": "2026-10-09",
+  "destination_repository": "https://github.com/VeejaLiu/xiaowen-wechat-miniprogram",
+  "history_strategy": "unsquashed git subtree imports; original branch heads retained as annotated legacy tags",
+  "modules": [
+    {
+      "directory": "wechat-miniprogram",
+      "source_repository": "https://github.com/VeejaLiu/xiaowen-wechat-miniprogram",
+      "source_default_branch": "master",
+      "source_commit": "1df06a5c3a2253d7282a9634ac2f9dc2e528d5db",
+      "source_file_count": 84,
+      "preserved_branches": {
+        "fengjun/master": {
+          "commit": "7020c9f7cf09e6b77c4dcc820cdec9ee78a5a9b0",
+          "tag": "legacy/wechat-miniprogram/fengjun/master"
+        },
+        "ft/dev/0531zeroice": {
+          "commit": "7159d3db5238c7ca038575da7436cf728e35a4d6",
+          "tag": "legacy/wechat-miniprogram/ft/dev/0531zeroice"
+        },
+        "lseli/master": {
+          "commit": "03d8568e8d2e7fdfca8c0b17771fc59cdba4be46",
+          "tag": "legacy/wechat-miniprogram/lseli/master"
+        },
+        "master": {
+          "commit": "1df06a5c3a2253d7282a9634ac2f9dc2e528d5db",
+          "tag": "legacy/wechat-miniprogram/master"
+        },
+        "weijia/master": {
+          "commit": "0796b12025656e60f8c378e2fcebb297ca8e9ce0",
+          "tag": "legacy/wechat-miniprogram/weijia/master"
+        }
+      }
+    },
+    {
+      "directory": "backend",
+      "source_repository": "https://github.com/VeejaLiu/xiaowen-backend",
+      "source_default_branch": "master",
+      "source_commit": "8f7c097be8df773da99266102d6995275ecf2914",
+      "source_file_count": 58,
+      "preserved_branches": {
+        "fengjun/master": {
+          "commit": "0e56763c962c149a4bb0bfb0379855b7eb80783e",
+          "tag": "legacy/backend/fengjun/master"
+        },
+        "master": {
+          "commit": "8f7c097be8df773da99266102d6995275ecf2914",
+          "tag": "legacy/backend/master"
+        },
+        "weijia/master": {
+          "commit": "9720a00fdb4aae9f682761e9598e5dd5ada44473",
+          "tag": "legacy/backend/weijia/master"
+        }
+      }
+    },
+    {
+      "directory": "admin",
+      "source_repository": "https://github.com/VeejaLiu/xiaowen-BMC",
+      "source_default_branch": "master",
+      "source_commit": "b4bdb855fd18931055d518450511b57ec365303f",
+      "source_file_count": 38,
+      "preserved_branches": {
+        "master": {
+          "commit": "b4bdb855fd18931055d518450511b57ec365303f",
+          "tag": "legacy/admin/master"
+        }
+      }
+    },
+    {
+      "directory": "sd-model",
+      "source_repository": "https://github.com/VeejaLiu/xiaowen-sd-model",
+      "source_default_branch": "master",
+      "source_commit": "becba820b7ee948db689cc38a4184d57a9c511bd",
+      "source_file_count": 1198,
+      "preserved_branches": {
+        "master": {
+          "commit": "becba820b7ee948db689cc38a4184d57a9c511bd",
+          "tag": "legacy/sd-model/master"
+        }
+      }
+    }
+  ]
+}

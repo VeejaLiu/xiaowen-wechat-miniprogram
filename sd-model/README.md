@@ -2,12 +2,12 @@
 
 ## 项目介绍
 
-本项目为《小纹AI》项目的一部分。主要功能是提供 Stable diffusion 相关模型，以及训练集数据。
+本目录为《小纹AI》统一仓库的一部分，原独立仓库为 `xiaowen-sd-model`。项目总览见 [根目录说明](../README.md)。主要内容为 Stable Diffusion 相关说明和 LoRA 训练素材；运行服务及所需模型权重需要单独准备。
 
-- [xiaowen-wechat-miniprogram](https://github.com/VeejaLiu/xiaowen-wechat-miniprogram)：微信小程序前端项目
-- [xiaowen-backend](https://github.com/VeejaLiu/xiaowen-backend)：后端项目
-- [xiaowen-BMC](https://github.com/VeejaLiu/xiaowen-BMC)：后台管理前端项目
-- （当前）[xiaowen-sd-model](https://github.com/VeejaLiu/xiaowen-sd-model)
+- [xiaowen-wechat-miniprogram](../wechat-miniprogram/)：微信小程序前端项目
+- [xiaowen-backend](../backend/)：后端项目
+- [xiaowen-BMC](../admin/)：后台管理前端项目
+- （当前）[xiaowen-sd-model](./)
   ：Stable diffusion 相关资源（模型、数据集等）
 
 ![img.png](docs%2Fimg.png)
