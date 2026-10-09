@@ -1,0 +1,12 @@
+{
+  "eslint.validate": [
+    "javascript", // 用eslint的规则检测js文件
+    "javascriptreact",
+    "vue",
+    "html",
+  ],
+  // 启用保存时自动修复eslint,默认只支持.js文件
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  }
+}

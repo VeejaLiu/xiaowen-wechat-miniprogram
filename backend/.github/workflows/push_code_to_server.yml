@@ -1,0 +1,20 @@
+name: ssh deploy
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: scp ssh pipelines
+        uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+        with:
+          host: ${{ secrets.SERVER_HOST}}
+          user: ${{ secrets.SERVER_USERNAME }}
+          pass: ${{ secrets.SERVER_PASSWORD }}
+          scp: |
+            ./* => /home/app/xiaowen-backend
