@@ -1,33 +1,49 @@
-# 小纹 AI
+# 小纹 AI 纹身图案生成小程序
 
 Language: 中文 | [English](./README-en.md)
 
-小纹 AI 是一个通过文字描述和风格选择生成纹身图案的项目。微信小程序、业务后端、管理前端和 Stable Diffusion 训练素材现在统一维护在本仓库，仓库名称继续使用 `xiaowen-wechat-miniprogram`。
+> 标签：微信小程序、AI 纹身、纹身图案生成、多种风格、文生图
 
-## 目录结构
+小纹 AI — 基于 AI 的纹身图案生成小程序。
 
-| 目录 | 内容 | 技术栈 |
-| --- | --- | --- |
-| [wechat-miniprogram/](./wechat-miniprogram/) | 微信小程序：登录、生成、历史记录、积分及邀请 | Taro 3、Vue 3、NutUI 4 |
-| [backend/](./backend/) | 业务接口、用户与积分、生成任务队列、图片存储及微信通知 | Express、TypeScript、Sequelize、MySQL、MinIO |
-| [admin/](./admin/) | 管理前端及生成、历史记录页面 | React 18、Vite、Ant Design |
-| [sd-model/](./sd-model/) | Stable Diffusion 相关说明、LoRA 训练图片、标注及缓存 | 训练素材 |
+输入你想要的纹身描述，选择喜欢的风格，让 AI 帮你把想法变成图案。小纹 AI 提供点刺、纯黑、小清新、几何、日式等多种纹身风格，你可以查看生成结果、回顾历史作品，也可以通过邀请好友获得更多生成额度。
 
-各应用保留自己的 `package.json`、锁文件和配置，依赖分别安装。根目录的脚本只是转发命令，并在对应应用目录中执行。
+## 1. 主要功能
 
-## 系统结构
+- 用户登录、注册
+- 用户生成额度与积分记录
+- 多种纹身图案风格选择（点刺、纯黑、小清新、几何线条、传统美式、新传统美式、日式、写实、垃圾波尔卡、图腾）
+- 生成结果预览与历史作品回顾
+- 邀请好友获取额度
 
-微信小程序和管理前端访问 `backend/` 提供的业务接口。后端连接 MySQL、MinIO、微信接口及单独运行的 Stable Diffusion 服务。
+### 登录页面及主页
 
-![系统结构](./wechat-miniprogram/docs/images/system-structure-diagram.png)
+<img src="wechat-miniprogram/docs/images/demo_1.jpg" alt="登录、注册、主页面" height="500" />
 
-`sd-model/` 当前收录的是训练素材和说明，运行中的 Stable Diffusion 服务及所需模型权重需要单独准备。
+### 我的页面/积分额度页面/设置页面
 
-## 开发启动
+<img src="wechat-miniprogram/docs/images/demo_2.jpg" alt="我的页面、积分额度页面、设置页面" height="500" />
 
-### 微信小程序
+### 纹身图案生成页面
 
-原项目声明的环境为 Node.js `18.12.1`、npm `8.19.2`。在子目录中安装依赖：
+<img src="wechat-miniprogram/docs/images/demo_3.jpg" alt="纹身图案生成页面" height="500" />
+
+## 2. 项目组成
+
+小纹 AI 的几个组成部分统一维护在本仓库：
+
+- [微信小程序](./wechat-miniprogram/)：用户登录、选择风格、生成图案和查看作品。
+- [业务后端](./backend/)：用户、生成额度、作品记录和生成任务。
+- [管理前端](./admin/)：管理与生成操作页面。
+- [纹身风格训练素材](./sd-model/)：Stable Diffusion 相关说明和 LoRA 训练数据。
+
+系统结构示意图：
+
+![system-structure-diagram.png](wechat-miniprogram/docs/images/system-structure-diagram.png)
+
+## 3. 快速启动项目
+
+在小程序目录中安装依赖并启动开发：
 
 ```bash
 cd wechat-miniprogram
@@ -35,57 +51,6 @@ npm install
 npm run dev:weapp
 ```
 
-在微信开发者工具中打开 **`wechat-miniprogram/` 子目录**，构建产物位于 `wechat-miniprogram/dist/`。
+在微信开发者工具中打开 `wechat-miniprogram/` 子目录，即可查看小程序。将 `src/constant/Urls.ts` 中的 `BACKEND_URL` 设置为自己的后端地址。
 
-在 [wechat-miniprogram/src/constant/Urls.ts](./wechat-miniprogram/src/constant/Urls.ts) 中设置 `BACKEND_URL`。当前值为 `http://localhost:10100`；真机调试需要设备可访问的地址。开发时的域名校验配置仍位于该子目录的 `project.private.config.json`。
-
-详细说明：[小程序 README](./wechat-miniprogram/README.md)。
-
-### 业务后端
-
-原项目声明的环境为 Node.js `18.20.3`、npm `10.7.0`。
-
-```bash
-cd backend
-cp .env.test .env
-# 修改 .env，填写自己的服务地址和凭据
-npm ci
-npm run start
-```
-
-初始化数据库时参考 [backend/sql_init/database.sql](./backend/sql_init/database.sql)。配置文件包含 MySQL、MinIO、微信、百度翻译、JWT 及 `GENERATE_SERVER_URL` 等配置。`.env.test` 是示例配置，实际凭据仅放在被 Git 忽略的 `.env` 中。
-
-详细说明：[后端 README](./backend/README.md)。
-
-### 管理前端
-
-```bash
-cd admin
-npm ci
-npm run dev
-```
-
-在 [admin/src/service/config.ts](./admin/src/service/config.ts) 中修改 `backendUrl`，指向自己的业务后端。
-
-详细说明：[管理前端 README](./admin/README.md)。
-
-### 从仓库根目录执行
-
-各应用安装依赖后，可以从根目录使用这些命令：
-
-```bash
-npm run dev:weapp
-npm run build:weapp
-npm run dev:h5
-npm run start:backend
-npm run dev:admin
-npm run build:admin
-```
-
-## 仓库迁移
-
-原 `xiaowen-backend`、`xiaowen-BMC` 和 `xiaowen-sd-model` 的默认分支及 Git 提交历史已导入对应子目录。原 `xiaowen-generate-server` 在迁移前已更名为 `xiaowen-sd-model`。
-
-三个旧独立仓库已在远端内容核对后删除，原始源码和 Git 提交历史保存在本仓库，后续开发统一在这里进行。历史分支以 `legacy/<模块>/<原分支名>` 标签保留；这些标签保存对应模块的子目录快照，其父提交为迁移前的原始分支头。
-
-迁移来源和校验方法见 [迁移说明](./docs/repository-consolidation.md)。原后端部署工作流已从统一仓库代码和历史标签的模块快照中删除。本仓库没有自动部署工作流。
+完整的环境配置和各模块启动方式见 [开发文档](./docs/development.md)。
