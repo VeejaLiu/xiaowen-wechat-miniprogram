@@ -1,0 +1,26 @@
+.toolbar {
+    margin-bottom: 10px;
+}
+
+#canvas-container {
+    width: 768px;
+    height: 768px;
+    position: relative;
+    border: 2px solid black;
+    padding: 2px;
+    background-color: #EEEEEE;
+}
+
+#image-canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+
+#drawing-canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 999;
+}
