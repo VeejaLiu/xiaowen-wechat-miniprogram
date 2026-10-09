@@ -11,7 +11,7 @@
 | xiaowen-BMC | `admin/` | `b4bdb855fd18931055d518450511b57ec365303f` |
 | xiaowen-sd-model | `sd-model/` | `becba820b7ee948db689cc38a4184d57a9c511bd` |
 
-README 中的旧名称 `xiaowen-generate-server` 已重定向到 `xiaowen-sd-model`，迁移以实际仓库为准。
+原仓库 `xiaowen-generate-server` 在迁移前已更名为 `xiaowen-sd-model`，迁移以当时的实际仓库为准。
 
 ## 提交历史与分支
 
@@ -26,7 +26,7 @@ git log legacy/wechat-miniprogram/fengjun/master
 
 标签快照仅包含对应模块子目录，用于查阅旧版本；执行 `git rev-parse legacy/backend/master^{}^` 可以获取该分支的原始提交 ID。后续开发基于统一仓库默认分支。原本已存在的小程序开发分支也继续保留，不会强制改写。后端快照中同时删除了已停用的部署工作流，原始分支提交仍作为父提交保留。
 
-完整的来源提交、分支和文件数记录在 [repository-consolidation.json](./repository-consolidation.json)。另外三个来源仓库在主仓库合并并完成远端校验后归档，仍可只读访问其提交、Issues 和 Pull Requests。
+完整的来源提交、分支和文件数记录在 [repository-consolidation.json](./repository-consolidation.json)。另外三个来源仓库在主仓库合并并完成远端校验后已删除。原始源码和 Git 提交历史已保存在统一仓库中，历史分支可通过上述标签访问。
 
 ## 文件与启动校验
 

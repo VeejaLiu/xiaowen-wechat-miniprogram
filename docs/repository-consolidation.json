@@ -42,7 +42,8 @@
         }
       },
       "removed_paths": [],
-      "imported_file_count": 84
+      "imported_file_count": 84,
+      "source_repository_status": "retained_as_main_repository"
     },
     {
       "directory": "backend",
@@ -80,7 +81,8 @@
       "removed_paths": [
         ".github/workflows/push_code_to_server.yml"
       ],
-      "imported_file_count": 57
+      "imported_file_count": 57,
+      "source_repository_status": "deleted_after_migration"
     },
     {
       "directory": "admin",
@@ -97,7 +99,8 @@
         }
       },
       "removed_paths": [],
-      "imported_file_count": 38
+      "imported_file_count": 38,
+      "source_repository_status": "deleted_after_migration"
     },
     {
       "directory": "sd-model",
@@ -114,7 +117,8 @@
         }
       },
       "removed_paths": [],
-      "imported_file_count": 1198
+      "imported_file_count": 1198,
+      "source_repository_status": "deleted_after_migration"
     }
   ]
 }
