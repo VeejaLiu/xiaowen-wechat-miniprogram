@@ -18,15 +18,15 @@ Describe the tattoo you have in mind, choose a style, and let AI turn your idea 
 
 ### Login and Home Screens
 
-<img src="wechat-miniprogram/docs/images/demo_1.jpg" alt="Login, registration and home screens" height="500" />
+<img src="wechat-miniprogram/docs/images/demo_1.webp" alt="Login, registration and home screens" height="500" />
 
 ### My Page, Credits and Settings
 
-<img src="wechat-miniprogram/docs/images/demo_2.jpg" alt="My page, credits and settings" height="500" />
+<img src="wechat-miniprogram/docs/images/demo_2.webp" alt="My page, credits and settings" height="500" />
 
 ### Tattoo Generation Results
 
-<img src="wechat-miniprogram/docs/images/demo_3.jpg" alt="Tattoo generation results" height="500" />
+<img src="wechat-miniprogram/docs/images/demo_3.webp" alt="Tattoo generation results" height="500" />
 
 ## 2. Project Components
 

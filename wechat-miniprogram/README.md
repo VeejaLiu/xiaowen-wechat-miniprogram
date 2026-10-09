@@ -18,15 +18,15 @@ Language: 中文 | [English](./README-en.md)
 
 ### 登录页面及主页
 
-<img src="docs/images/demo_1.jpg" alt="登录、注册、主页面"  height="500" />
+<img src="docs/images/demo_1.webp" alt="登录、注册、主页面"  height="500" />
 
 ### 我的页面/积分额度页面/设置页面
 
-<img src="docs/images/demo_2.jpg" alt="我的页面、积分额度页面、设置页面" height="500" />
+<img src="docs/images/demo_2.webp" alt="我的页面、积分额度页面、设置页面" height="500" />
 
 ### 纹身图案生成页面
 
-<img src="docs/images/demo_3.jpg" alt="纹身图案生成页面" height="500" />
+<img src="docs/images/demo_3.webp" alt="纹身图案生成页面" height="500" />
 
 ## 2. 关联项目
 
