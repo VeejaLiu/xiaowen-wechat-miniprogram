@@ -1,21 +1,49 @@
-# Xiaowen AI
+# Xiaowen AI Tattoo Pattern Generation Mini Program
 
 Language: [中文](./README.md) | English
 
-Xiaowen AI generates tattoo artwork from text descriptions and selected styles. Its components are maintained together in this repository, which retains the name `xiaowen-wechat-miniprogram`.
+> Tags: WeChat Mini Program, AI Tattoo Design, Tattoo Pattern Generation, Multiple Styles, Text-to-Image
 
-| Directory | Component |
-| --- | --- |
-| [wechat-miniprogram/](./wechat-miniprogram/) | WeChat mini program built with Taro, Vue 3 and NutUI |
-| [backend/](./backend/) | Express/TypeScript backend, users, quotas, generation queue, MySQL, MinIO and WeChat integration |
-| [admin/](./admin/) | React/Vite/Ant Design management frontend |
-| [sd-model/](./sd-model/) | Stable Diffusion documentation and LoRA training assets |
+Xiaowen AI — An AI-based tattoo pattern generation mini program.
 
-Each application retains its own dependency manifest, lockfile and configuration. Install dependencies inside each application directory. Root scripts forward commands to the appropriate directory.
+Describe the tattoo you have in mind, choose a style, and let AI turn your idea into artwork. Explore dotwork, blackwork, minimalist, geometric, Japanese and other tattoo styles, view your results, revisit previous designs, and invite friends to earn more generation credits.
 
-## Development
+## 1. Main Features
 
-Mini program (original declared environment: Node.js 18.12.1 / npm 8.19.2):
+- User login and registration
+- Generation credits and credit history
+- Multiple tattoo styles: dotwork, blackwork, minimalist, geometric, old school, new school, Japanese, realism, trash polka and tribal
+- Artwork previews and generation history
+- Invite friends to earn generation credits
+
+### Login and Home Screens
+
+<img src="wechat-miniprogram/docs/images/demo_1.jpg" alt="Login, registration and home screens" height="500" />
+
+### My Page, Credits and Settings
+
+<img src="wechat-miniprogram/docs/images/demo_2.jpg" alt="My page, credits and settings" height="500" />
+
+### Tattoo Generation Results
+
+<img src="wechat-miniprogram/docs/images/demo_3.jpg" alt="Tattoo generation results" height="500" />
+
+## 2. Project Components
+
+The components of Xiaowen AI are maintained together in this repository:
+
+- [WeChat mini program](./wechat-miniprogram/): Log in, choose styles, generate artwork and view your designs.
+- [Backend](./backend/): Users, generation credits, artwork history and generation tasks.
+- [Management frontend](./admin/): Management and generation pages.
+- [Tattoo style training assets](./sd-model/): Stable Diffusion documentation and LoRA training data.
+
+System structure diagram:
+
+![system-structure-diagram.png](wechat-miniprogram/docs/images/system-structure-diagram.png)
+
+## 3. Quick Start
+
+Install dependencies and start development inside the mini program directory:
 
 ```bash
 cd wechat-miniprogram
@@ -23,36 +51,6 @@ npm install
 npm run dev:weapp
 ```
 
-Open **`wechat-miniprogram/`** in WeChat Developer Tools. Its output directory is `wechat-miniprogram/dist/`. Configure `BACKEND_URL` in `wechat-miniprogram/src/constant/Urls.ts`.
+Open `wechat-miniprogram/` in WeChat Developer Tools. Set `BACKEND_URL` in `src/constant/Urls.ts` to your backend address.
 
-Backend (original declared environment: Node.js 18.20.3 / npm 10.7.0):
-
-```bash
-cd backend
-cp .env.test .env
-# Fill in your service endpoints and credentials.
-npm ci
-npm run start
-```
-
-Prepare MySQL using `backend/sql_init/database.sql` as a reference and configure MySQL, MinIO, WeChat, translation, JWT and `GENERATE_SERVER_URL` in `.env`. Keep actual credentials in the ignored `.env` file.
-
-Admin frontend:
-
-```bash
-cd admin
-npm ci
-npm run dev
-```
-
-Configure the backend URL in `admin/src/service/config.ts`.
-
-After dependencies are installed, root commands include `npm run dev:weapp`, `npm run build:weapp`, `npm run start:backend`, `npm run dev:admin` and `npm run build:admin`.
-
-`sd-model/` contains training assets and documentation. The running Stable Diffusion service and model weights must be prepared separately.
-
-## Migration
-
-Default branches were imported with their original Git histories. Original branch references are retained as `legacy/<component>/<original-branch>` tags. Each tag points to a module snapshot in its subdirectory, with the original branch head preserved as its first parent. The former `xiaowen-generate-server` repository was renamed to `xiaowen-sd-model` before this migration.
-
-The three source repositories have been deleted after remote verification. Their source code and Git histories are preserved here; ongoing development belongs here. See [migration notes](./docs/repository-consolidation.md) for provenance and checks. The retired backend deployment workflow has been removed from the consolidated code and historical module snapshots. This repository has no automatic deployment workflows.
+See the [development guide](./docs/development-en.md) for environment configuration and instructions for each component.
