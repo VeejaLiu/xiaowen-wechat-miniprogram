@@ -1,0 +1,7 @@
+japanese tattoo,
+ flower,
+ spot color,
+ armor,
+ helmet,
+ dragon,
+ petals,

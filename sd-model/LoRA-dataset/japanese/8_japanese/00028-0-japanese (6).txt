@@ -1,0 +1,13 @@
+japanese tattoo,
+ no humans,
+ sword,
+ weapon,
+ horns,
+ no_humans,
+ black_eyes,
+ earrings,
+ male_focus,
+ curly_hair,
+ official_alternate_costume,
+ 1boy,
+ solo

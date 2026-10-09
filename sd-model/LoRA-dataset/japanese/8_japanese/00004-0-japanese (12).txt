@@ -1,0 +1,10 @@
+japanese tattoo,
+ greyscale,
+ monochrome,
+ no humans,
+ flower,
+ fish,
+ lily_\(flower\),
+ white_flower,
+ floral_background,
+ lotus

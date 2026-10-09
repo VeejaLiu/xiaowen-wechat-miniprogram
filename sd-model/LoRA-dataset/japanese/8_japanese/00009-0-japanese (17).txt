@@ -1,0 +1,5 @@
+japanese tattoo,
+ monochrome,
+ flower,
+ comic,
+ dragon

@@ -1,0 +1,6 @@
+japanese tattoo,
+ waves,
+ moon,
+ solo,
+ unmoving_pattern,
+ limited_palette

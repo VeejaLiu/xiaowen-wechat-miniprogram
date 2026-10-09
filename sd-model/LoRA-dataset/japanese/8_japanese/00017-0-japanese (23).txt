@@ -1,0 +1,10 @@
+japanese tattoo,
+ monochrome,
+ greyscale,
+ sword,
+ weapon,
+ no humans,
+ armor,
+ solo,
+ planted_sword,
+ full_armor

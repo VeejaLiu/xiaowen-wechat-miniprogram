@@ -1,0 +1,8 @@
+japanese tattoo,
+ no humans,
+ cloud,
+ white background,
+ monochrome,
+ blue theme,
+ gradient,
+ sky
