@@ -1,7 +1,7 @@
 {
   "migration_date": "2026-10-09",
   "destination_repository": "https://github.com/VeejaLiu/xiaowen-wechat-miniprogram",
-  "history_strategy": "unsquashed git subtree imports; original branch heads retained as annotated legacy tags",
+  "history_strategy": "unsquashed git subtree imports; original branch heads retained as first parents of module snapshots referenced by annotated legacy tags",
   "modules": [
     {
       "directory": "wechat-miniprogram",
@@ -12,23 +12,33 @@
       "preserved_branches": {
         "fengjun/master": {
           "commit": "7020c9f7cf09e6b77c4dcc820cdec9ee78a5a9b0",
-          "tag": "legacy/wechat-miniprogram/fengjun/master"
+          "tag": "legacy/wechat-miniprogram/fengjun/master",
+          "tag_commit": "a844e564cbef40926df3d9c7aff5e9e43a1c3b6e",
+          "tag_layout": "module subdirectory; first parent is original branch commit"
         },
         "ft/dev/0531zeroice": {
           "commit": "7159d3db5238c7ca038575da7436cf728e35a4d6",
-          "tag": "legacy/wechat-miniprogram/ft/dev/0531zeroice"
+          "tag": "legacy/wechat-miniprogram/ft/dev/0531zeroice",
+          "tag_commit": "2c09b1622cd1d88b7bc10186cffe79f0ae08e0a4",
+          "tag_layout": "module subdirectory; first parent is original branch commit"
         },
         "lseli/master": {
           "commit": "03d8568e8d2e7fdfca8c0b17771fc59cdba4be46",
-          "tag": "legacy/wechat-miniprogram/lseli/master"
+          "tag": "legacy/wechat-miniprogram/lseli/master",
+          "tag_commit": "9700788031955a9da1e0394283399684702a48ca",
+          "tag_layout": "module subdirectory; first parent is original branch commit"
         },
         "master": {
           "commit": "1df06a5c3a2253d7282a9634ac2f9dc2e528d5db",
-          "tag": "legacy/wechat-miniprogram/master"
+          "tag": "legacy/wechat-miniprogram/master",
+          "tag_commit": "9ec0d9a24641cf0434876f45c15046a823816d83",
+          "tag_layout": "module subdirectory; first parent is original branch commit"
         },
         "weijia/master": {
           "commit": "0796b12025656e60f8c378e2fcebb297ca8e9ce0",
-          "tag": "legacy/wechat-miniprogram/weijia/master"
+          "tag": "legacy/wechat-miniprogram/weijia/master",
+          "tag_commit": "5d6e44949d7991aa7068c2b4c7f9225943f8e8da",
+          "tag_layout": "module subdirectory; first parent is original branch commit"
         }
       }
     },
@@ -41,15 +51,21 @@
       "preserved_branches": {
         "fengjun/master": {
           "commit": "0e56763c962c149a4bb0bfb0379855b7eb80783e",
-          "tag": "legacy/backend/fengjun/master"
+          "tag": "legacy/backend/fengjun/master",
+          "tag_commit": "fcc6ae56114f26615834cb325e08fb91c0a057d4",
+          "tag_layout": "module subdirectory; first parent is original branch commit"
         },
         "master": {
           "commit": "8f7c097be8df773da99266102d6995275ecf2914",
-          "tag": "legacy/backend/master"
+          "tag": "legacy/backend/master",
+          "tag_commit": "7f867136da0bb742f056245655d16b6cb4875ee4",
+          "tag_layout": "module subdirectory; first parent is original branch commit"
         },
         "weijia/master": {
           "commit": "9720a00fdb4aae9f682761e9598e5dd5ada44473",
-          "tag": "legacy/backend/weijia/master"
+          "tag": "legacy/backend/weijia/master",
+          "tag_commit": "eaa041e3e0b9f7ca2316258ee35944c6f9ffd201",
+          "tag_layout": "module subdirectory; first parent is original branch commit"
         }
       }
     },
@@ -62,7 +78,9 @@
       "preserved_branches": {
         "master": {
           "commit": "b4bdb855fd18931055d518450511b57ec365303f",
-          "tag": "legacy/admin/master"
+          "tag": "legacy/admin/master",
+          "tag_commit": "71c1311c702a5ef107bd5dc1fc08e1d3685a721f",
+          "tag_layout": "module subdirectory; first parent is original branch commit"
         }
       }
     },
@@ -75,7 +93,9 @@
       "preserved_branches": {
         "master": {
           "commit": "becba820b7ee948db689cc38a4184d57a9c511bd",
-          "tag": "legacy/sd-model/master"
+          "tag": "legacy/sd-model/master",
+          "tag_commit": "b9085b4e22966b93c72dd4e8f6b10e4edd9d5bef",
+          "tag_layout": "module subdirectory; first parent is original branch commit"
         }
       }
     }

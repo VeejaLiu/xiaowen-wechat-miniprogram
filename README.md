@@ -86,6 +86,6 @@ npm run build:admin
 
 原 `xiaowen-backend`、`xiaowen-BMC` 和 `xiaowen-sd-model` 的默认分支及 Git 提交历史已导入对应子目录。旧名称 `xiaowen-generate-server` 已重定向到 `xiaowen-sd-model`。
 
-旧仓库归档后继续保留历史记录，后续开发统一在本仓库进行。历史分支以 `legacy/<模块>/<原分支名>` 标签保留；这些标签代表迁移前的原始目录结构。
+旧仓库归档后继续保留历史记录，后续开发统一在本仓库进行。历史分支以 `legacy/<模块>/<原分支名>` 标签保留；这些标签保存对应模块的子目录快照，其父提交为迁移前的原始分支头。
 
 迁移来源和校验方法见 [迁移说明](./docs/repository-consolidation.md)。原后端部署工作流保存在 `backend/.github/` 下作为历史资料，不会作为本仓库的 GitHub Actions 自动执行。
