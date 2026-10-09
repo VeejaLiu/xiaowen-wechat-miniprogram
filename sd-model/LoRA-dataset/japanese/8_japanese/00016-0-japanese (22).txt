@@ -1,0 +1,10 @@
+japanese tattoo,
+ sword,
+ weapon,
+ monochrome,
+ no humans,
+ greyscale,
+ simple background,
+ white background,
+ teeth,
+ solo

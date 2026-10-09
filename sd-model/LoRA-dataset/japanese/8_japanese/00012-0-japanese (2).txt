@@ -1,0 +1,9 @@
+japanese tattoo,
+ monochrome,
+ greyscale,
+ no humans,
+ tiger,
+ no_humans,
+ tiger_tail,
+ tiger_ears,
+ leopard_print

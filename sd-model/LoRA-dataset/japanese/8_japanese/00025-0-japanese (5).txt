@@ -1,0 +1,5 @@
+japanese tattoo,
+ no humans,
+ fish,
+ white background,
+ no_humans

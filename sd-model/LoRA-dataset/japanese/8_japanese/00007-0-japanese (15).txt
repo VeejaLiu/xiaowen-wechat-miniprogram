@@ -1,0 +1,8 @@
+japanese tattoo,
+ no humans,
+ flower,
+ traditional media,
+ red_rose,
+ red_flower,
+ rose,
+ bouquet,

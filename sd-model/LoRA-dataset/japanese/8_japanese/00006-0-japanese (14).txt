@@ -1,0 +1,9 @@
+japanese tattoo,
+ greyscale,
+ monochrome,
+ flower,
+ lily_\(flower\),
+ white_flower,
+ beard,
+ facial_hair,
+ unzan

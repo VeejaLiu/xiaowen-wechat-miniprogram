@@ -1,0 +1,1 @@
+tp, weapon, blood, helmet, sword, armor, ink

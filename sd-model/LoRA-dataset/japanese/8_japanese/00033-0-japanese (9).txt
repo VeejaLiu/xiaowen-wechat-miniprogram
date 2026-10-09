@@ -1,0 +1,8 @@
+japanese tattoo,
+ greyscale,
+ monochrome,
+ no humans,
+ dragon,
+ flower,
+ eastern dragon,
+ multiple_tails

@@ -1,0 +1,10 @@
+japanese tattoo,
+ monochrome,
+ greyscale,
+ no humans,
+ flower,
+ sharp teeth,
+ open mouth,
+ cherry_blossoms,
+ lily_\(flower\),
+ no_humans

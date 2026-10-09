@@ -1,0 +1,5 @@
+japanese tattoo,
+ flower,
+ no humans,
+ monochrome,
+ no_humans

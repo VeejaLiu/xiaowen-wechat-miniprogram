@@ -1,0 +1,30 @@
+.pagination {
+    margin: 10px;
+}
+
+.historyShow {
+    margin-top: 10px;
+    display: flex;
+}
+
+.table {
+    width: 20%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e8e8e8;
+    border-collapse: collapse;
+}
+
+.table tr {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e8e8e8;
+}
+
+.table td {
+    width: 70%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e8e8e8;
+    padding: 5px;
+}

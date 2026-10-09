@@ -1,51 +1,58 @@
-# xiaowen-wechat-miniprogram Xiaowen AI Tattoo Pattern Generation Mini Program
+# Xiaowen AI
 
 Language: [中文](./README.md) | English
 
-> Tags: WeChat Mini Program, Taro, Stable Diffusion, Tattoo Pattern Generation, AIGC, Text-to-Image
+Xiaowen AI generates tattoo artwork from text descriptions and selected styles. Its components are maintained together in this repository, which retains the name `xiaowen-wechat-miniprogram`.
 
-Xiaowen AI — An AI-based tattoo pattern generation mini program.
+| Directory | Component |
+| --- | --- |
+| [wechat-miniprogram/](./wechat-miniprogram/) | WeChat mini program built with Taro, Vue 3 and NutUI |
+| [backend/](./backend/) | Express/TypeScript backend, users, quotas, generation queue, MySQL, MinIO and WeChat integration |
+| [admin/](./admin/) | React/Vite/Ant Design management frontend |
+| [sd-model/](./sd-model/) | Stable Diffusion documentation and LoRA training assets |
 
-This is a WeChat mini program project based on Taro. It utilizes Stable Diffusion to generate tattoo patterns, offering a variety of styles.
+Each application retains its own dependency manifest, lockfile and configuration. Install dependencies inside each application directory. Root scripts forward commands to the appropriate directory.
 
-## 1. Main Features
+## Development
 
-- Basic user login and registration
-- User generation quota system
-- Multiple tattoo pattern style options (dotwork, solid black, fresh and clean, geometric lines, traditional American, new traditional American, Japanese, anime, realistic, surreal, totem)
-
-## 2. Related Projects
-
-- [xiaowen-backend](https://github.com/VeejaLiu/xiaowen-backend): Backend project
-- [xiaowen-BMC](https://github.com/VeejaLiu/xiaowen-BMC): Frontend management project
-- [xiaowen-generate-server](https://github.com/VeejaLiu/xiaowen-generate-server): Resources related to Stable Diffusion (models, datasets, etc.)
-
-System structure diagram:
-![system-structure-diagram.png](docs/images/system-structure-diagram.png)
-
-## 3. Quick Start the Project
-
-Recommended versions:
-
-```
-"node": "18.12.1",
-"npm": "8.19.2"
-```
-
-Install dependencies:
+Mini program (original declared environment: Node.js 18.12.1 / npm 8.19.2):
 
 ```bash
+cd wechat-miniprogram
 npm install
-```
-
-Run the script 'dev:weapp' to start the project.
-
-```
 npm run dev:weapp
 ```
 
-Open the project directory in WeChat Developer Tools to see the results.
+Open **`wechat-miniprogram/`** in WeChat Developer Tools. Its output directory is `wechat-miniprogram/dist/`. Configure `BACKEND_URL` in `wechat-miniprogram/src/constant/Urls.ts`.
 
-> **Additional modifications needed:**
-> 1. Change the BASE_URL in `src/constant/Urls.ts` to your own backend service address.
-> 2. Set `setting.urlCheck` to false in `project.private.config.json`, or disable server domain name verification in WeChat Developer Tools.
+Backend (original declared environment: Node.js 18.20.3 / npm 10.7.0):
+
+```bash
+cd backend
+cp .env.test .env
+# Fill in your service endpoints and credentials.
+npm ci
+npm run start
+```
+
+Prepare MySQL using `backend/sql_init/database.sql` as a reference and configure MySQL, MinIO, WeChat, translation, JWT and `GENERATE_SERVER_URL` in `.env`. Keep actual credentials in the ignored `.env` file.
+
+Admin frontend:
+
+```bash
+cd admin
+npm ci
+npm run dev
+```
+
+Configure the backend URL in `admin/src/service/config.ts`.
+
+After dependencies are installed, root commands include `npm run dev:weapp`, `npm run build:weapp`, `npm run start:backend`, `npm run dev:admin` and `npm run build:admin`.
+
+`sd-model/` contains training assets and documentation. The running Stable Diffusion service and model weights must be prepared separately.
+
+## Migration
+
+Default branches were imported with their original Git histories. Original branch references are retained as `legacy/<component>/<original-branch>` tags. Each tag points to a module snapshot in its subdirectory, with the original branch head preserved as its first parent. The former `xiaowen-generate-server` repository now resolves to `xiaowen-sd-model`.
+
+The three source repositories are archived after verification; ongoing development belongs here. See [migration notes](./docs/repository-consolidation.md) for provenance and checks. The retired backend deployment workflow has been removed from the consolidated code and historical module snapshots. This repository has no automatic deployment workflows.

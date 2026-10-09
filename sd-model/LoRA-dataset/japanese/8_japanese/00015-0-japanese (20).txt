@@ -1,0 +1,9 @@
+japanese tattoo,
+ no humans,
+ monochrome,
+ greyscale,
+ waves,
+ gradient,
+ solo,
+ no_humans,
+ cloud
