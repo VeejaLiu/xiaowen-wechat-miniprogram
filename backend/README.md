@@ -1,4 +1,6 @@
-# xiaowen-backend
+# 小纹 AI 业务后端
+
+本模块现位于统一仓库的 `backend/` 子目录。请在此目录中执行安装和启动命令，项目总览见 [根目录说明](../README.md)。
 
 # 1 快速开始
 
@@ -13,7 +15,7 @@
 
 ## 1.2 配置环境变量
 
-将`.env.test`复制到`.env`，并修改`.env`中的变量值。
+将 `.env.test` 示例配置复制到 `.env`，并修改服务地址以及所有 `change-me` 占位值。实际凭据仅保存在被 Git 忽略的 `.env` 中。
 
 请确保你可以访问`.env`中的所有资源。
 
@@ -30,7 +32,7 @@ env列表：
 ## 1.3 安装依赖
 
 ```
-npm i
+npm ci
 
 ```
 
@@ -46,6 +48,6 @@ PM2启动项目:
 pm2 start npm --name "xiaowen-backend" -- run start
 ```
 
-<!-- Security scan triggered at 2026-09-05 07:37:54 -->
+## 部署说明
 
-<!-- Security scan triggered at 2026-10-07 11:48:42 -->
+原仓库的 SSH 部署工作流保留在本目录的 `.github/workflows/` 中作为历史资料。它不会作为统一仓库的 GitHub Actions 自动运行。迁移后的手动部署请以 `backend/` 为应用工作目录，仅部署本模块并单独配置环境变量。

@@ -1,0 +1,17 @@
+node_modules/
+dist/
+build/
+coverage/
+logs/
+*.log
+*.tsbuildinfo
+.DS_Store
+.idea/
+.temp/
+.rn_temp/
+.swc/
+deploy_versions/
+.env
+.env.*
+!.env.example
+!.env.test

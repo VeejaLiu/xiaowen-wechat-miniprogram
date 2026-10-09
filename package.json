@@ -1,0 +1,16 @@
+{
+  "name": "xiaowen",
+  "version": "1.0.0",
+  "private": true,
+  "description": "小纹 AI：微信小程序、业务后端、管理前端及 Stable Diffusion 训练素材",
+  "scripts": {
+    "dev:weapp": "npm --prefix wechat-miniprogram run dev:weapp",
+    "build:weapp": "npm --prefix wechat-miniprogram run build:weapp",
+    "dev:h5": "npm --prefix wechat-miniprogram run dev:h5",
+    "build:h5": "npm --prefix wechat-miniprogram run build:h5",
+    "start:backend": "npm --prefix backend run start",
+    "dev:admin": "npm --prefix admin run dev",
+    "build:admin": "npm --prefix admin run build",
+    "preview:admin": "npm --prefix admin run preview"
+  }
+}

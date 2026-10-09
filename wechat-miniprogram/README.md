@@ -13,7 +13,7 @@ Language: 中文 | [English](./README-en.md)
 
 - 用户登录、注册
 - 用户生成额度系统
-- 多种纹身图案风格选择（点刺、纯黑、小清新、几何线条、传统美式、新传统美式、日式、动漫、写实、超现实、图腾）
+- 多种纹身图案风格选择（点刺、纯黑、小清新、几何线条、传统美式、新传统美式、日式、写实、垃圾波尔卡、图腾）
 - 邀请好友获取额度
 
 ### 登录页面及主页
@@ -30,9 +30,9 @@ Language: 中文 | [English](./README-en.md)
 
 ## 2. 关联项目
 
-- [xiaowen-backend](https://github.com/VeejaLiu/xiaowen-backend)：后端项目
-- [xiaowen-BMC](https://github.com/VeejaLiu/xiaowen-BMC)：后台管理前端项目
-- [xiaowen-generate-server](https://github.com/VeejaLiu/xiaowen-generate-server)
+- [xiaowen-backend](../backend/)：后端项目
+- [xiaowen-BMC](../admin/)：后台管理前端项目
+- [sd-model](../sd-model/)
   ：Stable diffusion 相关资源（模型、数据集等）
 
 系统结构示意图：
@@ -59,10 +59,10 @@ npm install
 npm run dev:weapp
 ```
 
-在微信开发者工具中打开该项目目录，即可看到效果。
+在 `wechat-miniprogram/` 子目录中执行上述命令，并在微信开发者工具中打开该子目录，即可看到效果。
 
 
 > **需要额外修改的地方：**
-> 1. src/constant/Urls.ts 中的 BASE_URL 需要修改为自己的后端服务地址。
+> 1. src/constant/Urls.ts 中的 BACKEND_URL 需要修改为自己的后端服务地址。
 > 2. 修改 project.private.config.json 中的 setting.urlCheck 为
      false。或者在微信开发者工具中关闭服务端校验域名。
